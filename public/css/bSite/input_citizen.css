@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family:sans-serif;
+}
+
+:root {
+    font-size: 16px;
+}
+
+
+
+main {
+    display: flex;
+}
+
+#declare {
+    flex: 5;
+}
+
+#not_update {
+    flex: 3;
+}
+
+.container {
+    margin: 40px 20px;
+    min-height: 550px;
+    box-shadow: 0px 2px 10px 10px rgba(124, 124, 124, 0.062);
+    border-radius: 5px;
+}
+
+button {
+    cursor: pointer;
+}
+.container h5 {
+    padding: 10px;
+    font-size: 1.5rem;
+    color:rgba(29, 29, 165, 0.651);
+    font-weight: 700;
+}
+
+#dkthongtin {
+    position: relative;
+    display: block;
+    width: 100% auto;
+    margin: 0 10px 0 10px;
+}
+#dkthongtin input, select {
+    margin-top: 1rem;
+    position: relative;
+}
+#dkthongtin input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+#form1 input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+small {
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 2px;
+    color: rgb(226, 34, 34);
+    font-size: 12px;
+}
+label {
+    position: relative;
+    font-size: 15px;
+    font-weight: 550;
+    display: block;
+    color:rgb(105, 104, 104);
+}
+sup {
+    position: absolute;
+    color: rgb(226, 34, 34);
+    font-size: 18px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+    font-weight: normal;
+}
+input, select, option { 
+    display: block;
+    border: 1px solid rgb(209, 208, 208);
+    width: 100%;
+    height: 37px;
+    border-radius: 3px;
+    outline: none;
+    font-size: 15px;
+    color:rgb(117, 115, 115);
+    background-color: rgb(240, 240, 240);
+    text-indent: 12px;
+ 
+} 
+ 
+input:hover, select:hover{
+    background-color: rgb(224, 224, 224);
+    color:rgb(59, 58, 58);
+    border: 1px solid rgb(178, 178, 180);
+}
+
+div.btn{
+    text-align: center;
+    margin: 10px 0 30px 0;
+}
+div.cancel_btn, div.next_btn {
+    display: inline-block;
+}
+div.btn button {
+    height: 40px;
+    width: 120px;
+    border-radius: 8px 8px 8px 0;
+    font-size: 17px;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+div.cancel_btn button{
+    background-color: rgb(212, 194, 194);
+    color: rgb(221, 85, 97);
+    border: 1px solid rgb(219, 86, 86);
+    
+}
+div.next_btn button{
+    border: 1px solid rgb(61, 94, 165);
+    background-color: rgb(61, 94, 165);
+    color: white;
+}
+div.next_btn button span {
+    font-size: 20px;
+}
+div.cancel_btn button:hover{
+    cursor: pointer;
+    border: rgb(204, 66, 77);
+    background-color: rgb(204, 66, 77);
+    color: white;
+}
+div.next_btn button:hover {
+    border:rgb(85, 115, 179);
+    background-color: rgb(85, 115, 179);
+}
+.btn_submit button:hover {
+    cursor: pointer;
+}
+.btn_disabled button:hover {
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 200000px) {
+    #selection input {
+      width: 20px;
+      height: 20px;
+    }
+    #selection > div >p {
+      font-size: 18px;
+    } 
+    .col-4{
+      float: left; 
+      width: 23.5%; 
+      margin: 0.65%;
+      margin-top: 20px; 
+    }
+    .col-3 {
+      float: left;
+      width: 73.1%;
+      margin: 0.65%;
+      margin-top: 20px;
+    }
+    .col-2 {
+      float: left;
+      width: 48.5%;
+      margin: 0.65%; 
+      margin-top: 20px;
+    }
+    .col-1 {
+      width: 23.3%; margin: 0.65%; margin-top: 20px;
+    }
+    div.note {
+      margin: 30px 0 30px 20px;
+      font-size: 17px;
+    }
+    .note ul li {
+        margin-left: 15px;
+    }
+}
+@media screen and (max-width: 750px) {
+    
+    input, select {
+      margin-top: 10px!important;
+    }
+    label.title {
+      margin-left: 8%;
+      margin-top: 10px;
+    }
+    
+    .col-4, .col-3, .col-2, .col-1 {
+      float: left;
+      width: 80%;
+      margin: 0 10% 0 10%; 
+      margin-top: 20px;
+    }
+    .col-1 input {
+      margin-bottom: 15px;
+    }
+    div.note {
+      margin: 40px 0 30px 50px;
+      font-size: 13px;
+    }
+    .note ul li {
+        margin-left: 15px;
+    }
+}
+@media screen and (max-width: 500px){
+    .col-4, .col-3, .col-2, .col-1 {
+      float: left;
+      width: 90%;
+      margin: 5%; 
+      margin-top: 20px;
+    
+    }
+    label.title {
+      margin-left: 5%;
+    }
+
+    div.btn button {
+        width: 80px;
+        height: 30px;
+    }
+}
+
+.user_data {
+    margin: 30px 20px 0 20px;
+	flex-grow: 1;
+	flex-basis: 500px;
+    color: rgb(105, 104, 104);
+}
+.user_data table {
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+.user_data table th {
+	padding-bottom: 12px;
+	text-align: left;
+	border-bottom: 1px solid rgba(61, 61, 61, 0.192);
+}
+.user_data table tbody {
+	height: 400px;
+	overflow: auto;
+	display: block;
+	width: 100%; 
+}
+.user_data table tr {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+.user_data table td {
+	padding: 10px 5px;
+ } 
+
+.user_data table tbody tr:hover {
+	background: rgba(110, 110, 110, 0.096);
+}
+.user_data table tr td .view {
+	font-size: 15px;
+	padding: 5px 12px;
+	color: var(--light);
+	border-radius: 5px;
+	font-weight: 400;
+	background: rgb(204, 202, 202);
+	color: black;
+}
+.user_data table tr td .view .fas {
+	margin: 3px;
+}
+
+.user_data .td_first {
+    padding-left: 8px;
+}
+
+.far {
+    color:rgb(199, 23, 23);
+    cursor: pointer;
+}
+
+@keyframes notifi {
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+    
+}
+.noti {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(83, 83, 95, 0.521);
+}
+.noti .notifi{
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    width: 20%;
+    height: 50%;
+    animation-name: notifi;
+    animation-duration: 0.5s;
+    background-color: rgb(247, 247, 247);
+    
+}
+
+.notifi div {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20%;
+}
+
+.notifi button {
+    width: 30%;
+    height: 30px;
+    border: none;
+    border-radius: 60px;
+    color: white;
+}
+
+.notifi .icon {
+    height: 40%;
+    background-color:rgba(85, 115, 179, 0.952);
+    color: rgba(255, 255, 255, 0.904);
+    text-align: center;
+}
+
+.notifi p {
+    text-align: center;
+}
+
+.notifi i{
+    text-align: center;
+    margin: auto;
+    font-size: 4rem;
+}
+
+.btn-conf {
+    margin: auto;
+    margin-top: 20%;
+    
+}
+
+.btn-cancel {
+    margin-right: 6%;
+    margin-left: 17%;
+    background-color: rgb(211, 86, 86);
+}
+
+.btn-acc {
+    background-color:rgb(85, 115, 179);
+}
+
+@media  screen and (max-width: 1200px) {
+    main {
+        display: block;
+    }
+
+    .noti .notifi {
+        top: 25%;
+        left: 35%;
+        width: 30%;
+        height: 50%;
+    }
+    
+}
+
+@media screen and (max-width: 800px) {
+    .noti .notifi {
+        top: 25%;
+        left: 30%;
+        width: 40%;
+        height: 50%;
+    }
+    
+}

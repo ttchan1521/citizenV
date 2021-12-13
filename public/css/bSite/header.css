@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family:sans-serif;
+}
+
+:root {
+    font-size: 16px;
+}
+
+header > div{
+    width: 100%;
+    display: flex;
+    height: auto;
+    font-size: 1rem;
+    background-image: linear-gradient(to right,rgb(209, 110, 97), #303a96);
+    color: white;
+}
+
+a {
+    color: white;
+}
+.header {
+    margin: 20px 80px;
+}
+
+ul {
+    list-style: none;
+}
+.header > ul{
+    display: flex;
+    text-decoration: none;
+    
+}
+
+.logo {
+    margin: 12px 30px;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-right: 80px;
+}
+
+.link {
+    font-size: 1.1rem;
+}
+
+.link > ul > li{
+    margin-right: 30px;
+}
+
+.link > ul li a:hover {
+    color: rgba(255, 255, 255, 0.753);
+}
+
+.indi {
+    margin-right: 0px;
+}
+
+@keyframes appear {
+    from {margin-top: 40px}
+    to {margin-top: 10px};
+}
+
+.hidden {
+    display: none;
+    background-color:white;
+    position: absolute;
+    width: 240px;
+    margin: 10px 0px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px 10px rgba(124, 124, 124, 0.062);
+    animation-name: appear;
+    animation-duration: 0.5s;
+}
+
+.hidden a {
+    color: black;
+    padding: 20px 20px;
+}
+
+.drop {
+    position: relative;
+}
+.drop:hover .hidden {
+    display: block;
+}
+
+.drop:hover .hidden li {
+    padding: 5px;
+
+    margin-left: 3;
+}
+
+.drop:hover .hidden li:hover {
+    background-color:rgba(218, 216, 216, 0.384);
+}
+
+.drop:hover .hidden a:hover {
+    color:#0618b8;
+}
+
+.fas {
+    margin: 0 5px;
+}
+.indi .fas {
+    background-color: #5c6296;
+    padding: 8px;
+    border-radius: 50%;
+    
+}
+
+#position {
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+#exit {
+    color:rgb(253, 136, 115);
+}
+
+#menu {
+    display: none;
+}
+#noti {
+    position: relative;
+}
+#num_noti {
+    position: absolute;
+    transform: scale(0.8);
+    top: -15px;
+    left: 18px;
+    background-color: #e2343aef;
+
+}
+@media screen and (max-width: 1536px){
+    .header {
+        margin-left: 40px;
+        margin-right: 70px;
+    }
+    
+}
+
+@media screen and (max-width: 1510px) {
+    .header {
+        margin-left: 30px;
+        margin-right: 50px;
+    }
+    
+}
+
+@media screen and (max-width: 1420px) {
+    .header {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+}
+
+@media screen and (max-width: 1300px) {
+    .header {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .link > ul > li{
+        margin-right: 15px;
+    }
+    #position {
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 1164px) {
+    #position {
+        position: relative;
+    }
+    #position span {
+        display: none;
+        position: absolute;
+        width: 110px;
+        animation-name: appear;
+        animation-duration: 0.3s;
+        background-color: white;
+        color: black;
+        border-radius: 5px;
+        padding: 10px;
+        right: -60px;
+        box-shadow: 0px 2px 10px 10px rgba(124, 124, 124, 0.062);
+    }
+
+    #position:hover span {
+        display: block;
+    }
+
+    
+}
+
+@media  screen and (max-width: 1060px) {
+    .logo {
+        display: none;
+    }
+    
+}
+
+@media  screen and (max-width: 856px) {
+    header > div {
+        background-image: none;
+        background-color: #303a96;
+    }
+
+    #menu {
+        display: block;
+        flex: 10;
+        font-size: 2.4rem;
+        padding: 12px;
+    }
+
+    header {
+        position: relative;
+    }
+
+    .link > ul{
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 70px;
+        background-color:#303a96;
+        color: white;
+        z-index: 1;
+    }
+
+    .link > ul > li {
+        padding: 10px;
+    }
+
+    .drop li {
+        position: relative;
+        left: 10px;
+    }
+    
+}
