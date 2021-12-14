@@ -19,3 +19,15 @@ Route::get('/', function () {
 Route::get('/sheet', function () {
     return view('bSite.survey');
 });
+Route::get('/a1/theodoinhaplieu', function () {
+    return view('aSite/a1.theodoinhaplieu');
+});
+Route::get('/a1/phanquyen', function () {
+    return view('aSite/a1.phanquyen');
+});
+Route::get('/a1/dulieu', function () {
+    return view('aSite/a1.dulieu');
+});
+Route::get('/a1/bieudophantich', function () {
+    return view('aSite/a1.bieudophantich');
+});
