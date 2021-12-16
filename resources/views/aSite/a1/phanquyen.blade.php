@@ -27,6 +27,7 @@
                 <div class="province_list_top">
                     <div class="button" id="button_list">
                         <button id="permis_btn" onclick="permis_click()">Cấp quyền</button> 
+                        <button>Hoàn thành</button>
                         <button onclick="popup_del()">Xóa</button>
                     </div>
                     
@@ -45,69 +46,82 @@
                             <th rowspan="2" class="first">
                                 <input type="checkbox" id="check_all" onclick="tick_box_all(this)">
                             </th>
-                            <th rowspan="2">Mã đăng nhập</th>
+                            <th rowspan="2" class="nopadding">Mã đăng <br>nhập</th>
                             <th rowspan="2">Tên tỉnh/ thành phố</th>
-                            <th colspan="3">Quyền khai báo</th>
+                            <th colspan="4">Quyền khai báo</th>
                             <th rowspan="2">Sửa</th>
                             <th rowspan="2">Xóa</th>
                         </tr>
                         <tr>
                             <th>Ngày bắt đầu</th>
                             <th>Ngày kết thúc</th>
-                            <th>Trạng thái</th>
+                            <th class="nopadding">Trạng thái</th>
+                            <th class="nopadding">Hoàn thành</th>
                         </tr>
                     </thead>
                     <tbody id="list">
-                        <tr onclick="tick(this)">
+                        <tr>
                             <td>
-                                <input type="checkbox" class="check" onclick="tick_box(this)">
+                                <input type="checkbox" class="check" onclick="tick_box(this)">  
                             </td>
                             <td>01</td>
-                            <td>Thái Bình</td>
-                            <td>hjkj</td>
-                            <td>hgew</td>
+                            <td class="left">Thái Bình</td>
+                            <td class="left">hjkj</td>
+                            <td class="left">hgew</td>
                             <td>
                                 <div class="switch">
                                     <input type="checkbox">
                                     <label><i></i></label>
                                 </div>
                             </td>
-                            <td><a href="">Sửa</a></td>
-                            <td><a href="">Xóa</a></td>
+                            <td class="tick">
+                                <input type="checkbox" onclick="tick(this)">
+                                <label><i class="fas fa-check"></i></label>
+                            </td>
+                            <td><a href=""><i class="fas fa-edit"></i></a></td>
+                            <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox" class="check" onclick="tick_box(this)">
+                                <input type="checkbox" class="check" onclick="tick_box(this)">  
                             </td>
                             <td>01</td>
-                            <td>Thái Bình</td>
-                            <td>hjkj</td>
-                            <td>hgew</td>
+                            <td class="left">Thái Bình</td>
+                            <td class="left">hjkj</td>
+                            <td class="left">hgew</td>
                             <td>
                                 <div class="switch">
                                     <input type="checkbox">
                                     <label><i></i></label>
                                 </div>
                             </td>
-                            <td><a href="">Sửa</a></td>
-                            <td><a href="">Xóa</a></td>
+                            <td class="tick">
+                                <input type="checkbox" onclick="tick(this)">
+                                <label><i class="fas fa-check"></i></label>
+                            </td>
+                            <td><a href=""><i class="fas fa-edit"></i></a></td>
+                            <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="checkbox" class="check" onclick="tick_box(this)">
+                                <input type="checkbox" class="check" onclick="tick_box(this)">  
                             </td>
                             <td>01</td>
-                            <td>Thái Bình</td>
-                            <td>hjkj</td>
-                            <td>hgew</td>
+                            <td class="left">Thái Bình</td>
+                            <td class="left">hjkj</td>
+                            <td class="left">hgew</td>
                             <td>
                                 <div class="switch">
                                     <input type="checkbox">
                                     <label><i></i></label>
                                 </div>
                             </td>
-                            <td><a href="">Sửa</a></td>
-                            <td><a href="">Xóa</a></td>
+                            <td class="tick">
+                                <input type="checkbox" onclick="tick(this)">
+                                <label><i class="fas fa-check"></i></label>
+                            </td>
+                            <td><a href=""><i class="fas fa-edit"></i></a></td>
+                            <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -128,6 +142,10 @@
                         <div>
                             <label for="">Nhập tên tỉnh/tp <sup>(*)</sup></label>
                             <input type="text" placeholder="Nhập tên tỉnh/tp">   
+                        </div>
+                        <div>
+                            <label for="">Cấp mật khẩu <sup>(*)</sup></label>
+                            <input type="text" placeholder="Nhập mật khẩu">   
                         </div>
                     </div>
                     <div class="btn">

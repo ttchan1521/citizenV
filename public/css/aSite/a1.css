@@ -7,7 +7,7 @@
   font-family: 'Poppins', sans-serif;
   text-decoration: none;
 }
-button:hover {
+a:hover, button:hover {
   cursor: pointer;
 }
 input[type="checkbox"] {
@@ -235,7 +235,115 @@ input[type="checkbox"] {
   .sidebar .profile-details .job{
     font-size: 12px;
   }
+.notify {
+  position: relative;
+  margin-right: 15px;
+}
+.profile-details .notify .notification {
+  font-size: 20px;
+  position: relative;
+}
+.profile-details .notify .notification i {
+  color:rgb(219, 219, 219);
+}
+.profile-details .notify .notification .num {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: red;
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.notify .section-dropdown {
+  position: absolute;
+  background-color: white;
+  top: 45px;
+  right: -32px;
+  width: 350px;
+  max-height: 400px;
+  border-radius: 2px;
+  border: 1px solid rgb(221, 219, 219);
+  display: block;
+  box-shadow: 0 14px 35px 0 rgba(138, 138, 240, 0.4);
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 200ms linear;
+}
+.notify .section-dropdown .top{
+  color: rgb(172, 169, 169);
+  padding: 7px;
+  font-size: 15px;
+  border-bottom: 1px solid rgb(221, 219, 219);
+}
+.notify .section-dropdown .bottom {
+  text-align: center;
+  color:rgb(67, 67, 68);
+  font-size: 15px;
+  padding: 7px;
+}
 
+.notify .dropdown:checked ~ .section-dropdown{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.notify .section-dropdown:before {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  content: '';
+  display: block;
+  z-index: 1;
+}
+.notify .section-dropdown:after {
+  position: absolute;
+  top: -10px;
+  right: 25px;
+  width: 0; 
+  height: 0; 
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent; 
+  border-bottom: 10px solid white;
+  content: '';
+  display: block;
+  z-index: 2;
+  transition: all 200ms linear;
+}
+
+.notify .section-dropdown > a {
+  position: relative;
+  color: rgb(39, 38, 38);
+  transition: all 150ms linear;
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px;
+  border-bottom: 1px solid #c4c5c7;
+  text-align: left;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(195, 208, 230);
+}
+.notify .section-dropdown > a i {
+  color: #505152;
+}
+.notify .section-dropdown > a:hover {
+  background-color: #dddddb;
+}
 
 .home-section{
   position: relative;
@@ -356,84 +464,7 @@ nav .profile-details .admin_name > i {
   font-size: 23px;
   color: rgb(221, 218, 218);
 }
-.section-dropdown {
-  position: absolute;
-  padding: 5px;
-  background-color: var(--blue);
-  top: 78px;
-  right: 30px;
-  width: 170px;
-  border-radius: 8px;
-  display: block;
-  box-shadow: 0 14px 35px 0 rgba(43, 43, 167, 0.4);
-  z-index: 2;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(20px);
-  transition: all 200ms linear;
-}
 
-.dropdown:checked ~ .section-dropdown{
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-.section-dropdown:before {
-  position: absolute;
-  top: -20px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  content: '';
-  display: block;
-  z-index: 1;
-}
-.section-dropdown:after {
-  position: absolute;
-  top: -9px;
-  right: 25px;
-  width: 0; 
-  height: 0; 
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent; 
-  border-bottom: 10px solid var(--blue);
-  content: '';
-  display: block;
-  z-index: 2;
-  transition: all 200ms linear;
-}
-
-.section-dropdown a {
-  position: relative;
-  color: rgb(235, 232, 232);
-  transition: all 200ms linear;
-  font-family: sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  border-radius: 7px;
-  padding: 7px 0;
-  padding-left: 20px;
-  padding-right: 15px;
-  margin: 5px 0;
-  text-align: left;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #616297;
-}
-.section-dropdown a i {
-  color: #e6e7e9;
-  font-size: 17px;
-}
-.section-dropdown a:hover {
-  color: #0f162c;
-  border: 1px solid #afada6;
-  background-color: #afada6;
-}
-.section-dropdown a:hover i {
-  color: #0f162c;
-}
 .home-section .home-content{
   position: relative;
   padding-top: 70px;
@@ -805,6 +836,36 @@ table tbody tr:nth-child(even){
   padding: 0px!important;
   width: 39px;
 }
+.province-box .province_list table td.left {
+  text-align: left;
+  text-indent: 5%;
+}
+.province-box .province_list table th.nopadding{
+  padding: 0;
+}
+.tick {
+  position: relative;
+}
+.province-box .province_list table td.tick > input[type="checkbox"]{
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  opacity: 0;
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.province-box .province_list table td > label {
+  color:rgb(128, 123, 121);
+  font-size: 25px;
+}
+.tick-background{
+  color: rgb(216, 20, 20);
+}    
+    
  .popup {
 	display: none;
 	position: fixed;
@@ -1527,3 +1588,47 @@ div.btn button {
   font-size: 15px;
 }
 /* ----------------Trang theo dõi nhập liệu---------------------- */
+/* ---------------------Trang thông báo------------------------------- */
+.noticePage {
+  width: 90%;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  margin-top: 5%;
+}
+.noticePage .noticeTop {
+  position: relative;
+  text-align: right;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  height: 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.noticePage .noticeTop a {
+  position: relative;
+  padding: 20px;
+  color: rgb(92, 107, 175);
+}
+.noticePage .notification {
+  width: 100%;
+  display: block;
+}
+.noticePage .notification > div {
+  padding: 10px 15px 0 10px;
+  background-color: #d5dee7;
+  border-bottom: 1px solid #c7c6c4;
+}
+.noticePage .notification > div .notify {
+  min-height: 30px;
+}
+.noticePage .notification > div:hover {
+  background-color: #e4dede;
+  cursor: pointer;
+}
+.noticeBackground {
+  background-color: #dfdddd!important;
+}
+/* ---------------------Trang thông báo------------------------------- */

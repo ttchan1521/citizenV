@@ -93,12 +93,12 @@
           </ul>
         </li>
         <li>
-          <a href="#">
-            <i class='bx bx-history'></i>
-            <span class="link_name">History</span>
+          <a href="thongbao">
+            <i class='bx bxs-bell'></i>
+            <span class="link_name">Thông báo</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">History</a></li>
+            <li><a class="link_name" href="thongbao">Thông báo</a></li>
           </ul>
         </li>
         <li>
@@ -134,13 +134,21 @@
         <i class='bx bx-search' ></i>
       </div> -->
       <div class="profile-details">
-        <!--<img src="images/profile.jpg" alt="">-->
-        <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
-        <label class="admin_name" for="dropdown">Xin chào admin!<i class='bx bx-chevron-down' ></i></label>
-        <div class="section-dropdown"> 
-          <a href="#">Đổi mật khẩu <i class="fas fa-eye"></i></a>
-          <a href="#">Đăng xuất <i class="fas fa-sign-out-alt"></i></a>
+        <div class="notify">
+          <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+          <a href="#" class="notification">
+            <i class="fas fa-bell"></i>
+            <label class="num" for="dropdown">8</label>
+          </a>
+          <div class="section-dropdown"> 
+            <p class="top">Thông báo mới nhất</p>
+            <a href="#">Thông báo 1 <i class="fas fa-ellipsis-v"></i></a>
+            <a href="#">Thông báo 2 <i class="fas fa-ellipsis-v"></i></a>
+            <p class="bottom"><a href="thongbao">Xem tất cả</a></p>
+          </div>
         </div>
+        <!--<img src="images/profile.jpg" alt="">-->
+        <label class="admin_name">Xin chào admin!</label>
       </div>
     </nav>
     

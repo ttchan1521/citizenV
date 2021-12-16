@@ -40,8 +40,15 @@
                     <span>Xã Trung Mầu</span>
                 </li>
                 <li id="noti">
+                    <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
                     <i class='fas'>&#xf0f3;</i>
-                    <i class='fas' id="num_noti">2</i>
+                    <label class='fas' id="num_noti" for="dropdown">2</label>
+                    <div class="section-dropdown"> 
+                        <p class="top">Thông báo mới nhất</p>
+                        <a href="#">Thông báo 1 <i class="fas fa-ellipsis-v"></i></a>
+                        <a href="#">Thông báo 2 <i class="fas fa-ellipsis-v"></i></a>
+                        <p class="bottom"><a href="thongbao">Xem tất cả</a></p>
+                    </div>
                 </li>
                 <li id="exit">
                     <i class='fas'>&#xf2f5;</i>

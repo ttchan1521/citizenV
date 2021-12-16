@@ -106,4 +106,17 @@ function tick_box_all(self) {
   }
 
 }
-
+function tick(self){
+  if(self.checked == true){
+      self.nextElementSibling.childNodes[0].classList.add("tick-background");
+  } else {
+      self.nextElementSibling.childNodes[0].classList.remove("tick-background");
+  }
+}
+// ---------------trang thông báo----------------------------
+function noticeChecked(){
+  var notice = document.querySelectorAll(".notification div");
+  notice.forEach(element => {
+    element.classList.add("noticeBackground");
+  });
+}

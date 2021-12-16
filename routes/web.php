@@ -19,6 +19,12 @@ Route::get('/', function () {
 Route::get('/sheet', function () {
     return view('bSite.survey');
 });
+Route::get('/thongbao', function () {
+    return view('bSite.notify');
+});
+Route::get('/a1', function () {
+    return view('aSite/a1.dulieu');
+});
 Route::get('/a1/theodoinhaplieu', function () {
     return view('aSite/a1.theodoinhaplieu');
 });
@@ -30,4 +36,7 @@ Route::get('/a1/dulieu', function () {
 });
 Route::get('/a1/bieudophantich', function () {
     return view('aSite/a1.bieudophantich');
+});
+Route::get('/a1/thongbao', function () {
+    return view('aSite/a1.thongbao');
 });
