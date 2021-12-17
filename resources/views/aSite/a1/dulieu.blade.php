@@ -2,7 +2,7 @@
 
     <div class="home-content">
         <h2 style="margin: 30px 0 20px 30px;" >Dữ liệu dân số</h2>
-        <div class="search_loca row">
+        <div class="search_loca">
             <div class="search-box">
               <form action="" method="POST" id="form">
                 <fieldset class="select">
@@ -40,26 +40,28 @@
                 <div><< 1 2 3 4 >></div>
                 
               </div>
-              <table class="table">
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Họ và tên</th>
-                        <th>Xã/Phường</th>
-                        <th>Quận/Huyện</th>
-                        <th>Tỉnh/TP</th>
-                        <th>Chi tiết</th>
-                    </tr>
-                </thead>
-                <tbody id="ans">
-                    <td>1</td>
-                    <td> vu thi yam sjdhs dshfjs</td>
-                    <td>ggg</td>
-                    <td>ggg</td>
-                    <td>ggg</td>
-                    <td><button onclick="view_citizen()">Xem</button></td>
-                </tbody>
-              </table>
+              <div class="tbl">
+                <table class="table">
+                  <thead>
+                      <tr>
+                          <th>STT</th>
+                          <th class="setWidth">Họ và tên</th>
+                          <th class="setWidth">Xã/Phường</th>
+                          <th class="setWidth">Quận/Huyện</th>
+                          <th class="setWidth">Tỉnh/TP</th>
+                          <th class="setWidth">Chi tiết</th>
+                      </tr>
+                  </thead>
+                  <tbody id="ans">
+                      <td>1</td>
+                      <td> vu thi yam sjdhs dshfjs</td>
+                      <td>ggg</td>
+                      <td>ggg</td>
+                      <td>ggg</td>
+                      <td><button onclick="view_citizen()">Xem</button></td>
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <form id="popup" class="popup" action="">

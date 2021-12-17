@@ -36,10 +36,12 @@
     </div>
        <ul class="nav-links">
         <li>
-          <a href="#" class="active">
-            <i class='bx bx-grid-alt' ></i>
-            <span class="link_name">Dashboard</span>
-          </a>
+          <div class="iocn-link">
+            <a href="#" class="active">
+              <i class='bx bx-grid-alt' ></i>
+              <span class="link_name">Dashboard</span>
+            </a>
+          </div>
           <ul class="sub-menu blank">
             <li><a class="link_name" href="#">Dashboard</a></li>
           </ul>
@@ -75,37 +77,45 @@
           </ul>
         </li>
         <li>
-          <a href="bieudophantich" style="height: 50px!important;">
-            <i class='bx bx-line-chart' ></i>
-            <span class="link_name">Phân tích dữ liệu</span>
-          </a>
+          <div class="iocn-link">
+            <a href="bieudophantich" style="height: 50px!important;">
+              <i class='bx bx-line-chart' ></i>
+              <span class="link_name">Phân tích dữ liệu</span>
+            </a>
+          </div>
           <ul class="sub-menu blank">
             <li><a class="link_name" href="bieudophantich">Phân tích dữ liệu</a></li>
           </ul>
         </li>
         <li>
-          <a href="dulieu" style="height: 50px!important;">
-            <i class='bx bx-compass' ></i>
-            <span class="link_name">Dữ liệu dân số</span>
-          </a>
+          <div class="iocn-link">
+            <a href="dulieu" style="height: 50px!important;">
+              <i class='bx bx-compass' ></i>
+              <span class="link_name">Dữ liệu dân số</span>
+            </a>
+          </div>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="dulieu">Dữ liệu dân số<a></li>
+            <li><a class="link_name" href="dulieu">Dữ liệu dân số</a></li>
           </ul>
         </li>
         <li>
-          <a href="thongbao">
-            <i class='bx bxs-bell'></i>
-            <span class="link_name">Thông báo</span>
-          </a>
+          <div class="iocn-link">
+            <a href="thongbao" style="height: 50px!important;">
+              <i class='bx bxs-bell'></i>
+              <span class="link_name">Thông báo</span>
+            </a> 
+          </div>
           <ul class="sub-menu blank">
             <li><a class="link_name" href="thongbao">Thông báo</a></li>
           </ul>
         </li>
         <li>
-          <a href="#">
-            <i class='bx bx-cog' ></i>
-            <span class="link_name">Setting</span>
-          </a>
+          <div class="iocn-link">
+            <a href="#">
+              <i class='bx bx-cog' ></i>
+              <span class="link_name">Setting</span>
+            </a>
+          </div>
           <ul class="sub-menu blank">
             <li><a class="link_name" href="#">Setting</a></li>
           </ul>

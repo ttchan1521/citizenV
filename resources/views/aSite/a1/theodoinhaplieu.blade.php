@@ -34,14 +34,14 @@
                       <button type="submit" name="submit"><i class="fas fa-search"></i> Tra cứu</button>
                   </div>
                 </form>
-                <div class="row">
-                    <div style="flex: 3;">
+                <div class="prvChart">
+                    <div>
                         <h3 style="margin: 20px 0 0 20px;">Số lượng người được khảo sát cập nhật theo ngày</h3>
                         <span style="margin: 0 20px 0 20px;">Đơn vị: Người</span>
                         <canvas style="max-height: 350px"; id="provinceLineChart"></canvas>
                     </div>
-                    <div style="flex: 1;">
-                        <canvas style="max-width: 100%; margin-top: 20%;" id="provincePieChart"></canvas>
+                    <div>
+                        <canvas id="provincePieChart"></canvas>
                     </div>
                 </div>
             </div>

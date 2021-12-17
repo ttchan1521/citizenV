@@ -652,7 +652,6 @@ nav .profile-details .admin_name > i {
     left: 240px;
   }
   .sidebar.close ~ .home-section{
-    /* width: calc(100% - 220px); */
     overflow: hidden;
     left: 60px;
   }
@@ -698,7 +697,17 @@ nav .profile-details .admin_name > i {
     width: 560px;
   }
 }
-@media (max-width: 550px) {
+@media (max-width: 600px) {
+  .sidebar {
+    width: 100%;
+  }
+  .sidebar .profile-details {
+    width: 100%!important;
+  }
+  .sidebar .nav-links li div {
+    width: 220px;
+    margin: auto;
+  }
   .overview-boxes .box{
     width: 100%;
     margin-bottom: 15px;
@@ -712,8 +721,6 @@ nav .profile-details .admin_name > i {
 /* --------capmatinh----------- */
 .province-box {
   color: var(--color-text);
-  width: 90%;
-  margin-left: 4%;
 }
 .province-box  .add_province {
   display: block;
@@ -747,8 +754,7 @@ fieldset div {
   display: inline-flex;
 }
 fieldset div input {
-  width: 270px;
-  margin: 10px;
+  width: 100%;
   border: 1px solid #959eb4;
 }
 fieldset div button {
@@ -760,12 +766,13 @@ fieldset div button {
   width: 110px;
   background-color: rgb(55, 8, 163);
   font-size: 16px;
+  padding: 0 7px;
 }
 fieldset div button i {
   padding-right: 4px;
 }
 fieldset div button:hover {
-  background-color: rgb(49, 62, 105);
+  background-color: rgb(49, 70, 138);
   cursor: pointer;
   font-size: 15px;
 }
@@ -834,14 +841,16 @@ table tbody tr:nth-child(even){
 }
 .province-box .province_list table th.first {
   padding: 0px!important;
-  width: 39px;
+  min-width: 39px;
 }
 .province-box .province_list table td.left {
   text-align: left;
   text-indent: 5%;
+  min-width: 160px;
 }
 .province-box .province_list table th.nopadding{
   padding: 0;
+  min-width: 60px;
 }
 .tick {
   position: relative;
@@ -1026,6 +1035,7 @@ sup {
 .province-box .popup .btn button.cancel_btn:hover {
   background-color: rgb(180, 179, 179);
 }
+
 /* ----------------nút công tắc--------------- */
 
 .switch {
@@ -1140,9 +1150,6 @@ sup {
     0 -1px 0 #808da7;
 }
 /* --------------nút công tắc------------ */
-/* ------------------theo dõi nhập dữ liệu------------------ */
- 
-/* ------------------theo dõi nhập dữ liệu------------------ */
 /* ---------------danh sách-------- */
 h2 {
   display: block;
@@ -1154,15 +1161,10 @@ h2 {
   width: 96%;
   margin: auto;
 }
-.search_loca .search-box {
-  flex: 2;
-}
-.search_loca .table {
-  flex: 5;
-}
 .search_loca .search-box fieldset {
   display: block;
   height: 340px;
+  width: 100%;
 }
 
 .search_loca .search-box fieldset.select select,
@@ -1209,7 +1211,7 @@ input, select, option {
   background-color: rgb(240, 240, 240);
   text-indent: 12px;
 }
-.search_loca .table {
+.search_loca .table table{
   width: 100%;
   border-collapse: collapse;
   margin: auto;
@@ -1241,9 +1243,18 @@ input, select, option {
 .search_loca .table th:last-child {
   padding: unset;
 }
+.search_loca .table th:first-child {
+  min-width: 30px;
+}
+.search_loca .table th:last-child {
+  min-width: 40px;
+}
 .search_loca .table td:first-child,
 .search_loca .table td:last-child {
   text-align: center;
+}
+.search_loca .table .setWidth {
+  min-width: 130px;
 }
 div.cancel_btn, div.next_btn {
   display: inline-block;
@@ -1278,6 +1289,155 @@ div.btn button {
   background-color: rgb(247, 247, 247);
 }
 /* --------danh sách---------- */
+@media screen and (max-width: 2000px) {
+  .province-box {
+    width: 90%;
+    margin-left: 4%;
+  }
+  fieldset div:first-child input {
+    margin-left: 30px;
+  }
+  fieldset div input {
+    width: 270px;
+    margin: 10px;
+  }
+  .dataEntry div.barChart {
+    display: flex;
+  }
+  .dataEntry div.barChart > div canvas {
+    margin: 20px 0;
+  }
+  .dataEntry .provinceChart .prvChart{
+    display: flex;
+  }
+  .dataEntry .provinceChart .prvChart div:first-child{
+    flex: 3;
+  }
+  .dataEntry .provinceChart .prvChart div:last-child{
+    flex: 1;
+  }
+  .dataEntry .provinceChart .prvChart div:last-child canvas{
+    max-width: 100%; 
+    margin-top: 20%;
+  }
+  .search_loca {
+    display: flex;
+  }
+  .search_loca .search-box {
+    flex: 2;
+  }
+  .search_loca div.table {
+    flex: 5;
+  }
+  .search_loca div.table .tbl {
+    overflow-x: auto;
+  }
+} 
+@media screen and (max-width: 1050px) {
+  .province-box {
+    width: 95%;
+    margin: auto;
+  }
+  fieldset div input {
+    width: 240px;
+    margin: 8px;
+  }
+  .province_list div.table {
+    overflow-x:auto;
+  }
+  
+  .search_loca {
+    display: block;
+  }
+  .search_loca .search-box {
+    display: flex;
+  }
+  .search_loca .search-box form {
+    flex: 2;
+    width: 100%;
+    margin-right: 20px;
+  }
+  .search_loca .search-box div {
+    flex: 3;
+    width: 100%;
+  }
+  .search_loca div.table {
+    display: block;
+    margin-top: 20px;
+  }
+  .search_loca div.table .paging {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .province-box {
+    width: 97%;
+  }
+  fieldset div input {
+    width: 100%;
+    margin: 8px;
+  }
+  .province_list {
+    overflow-x:auto;
+  }
+  .dataEntry div.barChart {
+    display: block;
+  }
+  .dataEntry .barChart div {
+    display: block;
+  }
+  .dataEntry div.barChart > div canvas {
+    max-height: 250px;
+    margin: 10px 0;
+  }
+  .dataEntry .provinceChart .prvChart{
+    display: block;
+  }
+  .dataEntry .provinceChart .prvChart div{
+    display: block;
+  }
+  .dataEntry .provinceChart .prvChart div:last-child {
+    width: 40%;
+    margin: auto;
+  }
+  .dataEntry .provinceChart .prvChart div:last-child canvas {
+    margin-top: 10px;
+  }
+  .search_loca .search-box {
+    display: block;
+  }
+}
+@media screen and (max-width: 600px) {
+fieldset {
+  display: block;
+  height: 175px;
+}
+fieldset div:first-child input {
+  margin-left: 0px;
+}
+fieldset div {
+  position: relative;
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+fieldset div button {
+  width: 100%;
+  height: 40px;
+}
+.province-box .title {
+  text-align: center;
+}
+.province-box .title h2 {
+  margin: 0;
+  margin-top: 10px;
+}
+.province-box .add_province button{
+  float:unset;
+  margin-top: 20px;
+}
+}
 /* ---------trang biểu đồ------------ */
 
 .home-content .chart {
@@ -1292,42 +1452,6 @@ div.btn button {
   margin: auto;
   margin-top: 30px;
 }
-
-/*.highcharts-data-table table {
-  font-family: Arial, sans-serif;
-  border-collapse: collapse;
-  border: 1px solid #ebebeb;
-  margin: 10px auto;
-  text-align: center;
-  width: 100%;
-  max-width: 900px;
-}
-
-.highcharts-data-table caption {
-  padding: 1em 0;
-  font-size: 1.2em;
-  color: #555;
-}
-
-.highcharts-data-table th {
-  font-weight: 600;
-  padding: 0.5em;
-}
-
-.highcharts-data-table td,
-.highcharts-data-table th,
-.highcharts-data-table caption {
-  padding: 0.5em;
-}
-
-.highcharts-data-table thead tr,
-.highcharts-data-table tr:nth-child(even) {
-  background: #f8f8f8;
-}
-
-.highcharts-data-table tr:hover {
-  background: #f1f7ff;
-} */
 
 .chart .chart_group {
   position: relative;
@@ -1499,6 +1623,7 @@ div.btn button {
   position: relative;
   width: 95%;
   margin: auto;
+  margin-bottom: 30px;
 }
 .dataEntry h3,
 .dataEntry span {
@@ -1530,7 +1655,6 @@ div.btn button {
   }
  .dataEntry div.barChart {
    position: relative;
-  display: flex;
   width: 100%;
   margin: auto;
   margin-top: 30px;
@@ -1543,9 +1667,6 @@ div.btn button {
   flex: 1;
   padding: 30px;
   background-color: rgb(253, 251, 251);
-  }
- .dataEntry div.barChart > div canvas {
-  margin: 20px 0;
   }
 .dataEntry  div.barChart > div span {
   font-size: 15px;
@@ -1588,6 +1709,7 @@ div.btn button {
   font-size: 15px;
 }
 /* ----------------Trang theo dõi nhập liệu---------------------- */
+
 /* ---------------------Trang thông báo------------------------------- */
 .noticePage {
   width: 90%;
