@@ -40,3 +40,6 @@ Route::get('/a1/bieudophantich', function () {
 Route::get('/a1/thongbao', function () {
     return view('aSite/a1.thongbao');
 });
+Route::get('/login', function () {
+    return view('login');
+});
