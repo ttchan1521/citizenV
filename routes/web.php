@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\phanquyen;
+use App\Http\Controllers\phantich;
+use App\Http\Controllers\theodoi;
+use App\Http\Controllers\dulieu;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,33 +18,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('bSite.input_citizen');
-});
-Route::get('/sheet', function () {
-    return view('bSite.survey');
-});
-Route::get('/thongbao', function () {
-    return view('bSite.notify');
-});
-Route::get('/a1', function () {
-    return view('aSite/a1.dulieu');
-});
-Route::get('/a1/theodoinhaplieu', function () {
-    return view('aSite/a1.theodoinhaplieu');
-});
-Route::get('/a1/phanquyen', function () {
-    return view('aSite/a1.phanquyen');
-});
-Route::get('/a1/dulieu', function () {
-    return view('aSite/a1.dulieu');
-});
-Route::get('/a1/bieudophantich', function () {
-    return view('aSite/a1.bieudophantich');
-});
-Route::get('/a1/thongbao', function () {
-    return view('aSite/a1.thongbao');
-});
 Route::get('/login', function () {
     return view('login');
+})->name('login');
+
+Route::redirect('/', '/login');
+
+Route::post('/checkLogin', [loginController::class, 'check']);
+
+Route::group(['prefix' => "/aSite/{position}", 'as' => "aSite."],function() {
+    Route::get('/phanquyen', [phanquyen::class, 'index'])->name('phanquyen');
+    Route::get('/', function($position) {
+        return redirect()->route("aSite.phanquyen", ['position' => $position]);
+    });
+
+    Route::get('/phantich', [phantich::class, 'index'])->name('phantich');
+    Route::get('/theodoi', [theodoi::class, 'index'])->name('theodoi');
+    Route::get('/dulieu', [dulieu::class, 'index'])->name('dulieu');
 });

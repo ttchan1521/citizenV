@@ -37,25 +37,14 @@
        <ul class="nav-links">
         <li>
           <div class="iocn-link">
-            <a href="#" class="active">
-              <i class='bx bx-grid-alt' ></i>
-              <span class="link_name">Dashboard</span>
-            </a>
-          </div>
-          <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Dashboard</a></li>
-          </ul>
-        </li>
-        <li>
-          <div class="iocn-link">
-            <a href="phanquyen" style="height: 50px!important;">
+            <a href="{{ route('aSite.phanquyen', ['position' => $user->position ]) }}" style="height: 50px!important;">
               <i class='bx bx-collection' ></i>
               <span class="link_name">Quản lý truy cập</span>
             </a>
             <!-- <i class='bx bxs-chevron-down arrow' ></i> -->
           </div>
           <ul class="sub-menu">
-            <li><a class="link_name" href="phanquyen">Quản lý truy cập</a></li>
+            <li><a class="link_name" href="{{ route('aSite.phanquyen', ['position' => $user->position ]) }}">Quản lý truy cập</a></li>
             <!-- <li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li> -->
@@ -63,14 +52,14 @@
         </li>
         <li>
           <div class="iocn-link">
-            <a href="theodoinhaplieu" style="height: 50px!important;">
+            <a href="{{ route('aSite.theodoi', ['position' => $user->position ]) }}" style="height: 50px!important;">
               <i class='bx bx-book-alt' ></i>
               <span class="link_name">Quản lý nhập liệu</span>
             </a>
             <!-- <i class='bx bxs-chevron-down arrow' ></i> -->
           </div>
           <ul class="sub-menu">
-            <li><a class="link_name" href="theodoinhaplieu">Quản lý nhập liệu</a></li>
+            <li><a class="link_name" href="{{ route('aSite.theodoi', ['position' => $user->position ]) }}">Quản lý nhập liệu</a></li>
             <!-- <li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li> -->
@@ -78,24 +67,24 @@
         </li>
         <li>
           <div class="iocn-link">
-            <a href="bieudophantich" style="height: 50px!important;">
+            <a href="{{ route('aSite.phantich', ['position' => $user->position ]) }}" style="height: 50px!important;">
               <i class='bx bx-line-chart' ></i>
               <span class="link_name">Phân tích dữ liệu</span>
             </a>
           </div>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="bieudophantich">Phân tích dữ liệu</a></li>
+            <li><a class="link_name" href="{{ route('aSite.phantich', ['position' => $user->position ]) }}">Phân tích dữ liệu</a></li>
           </ul>
         </li>
         <li>
           <div class="iocn-link">
-            <a href="dulieu" style="height: 50px!important;">
+            <a href="{{ route('aSite.dulieu', ['position' => $user->position ]) }}" style="height: 50px!important;">
               <i class='bx bx-compass' ></i>
               <span class="link_name">Dữ liệu dân số</span>
             </a>
           </div>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="dulieu">Dữ liệu dân số</a></li>
+            <li><a class="link_name" href="{{ route('aSite.dulieu', ['position' => $user->position ]) }}">Dữ liệu dân số</a></li>
           </ul>
         </li>
         <li>

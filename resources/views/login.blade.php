@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
@@ -13,15 +14,16 @@
   <body>
     <div class="container">
       <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form action="#" class="sign-in-form" id="form">
+          <input type="hidden" id="token" value="{{ @csrf_token() }}">
             <h2 class="title">Login</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Tên đăng nhập" />
+              <input type="text" id="username" placeholder="Tên đăng nhập" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Mật khẩu đăng nhập" />
+              <input type="password" id="password" name="pas placeholder="Mật khẩu đăng nhập" />
             </div>
             <input type="submit" value="Login" class="btn solid" />
           </form>
@@ -39,5 +41,7 @@
         </div>
       </div>
     </div>
+
+    <script src="{{ asset('js/login.js')}}"></script>
   </body>
 </html>
