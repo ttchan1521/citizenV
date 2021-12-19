@@ -16,9 +16,7 @@ class Schedule extends Migration
         //
         Schema::create('schedule', function (Blueprint $table) {
             $table->increments('sche_id');
-            $table->integer('cap_quyen');
-            $table->foreign('cap_quyen')->references('id')->on('admin')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('nhan_quyen');
+            $table->string('nhan_quyen', 10);
             $table->foreign('nhan_quyen')->references('id')->on('admin')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamp('start');
             $table->timestamp('end')->useCurrent();

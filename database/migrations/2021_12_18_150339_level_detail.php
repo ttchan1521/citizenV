@@ -20,7 +20,7 @@ class LevelDetail extends Migration
             $table->foreign('level')->references('level_id')->on('level')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedInteger('schedule');
             $table->foreign('schedule')->references('sche_id')->on('schedule')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('quantity');
+            $table->integer('quantity')->default(0);
         });
     }
 

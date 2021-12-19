@@ -36,3 +36,5 @@ Route::group(['prefix' => "/aSite/{position}", 'as' => "aSite."],function() {
     Route::get('/theodoi', [theodoi::class, 'index'])->name('theodoi');
     Route::get('/dulieu', [dulieu::class, 'index'])->name('dulieu');
 });
+
+Route::post('/addLocal', [phanquyen::class, 'addLocal']);

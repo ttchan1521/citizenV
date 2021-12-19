@@ -22,7 +22,7 @@ class Citizen extends Migration
             $table->foreign('gender')->references('gender_id')->on('gender')->onUpdate('cascade')->onDelete('cascade');
             $table->string('hometown');
             $table->string('address');
-            $table->integer('hamlet');
+            $table->string('hamlet', 10);
             $table->foreign('hamlet')->references('id')->on('admin')->onUpdate('cascade')->onDelete('cascade');
             $table->string('temporary_add');
             $table->string('identity_num')->nullable();

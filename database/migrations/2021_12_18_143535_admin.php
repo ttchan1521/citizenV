@@ -15,10 +15,10 @@ class Admin extends Migration
     {
         //
         Schema::create('admin', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->string('id', 10)->primary();
             $table->string('name');
             $table->string('password');
-            $table->integer('boss')->nullable();
+            $table->string('boss', 10)->nullable();
             $table->string('position');
         });
 

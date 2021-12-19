@@ -20,7 +20,7 @@ class GenderDetail extends Migration
             $table->foreign('gender')->references('gender_id')->on('gender')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedInteger('schedule');
             $table->foreign('schedule')->references('sche_id')->on('schedule')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('quantity');
+            $table->integer('quantity')->default(0);
         });
     }
 

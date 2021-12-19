@@ -61,14 +61,16 @@
                             </tr>
                         </thead>
                         <tbody id="list">
+
+                            @foreach ($local as $local)
                             <tr>
                                 <td>
                                     <input type="checkbox" class="check" onclick="tick_box(this)">  
                                 </td>
-                                <td>01</td>
-                                <td class="left">Thái Bình</td>
-                                <td class="left">hjkj</td>
-                                <td class="left">hgew</td>
+                                <td>{{ $local->id }}</td>
+                                <td class="left">{{ $local->name }}</td>
+                                <td class="left">{{ $local->start }}</td>
+                                <td class="left">{{ $local->end }}</td>
                                 <td>
                                     <div class="switch">
                                         <input type="checkbox">
@@ -82,54 +84,18 @@
                                 <td><a href=""><i class="fas fa-edit"></i></a></td>
                                 <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="check" onclick="tick_box(this)">  
-                                </td>
-                                <td>01</td>
-                                <td class="left">Thái Bình</td>
-                                <td class="left">hjkj</td>
-                                <td class="left">hgew</td>
-                                <td>
-                                    <div class="switch">
-                                        <input type="checkbox">
-                                        <label><i></i></label>
-                                    </div>
-                                </td>
-                                <td class="tick">
-                                    <input type="checkbox" onclick="tick(this)">
-                                    <label><i class="fas fa-check"></i></label>
-                                </td>
-                                <td><a href=""><i class="fas fa-edit"></i></a></td>
-                                <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="check" onclick="tick_box(this)">  
-                                </td>
-                                <td>01</td>
-                                <td class="left">Thái Bình</td>
-                                <td class="left">hjkj</td>
-                                <td class="left">hgew</td>
-                                <td>
-                                    <div class="switch">
-                                        <input type="checkbox">
-                                        <label><i></i></label>
-                                    </div>
-                                </td>
-                                <td class="tick">
-                                    <input type="checkbox" onclick="tick(this)">
-                                    <label><i class="fas fa-check"></i></label>
-                                </td>
-                                <td><a href=""><i class="fas fa-edit"></i></a></td>
-                                <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
-                            </tr>
+
+
+                            @endforeach
+                            
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
 
             <form id="popup" class="popup" action="">
+            <input type="hidden" id="token" value="{{ @csrf_token() }}">
                 <div class="popup-content">
                     <div class="title">
                         <!-- <span class="close-btn">&times;</span> -->
@@ -138,20 +104,20 @@
                     <div class="content">
                         <div>
                             <label for="">Nhập mã tỉnh/tp <sup>(*)</sup></label>
-                            <input type="text" placeholder="Nhập mã tỉnh/tp">   
+                            <input type="text" id="local_id" placeholder="Nhập mã tỉnh/tp">   
                         </div>
                         <div>
                             <label for="">Nhập tên tỉnh/tp <sup>(*)</sup></label>
-                            <input type="text" placeholder="Nhập tên tỉnh/tp">   
+                            <input type="text" id="local_name" placeholder="Nhập tên tỉnh/tp">   
                         </div>
                         <div>
                             <label for="">Cấp mật khẩu <sup>(*)</sup></label>
-                            <input type="text" placeholder="Nhập mật khẩu">   
+                            <input type="text" id="local_pass" placeholder="Nhập mật khẩu">   
                         </div>
                     </div>
                     <div class="btn">
                         <button class="cancel_btn" type="reset" onclick="closePopup()">Hủy bỏ</button>
-                        <button class="submit_btn" type="submit">Cập nhật</button>
+                        <button class="submit_btn" type="submit">Thêm</button>
                     </div>
                 </div>
             </form>

@@ -113,6 +113,77 @@ function tick(self){
       self.nextElementSibling.childNodes[0].classList.remove("tick-background");
   }
 }
+
+function addLocal(id, name) {
+  let row = document.createElement('tr');
+  let col1 = document.createElement('td');
+  col1.innerHTML = "<input type='checkbox' class='check' onclick='tick_box(this)'>";
+  let col2 = document.createElement('td');
+  col2.innerHTML = id;
+  let col3 = document.createElement('td');
+  col3.innerHTML = name;
+  col3.classList.add('left');
+
+  let col4 = document.createElement('td');
+  col4.classList.add('left');
+  let col5 = document.createElement('td');
+  col5.classList.add('left');
+
+  let col6 = document.createElement('td');
+  col6.innerHTML = '<div class="switch"><input type="checkbox"><label><i></i></label></div>';
+
+  let col7 = document.createElement('td');
+  col7.innerHTML = '<input type="checkbox" onclick="tick(this)"><label><i class="fas fa-check"></i></label>';
+  col7.classList.add('tick');
+
+  let col8 = document.createElement('td');
+  col8.innerHTML = '<a href=""><i class="fas fa-edit"></i></a>';
+  let col9 = document.createElement('td');
+  col9.innerHTML = '<a href=""><i class="fas fa-trash-alt"></i></a>';
+
+  row.appendChild(col1);
+  row.appendChild(col2);
+  row.appendChild(col3);
+  row.appendChild(col4);
+  row.appendChild(col5);
+  row.appendChild(col6);
+  row.appendChild(col7);
+  row.appendChild(col8);
+  row.appendChild(col9);
+
+  document.getElementById('list').appendChild(row);
+  
+
+}
+
+$(document).ready(function() {
+  $('#popup').submit(function(e) {
+    e.preventDefault();
+
+    let id = $('#local_id').val();
+    let name = $('#local_name').val();
+
+    $.post('/addLocal', {
+      '_token': $("#token").val(),
+      'id': id,
+      'name': name,
+      'password': $('local_pass').val()
+    }, function (response) {
+
+        if (response.success) {
+          alert('Thêm thành công');
+          addLocal(id, name);
+        }
+        else {
+          alert('Thêm không thành công');
+        }
+
+    });
+
+  });
+});
+
+
 // ---------------trang thông báo----------------------------
 function noticeChecked(){
   var notice = document.querySelectorAll(".notification div");
