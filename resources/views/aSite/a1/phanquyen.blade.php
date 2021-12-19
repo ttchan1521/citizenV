@@ -13,10 +13,10 @@
                 <fieldset>
                     <legend>Tìm kiếm: </legend>
                     <div>
-                        <input type="text"  placeholder="Nhập tên tỉnh/tp">
+                        <input type="text" id="find_name"  placeholder="Nhập tên tỉnh/tp">
                     </div>
                     <div>
-                        <input type="text" placeholder="Nhập mã tỉnh/tp">
+                        <input type="text" id="find_id" placeholder="Nhập mã tỉnh/tp">
                     </div>
                     <div>
                         <button type="submit"><i class="fas fa-search"></i>Tìm kiếm</button>

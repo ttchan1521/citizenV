@@ -172,6 +172,7 @@ $(document).ready(function() {
 
         if (response.success) {
           alert('Thêm thành công');
+          closePopup();
           addLocal(id, name);
         }
         else {
@@ -182,6 +183,27 @@ $(document).ready(function() {
 
   });
 });
+
+function find() {
+  let list = document.querySelectorAll("#list tr");
+  let target_name = document.getElementById('find_name').value;
+  let target_id = document.getElementById('find_id').value;
+  for (var i=0; i<list.length; i++) {
+    var id = list[i].childNodes[3].innerHTML;
+    var name = list[i].childNodes[5].innerHTML;
+    
+    var res = id.indexOf(target_id);
+    var result = name.indexOf(target_name);
+    if (result < 0 || res < 0) {
+      list[i].style.display = 'none';
+    }
+    else {
+      list[i].style.display = 'table-row';
+    }
+  }
+}
+document.getElementById('find_name').addEventListener('keyup', find);
+document.getElementById('find_id').addEventListener('keyup', find);
 
 
 // ---------------trang thông báo----------------------------
