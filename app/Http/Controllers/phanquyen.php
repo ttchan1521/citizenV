@@ -49,4 +49,7 @@ class phanquyen extends Controller
         return \response()->json(['success' => false]);
     }
     
+    function addSchedule(Request $request) {
+        
+    }
 }

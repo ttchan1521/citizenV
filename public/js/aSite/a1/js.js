@@ -182,6 +182,11 @@ $(document).ready(function() {
     });
 
   });
+
+  $("#capquyen").submit(function(e) {
+    e.preventDefault();
+    
+  });
 });
 
 function find() {
