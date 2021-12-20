@@ -13,7 +13,7 @@ class phantich extends Controller
             return redirect()->route('login');
         }
         else {
-            return view('aSite/a1.bieudophantich', ['user' => Session::get('user')]);
+            return view('aSite.bieudophantich', ['user' => Session::get('user')]);
         }
     }
 }

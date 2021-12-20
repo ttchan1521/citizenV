@@ -1,0 +1,239 @@
+.dataEntry {
+    position: relative;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  .dataEntry h3,
+  .dataEntry span {
+    color:rgb(24, 25, 26);
+    font-weight: 400;
+  }
+  .dataEntry .lineChart {
+    position: relative;
+    display: block;
+    width: 98%;
+    border: 1px solid #dddddd;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    background-color: rgb(252, 252, 252);
+    }
+  .dataEntry .lineChart p {
+    display: block;
+    margin: 25px 0 0 5%;
+    font-size: 20px;
+    font-weight: 500;
+    }
+  .dataEntry .lineChart canvas {
+    position: relative;
+    display: block;
+    margin: auto;
+    margin-right: 2%!important;
+    margin-left: 6%!important;
+    }
+   .dataEntry div.barChart {
+     position: relative;
+    width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    }
+   .dataEntry div.barChart > div {
+    position: relative;
+    margin: 1%;
+    border-radius: 10px;
+    border: 1px solid #dddddd;
+    flex: 1;
+    padding: 30px;
+    background-color: rgb(253, 251, 251);
+    }
+  .dataEntry  div.barChart > div span {
+    font-size: 15px;
+    }
+  .dataEntry  div.barChart > div p {
+    text-align: center;
+    font-size: 15px;
+    font-style: oblique;
+    }
+  .provinceChart {
+    background-color: #d7deec;
+    border-radius: 10px;
+    border: 1px solid #bbbec4;
+    margin-top: 30px;
+  }
+  .provinceChart p {
+    padding: 20px;
+    font-size: 25px;
+    color:rgb(32, 32, 32);
+    font-family: sans-serif;
+  }
+  .provinceChart form {
+    margin-left: 20px;
+  }
+  .provinceChart form select {
+    width: 250px;
+    background-color: white;
+    border: 1px solid #96a7df;
+  }
+  .provinceChart form .btn {
+    margin-left: 10px;
+  }
+  .provinceChart form .btn button {
+    height: 37px;
+    width: 110px;
+    font-size: 16px;
+    background-color: #0e1474;
+  }
+  .provinceChart form .btn button:hover {
+    font-size: 15px;
+  }
+  @media screen and (max-width: 2000px) {
+    .province-box {
+      width: 90%;
+      margin-left: 4%;
+    }
+    fieldset div:first-child input {
+      margin-left: 30px;
+    }
+    fieldset div input {
+      width: 270px;
+      margin: 10px;
+    }
+    .dataEntry div.barChart {
+      display: flex;
+    }
+    .dataEntry div.barChart > div canvas {
+      margin: 20px 0;
+    }
+    .dataEntry .provinceChart .prvChart{
+      display: flex;
+    }
+    .dataEntry .provinceChart .prvChart div:first-child{
+      flex: 3;
+    }
+    .dataEntry .provinceChart .prvChart div:last-child{
+      flex: 1;
+    }
+    .dataEntry .provinceChart .prvChart div:last-child canvas{
+      max-width: 100%; 
+      margin-top: 20%;
+    }
+    .search_loca {
+      display: flex;
+    }
+    .search_loca .search-box {
+      flex: 2;
+    }
+    .search_loca div.table {
+      flex: 5;
+    }
+    .search_loca div.table .tbl {
+      overflow-x: auto;
+    }
+  } 
+  @media screen and (max-width: 1050px) {
+    .province-box {
+      width: 95%;
+      margin: auto;
+    }
+    fieldset div input {
+      width: 240px;
+      margin: 8px;
+    }
+    .province_list div.table {
+      overflow-x:auto;
+    }
+    
+    .search_loca {
+      display: block;
+    }
+    .search_loca .search-box {
+      display: flex;
+    }
+    .search_loca .search-box form {
+      flex: 2;
+      width: 100%;
+      margin-right: 20px;
+    }
+    .search_loca .search-box div {
+      flex: 3;
+      width: 100%;
+    }
+    .search_loca div.table {
+      display: block;
+      margin-top: 20px;
+    }
+    .search_loca div.table .paging {
+      display: inline-block;
+    }
+  }
+  
+  @media screen and (max-width: 900px) {
+    .province-box {
+      width: 97%;
+    }
+    fieldset div input {
+      width: 100%;
+      margin: 8px;
+    }
+    .province_list {
+      overflow-x:auto;
+    }
+    .dataEntry div.barChart {
+      display: block;
+    }
+    .dataEntry .barChart div {
+      display: block;
+    }
+    .dataEntry div.barChart > div canvas {
+      max-height: 250px;
+      margin: 10px 0;
+    }
+    .dataEntry .provinceChart .prvChart{
+      display: block;
+    }
+    .dataEntry .provinceChart .prvChart div{
+      display: block;
+    }
+    .dataEntry .provinceChart .prvChart div:last-child {
+      width: 40%;
+      margin: auto;
+    }
+    .dataEntry .provinceChart .prvChart div:last-child canvas {
+      margin-top: 10px;
+    }
+    .search_loca .search-box {
+      display: block;
+    }
+  }
+  @media screen and (max-width: 600px) {
+  fieldset {
+    display: block;
+    height: 175px;
+  }
+  fieldset div:first-child input {
+    margin-left: 0px;
+  }
+  fieldset div {
+    position: relative;
+    display: block;
+    width: 90%;
+    margin: auto;
+  }
+  fieldset div button {
+    width: 100%;
+    height: 40px;
+  }
+  .province-box .title {
+    text-align: center;
+  }
+  .province-box .title h2 {
+    margin: 0;
+    margin-top: 10px;
+  }
+  .province-box .add_province button{
+    float:unset;
+    margin-top: 20px;
+  }
+  }
+  

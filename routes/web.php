@@ -6,6 +6,9 @@ use App\Http\Controllers\phanquyen;
 use App\Http\Controllers\phantich;
 use App\Http\Controllers\theodoi;
 use App\Http\Controllers\dulieu;
+use App\Http\Controllers\input_citizen;
+use App\Http\Controllers\thongbao;
+use App\Http\Controllers\survey;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +31,7 @@ Route::post('/checkLogin', [loginController::class, 'check']);
 
 Route::group(['prefix' => "/aSite/{position}", 'as' => "aSite."],function() {
     Route::get('/phanquyen', [phanquyen::class, 'index'])->name('phanquyen');
+    Route::get('/lichkhaibao', [phanquyen::class, 'schedule'])->name('lichkhaibao');
     Route::get('/', function($position) {
         return redirect()->route("aSite.phanquyen", ['position' => $position]);
     });
@@ -35,6 +39,10 @@ Route::group(['prefix' => "/aSite/{position}", 'as' => "aSite."],function() {
     Route::get('/phantich', [phantich::class, 'index'])->name('phantich');
     Route::get('/theodoi', [theodoi::class, 'index'])->name('theodoi');
     Route::get('/dulieu', [dulieu::class, 'index'])->name('dulieu');
+    Route::get('/thongbao', [thongbao::class, 'index'])->name('thongbao');
+    
+    Route::get('/input_citizen', [input_citizen::class, 'index'])->name('input_citizen');
+    Route::get('/survey', [survey::class, 'index'])->name('survey');
 });
 
 Route::post('/addLocal', [phanquyen::class, 'addLocal']);

@@ -1,0 +1,585 @@
+input, select, option {
+  display: block;
+  border: 1px solid rgb(209, 208, 208);
+  width: 100%;
+  height: 37px;
+  border-radius: 3px;
+  outline: none;
+  font-size: 15px;
+  color: rgb(117, 115, 115);
+  background-color: rgb(240, 240, 240);
+  text-indent: 12px;
+}
+.province-box {
+  color: rgb(2, 22, 58);
+}
+.province-box  .add_province {
+  display: block;
+  width: 100%;
+}
+.province-box  .add_province button {
+  float: right;
+  height: 36px;
+  width: 200px;
+  border: 1px solid rgb(148, 152, 172);
+  background-color: #ebecec;
+  font-size: 15px;
+  color:rgb(12, 39, 97);
+}
+.province-box  .add_province button:hover {
+  cursor: pointer;
+  background-color: rgb(230, 231, 233);
+}
+fieldset {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 73px;
+  align-items: center;
+  border: 1px solid rgb(148, 152, 172);
+}
+fieldset legend {
+  text-indent: 30px;
+}
+fieldset div {
+  display: inline-flex;
+}
+fieldset div input {
+  width: 100%;
+  border: 1px solid #959eb4;
+}
+fieldset div button {
+  border-radius: 8px 8px 8px 0;
+  margin-left: 10px;
+  border: 1px solid rgb(38, 41, 170);
+  color:rgb(248, 245, 245);
+  height: 37px;
+  width: 110px;
+  background-color: rgb(55, 8, 163);
+  font-size: 16px;
+  padding: 0 7px;
+}
+fieldset div button i {
+  padding-right: 4px;
+}
+fieldset div button:hover {
+  background-color: rgb(49, 70, 138);
+  cursor: pointer;
+  font-size: 15px;
+}
+.province-box .province_list .province_list_top {
+  display: flex;
+  width: 100%;align-items: center;
+  margin-top: 15px;
+}
+.province-box .province_list .province_list_top .pagination {
+  margin-left: auto;
+}
+
+/*  */
+table tbody tr:nth-child(odd){
+  background-color: rgb(238, 231, 238);
+}
+table tbody tr:nth-child(even){
+  background-color: rgb(212, 209, 212);
+}
+.checked {
+  background-color: rgb(185, 169, 216)!important;
+}
+.color1 {
+  background-color: rgb(238, 231, 238);
+}
+.color2 {
+  background-color: rgb(212, 209, 212);
+}
+/*  */
+.province-box .province_list .button button {
+  width: 87px;
+  height: 31px;
+  border: 1px solid #c2a7d4;
+  background-color: rgb(99, 29, 211);
+  border-radius: 3px;
+  color:#e9e9ec;
+  font-size: 14px;
+  font-weight: 500;
+}
+.province-box .province_list .button {
+   visibility: hidden; 
+}
+.province-box .province_list .button button:hover {
+  background-color: #460897;
+  font-size: 13px;
+}
+.province-box .province_list table {
+  width: 100%;
+  border-collapse: collapse!important;
+  margin-top: 8px;
+}
+.province-box .province_list table th{
+  background-color: rgb(94, 28, 199);
+  color: #d8d7d7;
+}
+.province-box .province_list table th,
+.province-box .province_list table td{
+  padding: 5px 13px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+}
+.province-box .province_list table td {
+  padding: 0px;
+}
+.province-box .province_list table th.first {
+  padding: 0px!important;
+  min-width: 39px;
+}
+.province-box .province_list table td.left {
+  text-align: left;
+  text-indent: 5%;
+  min-width: 160px;
+}
+.province-box .province_list table th.nopadding{
+  padding: 0;
+  min-width: 60px;
+}
+.tick {
+  position: relative;
+}
+.province-box .province_list table td.tick > input[type="checkbox"]{
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  opacity: 0;
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.province-box .province_list table td > label {
+  color:rgb(128, 123, 121);
+  font-size: 25px;
+}
+.tick-background{
+  color: rgb(3, 6, 148);
+}    
+@keyframes popup-content {
+  0% {
+      transform: scale(0);
+  }
+  70% {
+      transform: scale(1.1);
+  }
+  100% {
+      transform: scale(1);
+  }
+}  
+.popup-content {
+  animation-name: popup-content;
+  animation-duration: 1s;
+}  
+ .popup {
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(20, 20, 20, 0.5);
+	z-index: 500;
+	}
+  .province-box .popup .btn {
+    display: flex;
+    width: 40%;
+    margin: auto;
+    margin-top: 30px;
+  }
+  .province-box .popup-content {
+	  position: relative;
+    box-shadow:  5px 5px 5px rgb(207, 206, 206);
+    
+    /* box-shadow: 0px 2px 10px 10px rgba(160, 158, 158, 0.5); */
+	  border-radius: 3px;
+	  border: 1px solid rgb(206, 205, 205);
+	  margin: auto;
+	  background-color: rgb(247, 247, 247);
+	}
+  .province-box #popup .popup-content {
+    width: 700px;
+	  height: 280px;
+    margin-top: 155px!important;
+  }
+.province-box .popup p {
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  font-size: 19px;
+  font-weight: bold;
+  color: rgb(87, 85, 85);
+}
+.province-box #popup .content {
+  display: flex;
+  width: 95%;
+  margin: auto;
+}
+.province-box #popup .content div {
+  margin: auto;
+  width: 100%;
+  padding: 7px;
+}
+
+.province-box .popup .content div label {
+  position: relative;
+  font-size: 15px;
+  font-weight: 550;
+  display: block;
+  color: rgb(105, 104, 104);
+  margin-left: 5px;
+  margin-bottom: 3px;
+}
+small {
+  position: absolute;
+  margin-left: 8px;
+  color: rgb(226, 34, 34);
+  font-size: 12px;
+}
+.province-box #capquyen .popup-content{
+  margin-top: 100px;
+}
+.province-box #capquyen .popup-content p {
+  padding-bottom: 0px;
+  padding-top: 25px;
+  font-family: sans-serif;
+}
+.province-box #capquyen .popup-content {
+  width: 600px;
+  height: 350px;
+}
+.province-box #capquyen .popup-content>div>label {
+  margin-left: 7%;
+  padding-top: 15px;
+  display: block;
+  color: rgb(68, 67, 67);
+}
+.province-box #capquyen .content div label {
+  font-weight: 400;
+}
+.province-box #capquyen .popup-content .row {
+  width: 85%;
+  margin: auto;
+}
+.province-box #capquyen .popup-content .row div {
+  width: 100%;
+}
+.province-box #capquyen .popup-content input{
+    height: 33px;
+}
+.province-box #capquyen .popup-content input[type="time"]{
+  width: 90%;
+}
+.province-box #capquyen .popup-content .btn {
+  width: 230px;
+}
+.province-box #capquyen .popup-content button {
+  width: 85px;
+  height: 35px;
+  font-size: 14px;
+}
+.province-box #delete .popup-content {
+  width: 365px;
+  height: 190px;
+  margin-top: 200px;
+  background-color: rgb(249, 249, 250);
+}
+.province-box #delete .popup-content p {
+  font-family: sans-serif;
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+.province-box #delete .popup-content i {
+  text-align: center;
+  font-size: 60px;
+  width: 100%;
+  color: rgb(138, 139, 141);
+}
+.province-box #delete .popup-content .btn {
+  width: 55%;
+  margin: auto;
+  margin-top: 15px;
+}
+.province-box #delete .popup-content .btn button {
+  height: 33px;
+  border-radius: 6px 6px 6px 0px;
+  margin: 5px;
+}
+
+.province-box #edit .popup-content {
+  width: 550px;
+  margin-top: 80px;
+  border: none;
+  box-shadow:  5px 5px 5px rgb(207, 210, 235);
+  background-color: rgb(247, 244, 244);
+}
+.province-box #edit .popup-content .title {
+  height: 40px;
+  background-color: rgb(73, 75, 150);
+  width: 100%;
+  margin-bottom: 10px;
+}
+.province-box #edit .popup-content p {
+  font-size: 15px;
+  padding: 0;
+  text-align: left;
+  margin-bottom: 3px;
+}
+.province-box #edit .popup-content label {
+  font-weight: 450;
+}
+.province-box #edit .popup-content input {
+  height: 34px;
+}
+.province-box #edit .popup-content .content {
+  width: 90%;
+  margin: auto;
+}
+.province-box #edit .popup-content .content .group {
+  margin-bottom: 15px;
+}
+.province-box #edit .popup-content .content .div-row{
+  flex: 1;
+  margin-right: 15px;
+}
+.province-box #edit .popup-content .content #password-reset {
+  width: 235px;
+}
+.province-box #edit .popup-content .bottom {
+  background-color: rgb(190, 198, 235);
+}
+.province-box #edit .popup-content .bottom .btn {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  width: 45%;
+}
+.province-box #edit .popup-content .bottom .btn button {
+  height: 36px;
+}
+sup {
+  position: absolute;
+  color: rgb(226, 34, 34);
+  font-size: 13px;
+  margin-left: 3px;
+  margin-bottom: 3px;
+  font-weight: normal;
+}
+.province-box .popup .content div input {
+  margin: 5px;
+  height: 40px;
+  border: 1px solid #b0b6ca;
+}
+.province-box .popup .btn button {
+  margin: auto;
+  height: 40px;
+  width: 115px;
+  border: 1px solid #768daa;
+  font-size: 16px;
+}
+.province-box .popup .btn button.submit_btn {
+  background-color: #2b2d79;
+  color: white;
+}
+.province-box .popup .btn button.submit_btn:hover {
+  background-color: #505a96;
+}
+.province-box .popup .btn button.cancel_btn {
+  background-color: #d6d2d2;
+  color: rgb(68, 67, 67);
+}
+.province-box .popup .btn button.cancel_btn:hover {
+  background-color: rgb(180, 179, 179);
+}
+
+/* ----------------nút công tắc--------------- */
+
+.switch {
+  position: relative;
+  margin: 0 auto;
+}
+.switch input {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  opacity: 0;
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.switch {
+  width: 50px;
+  height: 18px;
+}
+.switch label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #a5a39d;
+  border-radius:20px;
+  box-shadow:
+      inset 0 3px 8px 1px rgba(0,0,0,0.2),
+      0 1px 0 rgba(255,255,255,0.5);
+}
+.switch label:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -8px; right: -8px; bottom: -8px; left: -8px;
+  border-radius: inherit;
+  background: #ababab;
+  background: linear-gradient(#f2f2f2, #ababab);
+ 
+}
+
+.switch label:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -18px; right: -18px; bottom: -18px; left: -18px;
+  border-radius: inherit;
+  background: #eee;
+}
+
+.switch label i {
+  display: block;
+  height: 100%;
+  width: 50%;
+  border-radius: inherit;
+  background: silver;
+  position: absolute;
+  z-index: 2;
+  right: 50%;
+  top: 0;
+  background: #b2ac9e;
+  background: -moz-linear-gradient(#f7f2f6, #b2ac9e);
+  background: -ms-linear-gradient(#f7f2f6, #b2ac9e);
+  background: -o-linear-gradient(#f7f2f6, #b2ac9e);
+  background: -webkit-linear-gradient(#f7f2f6, #b2ac9e);
+  background: linear-gradient(#f7f2f6, #b2ac9e);
+  box-shadow:
+      inset 0 1px 0 white,
+      0 0 8px rgba(0,0,0,0.3),
+      0 5px 5px rgba(0,0,0,0.2);
+}
+
+.switch label i:after {
+  content: "";
+  position: absolute;
+  left: 15%;
+  top: 25%;
+  width: 70%;
+  height: 50%;
+  background: #d2cbc3;
+  border-radius: inherit;
+}
+.switch label i:before {
+  content: "off";
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: bold;
+  color: rgba(0,0,0,0.4);
+  text-shadow: 0 1px 0 #bcb8ae, 0 -1px 0 #97958e;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+  right: -90%;
+}
+.switch input:checked ~ label {
+  background: #154297;
+}
+.switch input:checked ~ label i {
+  right: -1%;
+}
+.switch input:checked ~ label i:before {
+  content: "on";
+  right: 110%;
+  color: #6783bb;
+  text-shadow: 
+    0 1px 0 #7e94a1,
+    0 -1px 0 #808da7;
+}
+/* --------------nút công tắc------------ */
+@media screen and (max-width: 2000px) {
+  .province-box {
+    width: 90%;
+    margin-left: 4%;
+  }
+  fieldset div:first-child input {
+    margin-left: 30px;
+  }
+  fieldset div input {
+    width: 270px;
+    margin: 10px;
+  }
+} 
+@media screen and (max-width: 1050px) {
+  .province-box {
+    width: 95%;
+    margin: auto;
+  }
+  fieldset div input {
+    width: 240px;
+    margin: 8px;
+  }
+  .province_list div.table {
+    overflow-x:auto;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .province-box {
+    width: 97%;
+  }
+  fieldset div input {
+    width: 100%;
+    margin: 8px;
+  }
+  .province_list {
+    overflow-x:auto;
+  }
+}
+@media screen and (max-width: 600px) {
+fieldset {
+  display: block;
+  height: 175px;
+}
+fieldset div:first-child input {
+  margin-left: 0px;
+}
+fieldset div {
+  position: relative;
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+fieldset div button {
+  width: 100%;
+  height: 40px;
+}
+.province-box .title {
+  text-align: center;
+}
+.province-box .title h2 {
+  margin: 0;
+  margin-top: 10px;
+}
+.province-box .add_province button{
+  float:unset;
+  margin-top: 20px;
+}
+}

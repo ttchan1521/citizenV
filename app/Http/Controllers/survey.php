@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class theodoi extends Controller
+class survey extends Controller
 {
     //
     public function index() {
@@ -13,7 +13,7 @@ class theodoi extends Controller
             return redirect()->route('login');
         }
         else {
-            return view('aSite.theodoinhaplieu', ['user' => Session::get('user')]);
+            return view('aSite.survey', ['user' => Session::get('user')]);
         }
     }
 }

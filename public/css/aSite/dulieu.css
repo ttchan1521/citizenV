@@ -1,0 +1,299 @@
+h2 {
+    display: block;
+    color: #323c4e;
+    margin-bottom: 20px;
+  }
+  .search_loca {
+    position: relative;
+    width: 96%;
+    margin: auto;
+  }
+  .search_loca .search-box fieldset {
+    display: block;
+    height: 340px;
+    width: 100%;
+  }
+  
+  .search_loca .search-box fieldset.select select,
+  .search_loca .search-box fieldset.select input,
+  .search_loca .search-box fieldset.select .next_btn {
+    width: 90%;
+    margin: auto;
+    margin-top: 13px;
+  }
+  .search_loca .search-box fieldset.select select:hover,
+  .search_loca .search-box fieldset.select input:hover {
+    width: 90%;
+    margin-left: 6%;
+    background-color: rgb(247, 244, 244);
+    cursor: pointer;
+    transition: 1s;
+  }
+  .search_loca .select .btn button {
+    height: 37px;
+    width: 100%;
+    background-color: rgb(55, 8, 163);
+    border-color: rgb(55, 8, 163);
+    font-size: 16px;
+    margin: auto;
+    margin-left: 5%;
+  }
+  .search_loca .data {
+    margin: 20px 0;
+  }
+  .search_loca .data p {
+    text-align: center;
+    padding: 7px ;
+    background-color: #738bb4;
+    border-radius: 7px;
+    color:rgb(32, 32, 32)
+  }
+  input, select, option {
+    display: block;
+    border: 1px solid rgb(209, 208, 208);
+    width: 100%;
+    height: 37px;
+    border-radius: 3px;
+    outline: none;
+    font-size: 15px;
+    color: rgb(117, 115, 115);
+    background-color: rgb(240, 240, 240);
+    text-indent: 12px;
+  }
+  .search_loca .table table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 0;
+    margin-left: 0.7%;
+  }
+  .search_loca .table .paging {
+    display: inline-block;
+    width: 100%;
+  }
+  .search_loca .table .paging div {
+    float: right;
+  }
+  .search_loca .table th {
+    background-color: rgb(78, 15, 180);
+    color: #e7e8eb;
+    font-weight: 400;
+  }
+  .search_loca .table th, 
+  .search_loca .table td {
+    padding: 4px 10px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+  }
+  .search_loca .table td {
+    color: #333;
+  }
+  .search_loca .table th:first-child,
+  .search_loca .table th:last-child {
+    padding: unset;
+  }
+  .search_loca .table th:first-child {
+    min-width: 30px;
+  }
+  .search_loca .table th:last-child {
+    min-width: 40px;
+  }
+  .search_loca .table td:first-child,
+  .search_loca .table td:last-child {
+    text-align: center;
+  }
+  .search_loca .table .setWidth {
+    min-width: 130px;
+  }
+  div.cancel_btn, div.next_btn {
+    display: inline-block;
+  }
+  
+  .search_loca table tbody button {
+    border: none;
+    font-size: 17px;
+    color:rgb(54, 55, 116);
+    background-color: inherit;
+  }
+  div.next_btn button {
+    border: 1px solid rgb(61, 94, 165);
+    background-color: rgb(61, 94, 165);
+    color: white;
+  }
+  div.btn button {
+    height: 43px;
+    width: 150px;
+    border-radius: 8px 8px 8px 0;
+    font-size: 17px;
+  }
+  .search_loca .info_citizen {
+    position: relative;
+    box-shadow:  5px 5px 5px rgb(207, 206, 206);
+    width: 700px;
+    height: 1000px;
+    border-radius: 3px;
+    border: 1px solid rgb(206, 205, 205);
+    margin-top: 155px!important;
+    margin: auto;
+    background-color: rgb(247, 247, 247);
+  }
+  .popup {
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(20, 20, 20, 0.5);
+	z-index: 500;
+  }
+  @media screen and (max-width: 2000px) {
+    .province-box {
+      width: 90%;
+      margin-left: 4%;
+    }
+    fieldset div:first-child input {
+      margin-left: 30px;
+    }
+    fieldset div input {
+      width: 270px;
+      margin: 10px;
+    }
+    .dataEntry div.barChart {
+      display: flex;
+    }
+    .dataEntry div.barChart > div canvas {
+      margin: 20px 0;
+    }
+    .dataEntry .provinceChart .prvChart{
+      display: flex;
+    }
+    .dataEntry .provinceChart .prvChart div:first-child{
+      flex: 3;
+    }
+    .dataEntry .provinceChart .prvChart div:last-child{
+      flex: 1;
+    }
+    .dataEntry .provinceChart .prvChart div:last-child canvas{
+      max-width: 100%; 
+      margin-top: 20%;
+    }
+    .search_loca {
+      display: flex;
+    }
+    .search_loca .search-box {
+      flex: 2;
+    }
+    .search_loca div.table {
+      flex: 5;
+    }
+    .search_loca div.table .tbl {
+      overflow-x: auto;
+    }
+  } 
+  @media screen and (max-width: 1050px) {
+    .province-box {
+      width: 95%;
+      margin: auto;
+    }
+    fieldset div input {
+      width: 240px;
+      margin: 8px;
+    }
+    .province_list div.table {
+      overflow-x:auto;
+    }
+    
+    .search_loca {
+      display: block;
+    }
+    .search_loca .search-box {
+      display: flex;
+    }
+    .search_loca .search-box form {
+      flex: 2;
+      width: 100%;
+      margin-right: 20px;
+    }
+    .search_loca .search-box div {
+      flex: 3;
+      width: 100%;
+    }
+    .search_loca div.table {
+      display: block;
+      margin-top: 20px;
+    }
+    .search_loca div.table .paging {
+      display: inline-block;
+    }
+  }
+  
+  @media screen and (max-width: 900px) {
+    .province-box {
+      width: 97%;
+    }
+    fieldset div input {
+      width: 100%;
+      margin: 8px;
+    }
+    .province_list {
+      overflow-x:auto;
+    }
+    .dataEntry div.barChart {
+      display: block;
+    }
+    .dataEntry .barChart div {
+      display: block;
+    }
+    .dataEntry div.barChart > div canvas {
+      max-height: 250px;
+      margin: 10px 0;
+    }
+    .dataEntry .provinceChart .prvChart{
+      display: block;
+    }
+    .dataEntry .provinceChart .prvChart div{
+      display: block;
+    }
+    .dataEntry .provinceChart .prvChart div:last-child {
+      width: 40%;
+      margin: auto;
+    }
+    .dataEntry .provinceChart .prvChart div:last-child canvas {
+      margin-top: 10px;
+    }
+    .search_loca .search-box {
+      display: block;
+    }
+  }
+  @media screen and (max-width: 600px) {
+  fieldset {
+    display: block;
+    height: 175px;
+  }
+  fieldset div:first-child input {
+    margin-left: 0px;
+  }
+  fieldset div {
+    position: relative;
+    display: block;
+    width: 90%;
+    margin: auto;
+  }
+  fieldset div button {
+    width: 100%;
+    height: 40px;
+  }
+  .province-box .title {
+    text-align: center;
+  }
+  .province-box .title h2 {
+    margin: 0;
+    margin-top: 10px;
+  }
+  .province-box .add_province button{
+    float:unset;
+    margin-top: 20px;
+  }
+  }
+  
