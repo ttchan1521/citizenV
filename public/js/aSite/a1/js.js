@@ -106,6 +106,19 @@ function tick_box_all(self) {
   }
 
 }
+
+function clear() {
+  let del = document.getElementById("button_list");
+  let rows = document.getElementsByClassName("check");
+  let all = document.getElementById("check_all");
+
+  all.checked = false;
+  del.style.visibility = "hidden";
+  for (let i = 0; i < rows.length; i++) {
+    rows[i].checked = false;
+    rows[i].parentNode.parentNode.classList.remove("checked");
+  }
+}
 function tick(self){
   if(self.checked == true){
       self.nextElementSibling.childNodes[0].classList.add("tick-background");
@@ -164,7 +177,7 @@ $(document).ready(function() {
     let name = $('#local_name').val();
 
     $.post('/addLocal', {
-      '_token': $("#token").val(),
+      '_token': $("#token1").val(),
       'id': id,
       'name': name,
       'password': $('local_pass').val()
@@ -185,7 +198,44 @@ $(document).ready(function() {
 
   $("#capquyen").submit(function(e) {
     e.preventDefault();
-    
+    let list = document.querySelectorAll("input.check");
+    let checks = [];
+    let local = [];
+    for (var i=0; i<list.length; i++) {
+      if (list[i].checked == true) {
+        local.push(list[i].parentNode.parentNode);
+        checks.push(list[i].parentNode.nextSibling.nextSibling.innerHTML);
+      }
+    }
+
+    let start_time = $("#start_time").val();
+    let start_date = $("#start_date").val();
+    let end_time = $("#end_time").val();
+    let end_date = $("#end_date").val();
+
+    $.post("/addSchedule", {
+      '_token': $("#token2").val(),
+      'start_time': start_time,
+      'start_date' : start_date,
+      'end_time' : end_time,
+      'end_date': end_date,
+      'local' : checks
+
+    }, function(response) {
+      if (response.success) {
+        closePopup();
+        alert("Thêm lịch khai báo thành công");
+        for (var i=0; i<local.length; i++) {
+          console.log(local[i]);
+          local[i].childNodes[7].innerHTML = start_date + " " + start_time;
+          local[i].childNodes[9].innerHTML = end_date + " " + end_time;
+          local[i].querySelector(".switch input").checked = true;
+          clear();
+          
+        }
+      }
+    });
+
   });
 });
 

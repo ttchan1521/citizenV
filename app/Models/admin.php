@@ -14,17 +14,26 @@ class admin extends Model
 
         $locals = DB::select('select id, name from admin where boss = ?', [$id]);
 
-        foreach($locals as $local) {
-            $schedule = DB::select('select start, end, status from schedule where nhan_quyen = ? limit 1', [$local->id]);
-            if (count($schedule) > 0) {
-                $local->start = $schedule[0]->start;
-                $local->end = $schedule[0]->end;
-                $local->status = $schedule[0]->status;
-            }
-            else {
-                $local->start = "";
-                $local->end = "";
-                $local->status = "";
+        if ($locals) {
+
+            foreach($locals as $local) {
+                $schedule = DB::select('select start_date, start_time, end_date, end_time, status from schedule where nhan_quyen = ? limit 1', [$local->id]);
+                $local->start_date = "";
+                    $local->start_time = "";
+                    $local->end_date = "";
+                    $local->end_time = "";
+                    $local->status = "";
+
+                 
+                if (count($schedule) > 0) {
+                    $local->start_date = $schedule[0]->start_date;
+                    $local->start_time = $schedule[0]->start_time;
+                    $local->end_date = $schedule[0]->end_date;
+                    $local->end_time = $schedule[0]->end_time;
+                    $local->status = $schedule[0]->status;
+                }
+                
+                
             }
         }
 

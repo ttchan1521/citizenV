@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\admin;
+use App\Models\schedule;
 
 class phanquyen extends Controller
 {
@@ -50,6 +51,17 @@ class phanquyen extends Controller
     }
     
     function addSchedule(Request $request) {
-        
+        $start_date = $request->get('start_date');
+        $start_time = $request->get('start_time');
+        $end_date = $request->get('end_date');
+        $end_time = $request->get('end_time');
+        $local = $request->get('local');
+
+        $result =  schedule::addSchedule($local, $start_date, $start_time, $end_date, $end_time);
+
+        if ($result) {
+            return \response()->json(['success' => true]);
+        }
+        return \response()->json(['success' => false]);
     }
 }

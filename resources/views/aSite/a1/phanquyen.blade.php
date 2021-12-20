@@ -69,8 +69,8 @@
                                 </td>
                                 <td>{{ $local->id }}</td>
                                 <td class="left">{{ $local->name }}</td>
-                                <td class="left">{{ $local->start }}</td>
-                                <td class="left">{{ $local->end }}</td>
+                                <td class="left">{{ $local->start_date.' '.$local->start_time }}</td>
+                                <td class="left">{{ $local->end_date.' '.$local->end_time }}</td>
                                 <td>
                                     <div class="switch">
                                         <input type="checkbox">
@@ -95,7 +95,7 @@
             </div>
 
             <form id="popup" class="popup" action="">
-            <input type="hidden" id="token" value="{{ @csrf_token() }}">
+            <input type="hidden" id="token1" value="{{ @csrf_token() }}">
                 <div class="popup-content">
                     <div class="title">
                         <!-- <span class="close-btn">&times;</span> -->
@@ -123,6 +123,7 @@
             </form>
 
             <form id="capquyen" class="popup" action="">
+            <input type="hidden" id="token2" value="{{ @csrf_token() }}">
                 <div class="popup-content">
                     <div class="title">
                         <!-- <span class="close-btn">&times;</span> -->
@@ -133,22 +134,22 @@
                         <div class="row">
                             <div>
                                 <label for="">Chọn giờ <sup>(*)</sup></label>
-                                <input type="time">
+                                <input type="time" id="start_time">
                             </div>
                             <div>
                                 <label for="">Chọn ngày <sup>(*)</sup></label>
-                                <input type="date">
+                                <input type="date" id="start_date">
                             </div>
                         </div>
                         <label for="">Thời điểm kết thúc: </label>
                         <div class="row">
                             <div>
                                 <label for="">Chọn giờ <sup>(*)</sup></label>
-                                <input type="time">
+                                <input type="time" id="end_time">
                             </div>
                             <div>
                                 <label for="">Chọn ngày <sup>(*)</sup></label>
-                                <input type="date">
+                                <input type="date" id="end_date">
                             </div>
                         </div>
                     </div>

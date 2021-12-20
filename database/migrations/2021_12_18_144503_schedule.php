@@ -18,8 +18,10 @@ class Schedule extends Migration
             $table->increments('sche_id');
             $table->string('nhan_quyen', 10);
             $table->foreign('nhan_quyen')->references('id')->on('admin')->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamp('start');
-            $table->timestamp('end')->useCurrent();
+            $table->date('start_date');
+            $table->time('start_time');
+            $table->date('end_date');
+            $table->time('end_time');
             $table->string('status');
         
         });

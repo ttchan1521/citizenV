@@ -38,3 +38,5 @@ Route::group(['prefix' => "/aSite/{position}", 'as' => "aSite."],function() {
 });
 
 Route::post('/addLocal', [phanquyen::class, 'addLocal']);
+
+Route::post('/addSchedule', [phanquyen::class, 'addSchedule']);
