@@ -1,4 +1,35 @@
-@include('aSite/a1.header')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+     
+     <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
+    </script>
+    <script type = "text/javascript">
+       google.charts.load('current', {packages: ['corechart','line']});  
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+    <link href="{{ asset('css/aSite/sidebar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/aSite/bieudophantich.css') }}" rel="stylesheet">
+    <title> document </title>
+</head>
+
+@include('aSite.header')
 
     <div class="home-content">
         <div class="top row">
@@ -207,8 +238,8 @@
         </div>
     </div>
   </section>
-  <script src="{{ asset('js/aSite/a1/js.js')}}"></script>
-  <script src="{{ asset('js/aSite/a1/chart.js')}}"></script>
+  <script src="{{ asset('js/aSite/js.js')}}"></script>
+  <script src="{{ asset('js/aSite/chart.js')}}"></script>
 </body>
 </html>
 

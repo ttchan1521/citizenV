@@ -13,7 +13,7 @@ class dulieu extends Controller
             return redirect()->route('login');
         }
         else {
-            return view('aSite/a1.dulieu', ['user' => Session::get('user')]);
+            return view('aSite.dulieu', ['user' => Session::get('user')]);
         }
     }
 }

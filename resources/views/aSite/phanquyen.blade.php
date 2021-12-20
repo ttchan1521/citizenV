@@ -1,4 +1,21 @@
-@include('aSite/a1.header')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+    <link href="{{ asset('css/aSite/phanquyen.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/aSite/sidebar.css') }}" rel="stylesheet">
+    <title> document </title>
+</head>
+@include('aSite.header')
 
     <div class="home-content">
         <div class="province-box">
@@ -81,8 +98,8 @@
                                     <input type="checkbox" onclick="tick(this)">
                                     <label><i class="fas fa-check"></i></label>
                                 </td>
-                                <td><a href=""><i class="fas fa-edit"></i></a></td>
-                                <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
+                                <td><a onclick="edit_click(this)"><i class="fas fa-edit"></i></a></td>
+                                <td><a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
 
 
@@ -95,7 +112,7 @@
             </div>
 
             <form id="popup" class="popup" action="">
-            <input type="hidden" id="token1" value="{{ @csrf_token() }}">
+                <input type="hidden" id="token" value="{{ @csrf_token() }}">
                 <div class="popup-content">
                     <div class="title">
                         <!-- <span class="close-btn">&times;</span> -->
@@ -104,20 +121,23 @@
                     <div class="content">
                         <div>
                             <label for="">Nhập mã tỉnh/tp <sup>(*)</sup></label>
-                            <input type="text" id="local_id" placeholder="Nhập mã tỉnh/tp">   
+                            <input type="text" id="local_id" placeholder="Nhập mã tỉnh/tp"> 
+                            <small></small>  
                         </div>
                         <div>
                             <label for="">Nhập tên tỉnh/tp <sup>(*)</sup></label>
-                            <input type="text" id="local_name" placeholder="Nhập tên tỉnh/tp">   
+                            <input type="text" id="local_name" placeholder="Nhập tên tỉnh/tp">  
+                            <small></small> 
                         </div>
                         <div>
                             <label for="">Cấp mật khẩu <sup>(*)</sup></label>
-                            <input type="text" id="local_pass" placeholder="Nhập mật khẩu">   
+                            <input type="text" id="local_pass" placeholder="Nhập mật khẩu">
+                            <small></small>   
                         </div>
                     </div>
                     <div class="btn">
                         <button class="cancel_btn" type="reset" onclick="closePopup()">Hủy bỏ</button>
-                        <button class="submit_btn" type="submit">Thêm</button>
+                        <button class="submit_btn" type="submit" id="submitForm">Cập nhật</button>
                     </div>
                 </div>
             </form>
@@ -135,10 +155,12 @@
                             <div>
                                 <label for="">Chọn giờ <sup>(*)</sup></label>
                                 <input type="time" id="start_time">
+                                <small></small>
                             </div>
                             <div>
                                 <label for="">Chọn ngày <sup>(*)</sup></label>
                                 <input type="date" id="start_date">
+                                <small></small>
                             </div>
                         </div>
                         <label for="">Thời điểm kết thúc: </label>
@@ -146,16 +168,18 @@
                             <div>
                                 <label for="">Chọn giờ <sup>(*)</sup></label>
                                 <input type="time" id="end_time">
+                                <small></small>
                             </div>
                             <div>
                                 <label for="">Chọn ngày <sup>(*)</sup></label>
                                 <input type="date" id="end_date">
+                                <small></small>
                             </div>
                         </div>
                     </div>
                     <div class="btn">
                         <button class="cancel_btn" type="reset" onclick="closePopup()">Hủy bỏ</button>
-                        <button class="submit_btn" type="submit">Cập nhật</button>
+                        <button class="submit_btn" type="submit" id="submitForm">Cập nhật</button>
                     </div>
                 </div>
             </form>
@@ -176,11 +200,68 @@
                     </div>
                 </div>
             </form>
-            
+            <form id="edit" class="popup" action="">
+                <div class="popup-content">
+                    <div class="title">
+                    </div>
+                    <div class="content">
+                        <div class="group row">
+                            <div class="div-row">
+                                <label for="">Mã đăng nhập: </label>
+                                <input type="text" placeholder="Mã đăng nhập" id="provinceCode-reset">
+                                <small></small>
+                            </div>
+                            <div class="div-row">
+                                <label for="">Tên tỉnh/tp: </label>
+                                <input type="text" placeholder="Tên tỉnh/tp" id="provinceName-reset">
+                                <small></small>
+                            </div>
+                        </div>
+                        <div class="group" >
+                           <p>Quyền khai báo</p>
+                           <div class="row">
+                                <div class="div-row">
+                                    <label for="">Thời điểm bắt đầu:</label>
+                                    <div style="margin-bottom: 20px">
+                                        <input type="time" id="startTime-reset">
+                                        <small></small>
+                                    </div>
+                                    <div>
+                                        <input type="date" id="startDate-reset">
+                                        <small></small>
+                                    </div>
+                                </div>
+                                <div class="div-row">
+                                    <label for="">Ngày kết thúc:</label>
+                                    <div style="margin-bottom: 20px">
+                                        <input type="time" id="endTime-reset">
+                                        <small></small>
+                                    </div>
+                                    <div>
+                                        <input type="date" id="endDate-reset">
+                                        <small></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group">
+                           <label for="">Đặt lại mật khẩu: </label>
+                           <input type="text" id="password-reset" placeholder="Nhập mật khẩu">
+                           <small></small>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="btn">    
+                            <button class="cancel_btn" type="reset" onclick="closePopup()">Hủy bỏ</button>
+                            <button id="del_btn" class="submit_btn" type="submit">Cập nhật</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
   </section>
-  <script src="{{ asset('js/aSite/a1/js.js')}}"></script>
+  <script src="{{ asset('js/aSite/js.js')}}"></script>
 
 </body>
 </html>

@@ -23,7 +23,16 @@ class phanquyen extends Controller
         }
         else {
             $local = $this->load(Session::get('user')->id);
-            return view('aSite/a1.phanquyen', ['user' => Session::get('user'), 'local' => $local]);
+            return view('aSite.phanquyen', ['user' => Session::get('user'), 'local' => $local]);
+        }
+    }
+    public function schedule() {
+        if (!(Session::has('user'))) {
+            return redirect()->route('login');
+        }
+        else {
+            $local = $this->load(Session::get('user')->id);
+            return view('aSite.lichkhaibao', ['user' => Session::get('user'), 'local' => $local]);
         }
     }
 
