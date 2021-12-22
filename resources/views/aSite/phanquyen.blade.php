@@ -13,83 +13,79 @@
  
     <link href="{{ asset('css/aSite/phanquyen.css') }}" rel="stylesheet">
     <link href="{{ asset('css/aSite/sidebar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/aSite/popup.css') }}" rel="stylesheet">
     <title> Quản lý truy cập </title>
 </head>
 @include('aSite.header')
 
     <div class="home-content">
         <div class="province-box">
-            <div class="title">
+            <div class="head">
                 <h2>Quản lý truy cập</h2>
                 <p>Danh sách {{ $down }}</p>
             </div>
-            <div class="add_province">
-                <button onclick="add_province()">Thêm {{ $down }}</button>
-            </div>
-            <form action="">
-                <fieldset>
-                    <legend>Tìm kiếm: </legend>
-                    <div>
-                        <input type="text" id="find_name"  placeholder="Nhập tên {{ $down }}">
-                    </div>
-                    <div>
-                        <input type="text" id="find_id" placeholder="Nhập mã {{ $down }}">
-                    </div>
-                    <div>
-                        <button type="submit"><i class="fas fa-search"></i>Tìm kiếm</button>
-                    </div>
-                </fieldset>
-            </form>
-            <div class="province_list">
-                <div class="province_list_top">
-                    <div class="button" id="button_list">
-                        <button id="permis_btn" onclick="permis_click()">Cấp quyền</button> 
-                        <button>Đóng</button>
-                        <button onclick="popup_del()">Xóa</button>
-                    </div>
-                    
-                    <div class="pagination">
-                        <a href="#">«</a>
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">»</a>
-                    </div>
+            <div class="tool">
+                <div class="button row hidden" id="button_list">
+                    <button id="permis_btn" onclick="permis_click()">Cấp quyền</button> 
+                    <!-- <button>Hoàn thành</button> -->
+                    <button onclick="popup_del()">Xóa</button>
                 </div>
+                <div class="add_province">
+                    <button onclick="add_province()">Thêm {{ $down }}</button>
+                </div>
+            </div>
+            
+            <div class="province_list">
                 <div class="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th rowspan="2" class="first">
-                                    <input type="checkbox" id="check_all" onclick="tick_box_all(this)">
-                                </th>
-                                <th rowspan="2" class="nopadding">Mã đăng <br>nhập</th>
-                                <th rowspan="2">Tên {{ $down }}</th>
-                                <th colspan="5">Quyền khai báo</th>
-                                <th rowspan="2">Sửa</th>
-                                <th rowspan="2">Xóa</th>
-                            </tr>
-                            <tr>
-                                <th>Ngày bắt đầu</th>
-                                <th>Ngày kết thúc</th>
-                                <th class="nopadding">Trạng thái</th>
-                                <th class="nopadding">Hoàn thành</th>
-                                <th class="nopadding">Lịch sử</th>
-                            </tr>
-                        </thead>
-                        <tbody id="list">
+                    <p>Lịch khai báo và tiến độ điều tra của các tỉnh</p>
+                    <form action="" class="search">
+                        <div>
+                            <input type="text" id="find_name"  placeholder="Nhập tên {{ $down }}">
+                        </div>
+                        <div>
+                            <input type="text" id="find_id" placeholder="Nhập mã {{ $down }}">
+                        </div>
+                        <div>
+                            <button type="submit"><i class="fas fa-search"></i>Tìm kiếm</button>
+                        </div>
+                    </form>
+                    <div class="overflow">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="center">
+                                        <input type="checkbox" id="check_all" onclick="tick_box_all(this)">
+                                    </th>
+                                    <th class="center">Mã đăng <br>nhập</th>
+                                    <th class="min-width">Tên {{ $down }}</th>
+                                    <th class="min-width">Thời gian bắt đầu</th>
+                                    <th class="min-width">Thời gian kết thúc</th>
+                                    <th class="center">Lịch sử</th>
+                                    <th>Tiến độ</th>
+                                    <th class="center">Quyền <br> truy cập</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <div>
+                                <tbody id="list">
 
-                            @foreach ($local as $local)
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="check" onclick="tick_box(this)">  
-                                </td>
-                                <td class="row_id">{{ $local->id }}</td>
-                                <td class="left row_name">{{ $local->name }}</td>
-                                <td class="left row_start">{{ $local->start_date.' '.$local->start_time }}</td>
-                                <td class="left row_end">{{ $local->end_date.' '.$local->end_time }}</td>
-                                <td>
+                                @foreach ($local as $local)
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="check" onclick="tick_box(this)">  
+                                    </td>
+                                    <td class="center row_id">{{ $local->id }}</td>
+                                    <td class="min-width row_name">{{ $local->name }}</td>
+                                    <td class="min-width row_start">{{ $local->start_date.' '.$local->start_time }}</td>
+                                    <td class="min-width row_end">{{ $local->end_date.' '.$local->end_time }}</td>
+                                    <td class="center"><a><i class="fas fa-history"></i></td>
+                                    <td class="progress">
+                                        <small class="W-100">90.00%</small>
+                                        <div>
+                                            <div class="percent"></div>
+                                        </div>
+                                    </td>
+                                    <td>
                                     <div class="switch">
                                         @if ($local->status == "Open") 
                                             <input type="checkbox" checked>
@@ -105,16 +101,29 @@
                                     <label><i class="fas fa-check"></i></label>
                                 </td>
                                 <td><a onclick="showHistory(this)"><i class="fas fa-history"></i></td>
-                                <td><a onclick="edit_click(this)" class="row_edit"><i class="fas fa-edit"></i></a></td>
-                                <td><a onclick="popup_del(this)" class="row_delete"><i class="fas fa-trash-alt"></i></a></td>
-                            </tr>
+                                
+                            
+                                        
+                                    
+                                    <td class="center">
+                                        <a onclick="edit_click(this)"><i class="fas fa-edit"></i></a>
+                                        <a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
 
 
-                            @endforeach
+                                @endforeach
+                                
+                                
+                            </tbody>
+                            </div>
                             
-                            
-                        </tbody>
-                    </table>
+                        </table>
+                    </div>
+                    
+                    <div class="bottom">
+                        <a href="">Xem thêm</a>
+                    </div>
                 </div>
             </div>
 

@@ -61,11 +61,16 @@
             </div>
             <div class="table">
               <div class="paging">
-                <div><< 1 2 3 4 >></div>
-                
+                <div class="pagination">
+                  <a href="#">&#171;</a>
+                  <a href="#">1</a>
+                  <a href="#" class="active">2</a>
+                  <a href="#">3</a>
+                  <a href="#">&#187;</a>
+                </div>
               </div>
               <div class="tbl">
-                <table class="table">
+                <table>
                   <thead>
                       <tr>
                           <th>STT</th>
@@ -73,16 +78,34 @@
                           <th class="setWidth">Xã/Phường</th>
                           <th class="setWidth">Quận/Huyện</th>
                           <th class="setWidth">Tỉnh/TP</th>
-                          <th class="setWidth">Chi tiết</th>
+                          <th>Chi tiết</th>
                       </tr>
                   </thead>
                   <tbody id="ans">
-                      <td>1</td>
-                      <td> vu thi yam sjdhs dshfjs</td>
-                      <td>ggg</td>
-                      <td>ggg</td>
-                      <td>ggg</td>
-                      <td><button onclick="view_citizen()">Xem</button></td>
+                      <tr>
+                        <td>1</td>
+                        <td> vu thi yam sjdhs dshfjs</td>
+                        <td>ggg</td>
+                        <td>ggg</td>
+                        <td>ggg</td>
+                        <td><button onclick="view_citizen()">Xem</button></td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td> vu thi yam sjdhs dshfjs</td>
+                        <td>ggg</td>
+                        <td>ggg</td>
+                        <td>ggg</td>
+                        <td><button onclick="view_citizen()">Xem</button></td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td> vu thi yam sjdhs dshfjs</td>
+                        <td>ggg</td>
+                        <td>ggg</td>
+                        <td>ggg</td>
+                        <td><button onclick="view_citizen()">Xem</button></td>
+                      </tr>
                   </tbody>
                 </table>
               </div>

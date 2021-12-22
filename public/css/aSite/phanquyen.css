@@ -6,12 +6,28 @@ input, select, option {
   border-radius: 3px;
   outline: none;
   font-size: 15px;
-  color: rgb(117, 115, 115);
+  color: rgb(105, 103, 103);
   background-color: rgb(240, 240, 240);
   text-indent: 12px;
 }
 .province-box {
   color: rgb(2, 22, 58);
+  width: 97%;
+  margin: auto;
+}
+.head {
+  padding: 20px;
+}
+.head h2{
+  font-family: sans-serif;
+  padding-bottom: 3px;
+}
+.province-box .tool {
+  display: flex;
+  width: 93%;
+  margin: auto;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 20px;
 }
 .province-box  .add_province {
   display: block;
@@ -19,61 +35,52 @@ input, select, option {
 }
 .province-box  .add_province button {
   float: right;
-  height: 36px;
-  width: 200px;
-  border: 1px solid rgb(148, 152, 172);
+  border: 1px solid rgb(191, 193, 202);
   background-color: #ebecec;
   font-size: 15px;
   color:rgb(12, 39, 97);
+  box-shadow: 0 4px 12px 0 rgb(34 41 47 / 50%);
+  margin-bottom: 5px;
 }
 .province-box  .add_province button:hover {
   cursor: pointer;
   background-color: rgb(230, 231, 233);
 }
-fieldset {
+.search {
   position: relative;
   display: flex;
   width: 100%;
-  height: 73px;
   align-items: center;
-  border: 1px solid rgb(148, 152, 172);
+  margin-left: 2.5%;
 }
-fieldset legend {
-  text-indent: 30px;
-}
-fieldset div {
-  display: inline-flex;
-}
-fieldset div input {
-  width: 100%;
-  border: 1px solid #959eb4;
-}
-fieldset div button {
-  border-radius: 8px 8px 8px 0;
-  margin-left: 10px;
-  border: 1px solid rgb(38, 41, 170);
-  color:rgb(248, 245, 245);
-  height: 37px;
-  width: 110px;
-  background-color: rgb(55, 8, 163);
+.tool .button button {
+  width: 87px;
+  height: 35px;
+  border: none;
+  border-bottom: none;
+  background: linear-gradient(to bottom, rgb(189, 190, 192),#f5f5f5);
+  color:#575758;
+  text-shadow: white -1px -2px 0.3em;
+  font-family: sans-serif;
   font-size: 16px;
-  padding: 0 7px;
+  border-radius: 3px 3px 0 0;
+  margin-right: 5px;
 }
-fieldset div button i {
-  padding-right: 4px;
+.tool .button {
+   visibility: hidden; 
 }
-fieldset div button:hover {
-  background-color: rgb(49, 70, 138);
-  cursor: pointer;
-  font-size: 15px;
-}
-.province-box .province_list .province_list_top {
-  display: flex;
-  width: 100%;align-items: center;
-  margin-top: 15px;
+.tool .button button:hover {
+  background: linear-gradient(to bottom, rgb(128, 142, 199),#f5f5f5);
+  /* font-size: 13px; */
 }
 .province-box .province_list .province_list_top .pagination {
   margin-left: auto;
+}
+.tick-uncheck {
+  color: #b0b6ca!important;
+}
+.tick-background {
+  color: rgb(3, 6, 148)!important;
 }
 
 /*  */
@@ -90,58 +97,72 @@ table tbody tr:nth-child(even){
   background-color: rgb(238, 231, 238);
 }
 .color2 {
-  background-color: rgb(212, 209, 212);
+  background-color: rgb(204, 201, 204);
 }
 /*  */
-.province-box .province_list .button button {
-  width: 87px;
-  height: 31px;
-  border: 1px solid #c2a7d4;
-  background-color: rgb(99, 29, 211);
-  border-radius: 3px;
-  color:#e9e9ec;
-  font-size: 14px;
-  font-weight: 500;
+
+.province_list .table {
+  position: relative;
+  width: 97%;
+  margin: auto;
+  border: 1px solid #b0b6ca;
+  border-radius: 15px;
+  background-color: rgb(241, 238, 241);
+  box-shadow: 0 4px 12px 0 rgb(34 41 47 / 70%);
 }
-.province-box .province_list .button {
-   visibility: hidden; 
+.province_list .table p {
+  padding: 2.5%;
+  font-size: 21px;
 }
-.province-box .province_list .button button:hover {
-  background-color: #460897;
-  font-size: 13px;
+.overflow {
+  position: relative;
+  width: 100%;
+  overflow: auto;
 }
 .province-box .province_list table {
-  width: 100%;
+  width: calc(100% - 30px);
   border-collapse: collapse!important;
   margin-top: 8px;
+  border: unset;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-.province-box .province_list table th{
-  background-color: rgb(94, 28, 199);
-  color: #d8d7d7;
+
+table .min-width {
+  min-width: 150px;
 }
-.province-box .province_list table th,
-.province-box .province_list table td{
-  padding: 5px 13px;
-  border: 1px solid #ddd;
-  text-align: center;
-  font-size: 16px;
+.province_list table th {
+  border-bottom: 3px solid rgb(184, 182, 182);
+  text-align: left;
+  font-weight: unset;
+}
+.province_list table th:last-child {
+  min-width: 70px;
+}
+.province_list table td i {
+  color:rgb(12, 21, 153);
+  font-size: 19px;
+  margin: 0 3px;
+}
+.province_list table td{
+  border-bottom: 1px solid rgb(184, 182, 182);
   font-weight: 400;
 }
-.province-box .province_list table td {
-  padding: 0px;
+
+.province_list table tbody tr:hover {
+  background-color: #b5b8c0;
 }
-.province-box .province_list table th.first {
-  padding: 0px!important;
-  min-width: 39px;
+.province_list table th.center,
+.province_list table td.center {
+  text-align: center;
+  min-width: 50px;
 }
-.province-box .province_list table td.left {
-  text-align: left;
-  text-indent: 5%;
-  min-width: 160px;
-}
-.province-box .province_list table th.nopadding{
-  padding: 0;
-  min-width: 60px;
+.province_list .table .bottom {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
 }
 .tick {
   position: relative;
@@ -162,242 +183,135 @@ table tbody tr:nth-child(even){
   color:rgb(128, 123, 121);
   font-size: 25px;
 }
+.progress small {
+  position: unset;
+  color:rgb(59, 59, 59);
+  margin: 0px!important;
+}
+/* ------------------------------------------------------------------------- */
+.progress > div{
+  position: relative;
+  height: 14px;
+  border-radius: 15px;
+  background-color: #b0b6ca;
+  width: 90px;
+  margin-bottom: 3px;
+}
+.progress > div .percent {
+  width: 90%;
+  background-color: rgb(12, 21, 153);
+  height: 14px;
+  border-radius: 15px;
+}
+
 .tick-background{
   color: rgb(3, 6, 148);
-}    
-@keyframes popup-content {
-  0% {
-      transform: scale(0);
-  }
-  70% {
-      transform: scale(1.1);
-  }
-  100% {
-      transform: scale(1);
-  }
 }  
-.popup-content {
-  animation-name: popup-content;
-  animation-duration: 1s;
-}  
- .popup {
-	display: none;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(20, 20, 20, 0.5);
-	z-index: 500;
-	}
-  .province-box .popup .btn {
-    display: flex;
-    width: 40%;
-    margin: auto;
-    margin-top: 30px;
-  }
-  .province-box .popup-content {
-	  position: relative;
-    box-shadow:  5px 5px 5px rgb(207, 206, 206);
-    
-    /* box-shadow: 0px 2px 10px 10px rgba(160, 158, 158, 0.5); */
-	  border-radius: 3px;
-	  border: 1px solid rgb(206, 205, 205);
-	  margin: auto;
-	  background-color: rgb(247, 247, 247);
-	}
-  .province-box #popup .popup-content {
-    width: 700px;
-	  height: 280px;
-    margin-top: 155px!important;
-  }
-.province-box .popup p {
-  text-align: center;
-  padding-top: 40px;
-  padding-bottom: 10px;
-  font-size: 19px;
-  font-weight: bold;
-  color: rgb(87, 85, 85);
-}
-.province-box #popup .content {
-  display: flex;
-  width: 95%;
-  margin: auto;
-}
-.province-box #popup .content div {
-  margin: auto;
-  width: 100%;
-  padding: 7px;
-}
 
-.province-box .popup .content div label {
-  position: relative;
-  font-size: 15px;
-  font-weight: 550;
-  display: block;
-  color: rgb(105, 104, 104);
-  margin-left: 5px;
-  margin-bottom: 3px;
+@media screen and (max-width: 2000px) {
+  .head h2{
+    font-size: 27px;
+  }
+  .search div {
+    display: inline-flex;
+  }
+  .province-box  .add_province button {
+    height: 36px;
+    width: 200px;
+  }
+  .search div input {
+    width: 230px;
+    border: 1px solid #959eb4;
+    margin-right: 10px;
+  }
+  .search div button {
+    border-radius: 8px 8px 8px 0;
+    border: 1px solid rgb(38, 41, 170);
+    color:rgb(248, 245, 245);
+    height: 37px;
+    width: 110px;
+    background-color: rgb(55, 8, 163);
+    font-size: 16px;
+    padding: 0 7px;
+  }
+  .search div button i {
+    padding-right: 4px;
+  }
+  .search div button:hover {
+    background-color: rgb(49, 70, 138);
+    cursor: pointer;
+  }
+  .province_list .table p {
+    padding: 2.5%;
+    font-size: 21px;
+  }
+  .province_list table th,
+  .province_list table td {
+    font-size: 16px;
+    padding: 0 5px;
+  }
+} 
+
+@media screen and (max-width: 850px) {
+  .search div input {
+    width: 210px;
+    margin-right: 10px;
+    height: 34px;
+  }
+  .search div button {
+    border-radius: 8px 8px 8px 0;
+    border: 1px solid rgb(38, 41, 170);
+    color:rgb(248, 245, 245);
+    height: 34px;
+    width: 105px;
+    background-color: rgb(55, 8, 163);
+    font-size: 15px;
+    padding: 0 7px;
+  }
+  .search div button i {
+    padding-right: 4px;
+  }
+  .search div button:hover {
+    background-color: rgb(49, 70, 138);
+    cursor: pointer;
+  }
+  .province_list .table p {
+    font-size: 19px;
+  }
+  .province_list table th,
+  .province_list table td {
+    font-size: 15px;
+  }
 }
-small {
-  position: absolute;
-  margin-left: 8px;
-  color: rgb(226, 34, 34);
-  font-size: 12px;
-}
-.province-box #capquyen .popup-content{
-  margin-top: 100px;
-}
-.province-box #capquyen .popup-content p {
-  padding-bottom: 0px;
-  padding-top: 25px;
-  font-family: sans-serif;
-}
-.province-box #capquyen .popup-content {
-  width: 600px;
-  height: 350px;
-}
-.province-box #capquyen .popup-content>div>label {
-  margin-left: 7%;
-  padding-top: 15px;
-  display: block;
-  color: rgb(68, 67, 67);
-}
-.province-box #capquyen .content div label {
-  font-weight: 400;
-}
-.province-box #capquyen .popup-content .row {
-  width: 85%;
-  margin: auto;
-}
-.province-box #capquyen .popup-content .row div {
-  width: 100%;
-}
-.province-box #capquyen .popup-content input{
+@media screen and (max-width: 620px) {
+  .head {
+    text-align: center;
+  }
+  .head h2{
+    font-size: 25px;
+  }
+  .province-box  .add_province button {
     height: 33px;
-}
-.province-box #capquyen .popup-content input[type="time"]{
-  width: 90%;
-}
-.province-box #capquyen .popup-content .btn {
-  width: 230px;
-}
-.province-box #capquyen .popup-content button {
-  width: 85px;
-  height: 35px;
-  font-size: 14px;
-}
-.province-box #delete .popup-content {
-  width: 365px;
-  height: 190px;
-  margin-top: 200px;
-  background-color: rgb(249, 249, 250);
-}
-.province-box #delete .popup-content p {
-  font-family: sans-serif;
-  padding-top: 20px;
-  padding-bottom: 15px;
-}
-.province-box #delete .popup-content i {
-  text-align: center;
-  font-size: 60px;
-  width: 100%;
-  color: rgb(138, 139, 141);
-}
-.province-box #delete .popup-content .btn {
-  width: 55%;
-  margin: auto;
-  margin-top: 15px;
-}
-.province-box #delete .popup-content .btn button {
-  height: 33px;
-  border-radius: 6px 6px 6px 0px;
-  margin: 5px;
-}
-
-.province-box #edit .popup-content {
-  width: 550px;
-  margin-top: 80px;
-  border: none;
-  box-shadow:  5px 5px 5px rgb(207, 210, 235);
-  background-color: rgb(247, 244, 244);
-}
-.province-box #edit .popup-content .title {
-  height: 40px;
-  background-color: rgb(73, 75, 150);
-  width: 100%;
-  margin-bottom: 10px;
-}
-.province-box #edit .popup-content p {
-  font-size: 15px;
-  padding: 0;
-  text-align: left;
-  margin-bottom: 3px;
-}
-.province-box #edit .popup-content label {
-  font-weight: 450;
-}
-.province-box #edit .popup-content input {
-  height: 34px;
-}
-.province-box #edit .popup-content .content {
-  width: 90%;
-  margin: auto;
-}
-.province-box #edit .popup-content .content .group {
-  margin-bottom: 15px;
-}
-.province-box #edit .popup-content .content .div-row{
-  flex: 1;
-  margin-right: 15px;
-}
-.province-box #edit .popup-content .content #password-reset {
-  width: 235px;
-}
-.province-box #edit .popup-content .bottom {
-  background-color: rgb(190, 198, 235);
-}
-.province-box #edit .popup-content .bottom .btn {
-  padding-bottom: 20px;
-  padding-top: 20px;
-  width: 45%;
-}
-.province-box #edit .popup-content .bottom .btn button {
-  height: 36px;
-}
-sup {
-  position: absolute;
-  color: rgb(226, 34, 34);
-  font-size: 13px;
-  margin-left: 3px;
-  margin-bottom: 3px;
-  font-weight: normal;
-}
-.province-box .popup .content div input {
-  margin: 5px;
-  height: 40px;
-  border: 1px solid #b0b6ca;
-}
-.province-box .popup .btn button {
-  margin: auto;
-  height: 40px;
-  width: 115px;
-  border: 1px solid #768daa;
-  font-size: 16px;
-}
-.province-box .popup .btn button.submit_btn {
-  background-color: #2b2d79;
-  color: white;
-}
-.province-box .popup .btn button.submit_btn:hover {
-  background-color: #505a96;
-}
-.province-box .popup .btn button.cancel_btn {
-  background-color: #d6d2d2;
-  color: rgb(68, 67, 67);
-}
-.province-box .popup .btn button.cancel_btn:hover {
-  background-color: rgb(180, 179, 179);
+    width: 185px;
+  }
+  .province_list .table p {
+    font-size: 17.5px;
+  }
+  .search {
+    display: block;
+  }
+  .search div {
+    display: inline-flex;
+    margin: 10px 0;
+  }
+  .search div input {
+    width: 270px;
+  }
+  .province_list table th,
+  .province_list table td {
+    font-size: 15px;
+    padding: 0 3px;
+  }
 }
 
 /* ----------------nút công tắc--------------- */
@@ -503,83 +417,13 @@ sup {
   background: #154297;
 }
 .switch input:checked ~ label i {
-  right: -1%;
+  right: -5%;
 }
 .switch input:checked ~ label i:before {
   content: "on";
-  right: 110%;
+  right: 105%;
   color: #6783bb;
   text-shadow: 
     0 1px 0 #7e94a1,
     0 -1px 0 #808da7;
-}
-/* --------------nút công tắc------------ */
-@media screen and (max-width: 2000px) {
-  .province-box {
-    width: 90%;
-    margin-left: 4%;
-  }
-  fieldset div:first-child input {
-    margin-left: 30px;
-  }
-  fieldset div input {
-    width: 270px;
-    margin: 10px;
-  }
-} 
-@media screen and (max-width: 1050px) {
-  .province-box {
-    width: 95%;
-    margin: auto;
-  }
-  fieldset div input {
-    width: 240px;
-    margin: 8px;
-  }
-  .province_list div.table {
-    overflow-x:auto;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .province-box {
-    width: 97%;
-  }
-  fieldset div input {
-    width: 100%;
-    margin: 8px;
-  }
-  .province_list {
-    overflow-x:auto;
-  }
-}
-@media screen and (max-width: 600px) {
-fieldset {
-  display: block;
-  height: 175px;
-}
-fieldset div:first-child input {
-  margin-left: 0px;
-}
-fieldset div {
-  position: relative;
-  display: block;
-  width: 90%;
-  margin: auto;
-}
-fieldset div button {
-  width: 100%;
-  height: 40px;
-}
-.province-box .title {
-  text-align: center;
-}
-.province-box .title h2 {
-  margin: 0;
-  margin-top: 10px;
-}
-.province-box .add_province button{
-  float:unset;
-  margin-top: 20px;
-}
 }

@@ -31,30 +31,23 @@
 @include('aSite.header')
  
     <div class="home-content">
-        <h2 style="margin-left: 4%; margin-bottom: 0px; margin-top: 30px; font-weight: 400;" >
-        Theo dõi nhập liệu
-        </h2>
+        <p>Theo dõi nhập liệu</p>
         <div class="dataEntry">
-            <div class="lineChart">
+            <div class="chart lineChart">
                 <p>Dữ liệu tiêm theo ngày</p>
                 <canvas id="linechart" style="max-height: 420px;"></canvas>
             </div>
-            <div class="barChart">
+            <div class="chart barChart">
                 <div class="">
-                    <h3>10 địa phương có tiến độ điều tra và nhập liệu nhanh nhất</h3>
-                    <!-- <span>(Tính đến ngày cập nhật)</span> -->
+                    <p>10 địa phương có tiến độ điều tra và nhập liệu nhanh nhất<p>
                     <canvas id="barchartTop"></canvas>
-                    <p><span style="font-weight: bold;">Ghi chú:</span>...</p>
                 </div>
                 <div class="">
-                    <h3>10 địa phương có tiến độ điều tra và nhập liệu chậm nhất</h3>
-                    <!-- <span>(Tính đến ngày)</span> -->
+                    <p>10 địa phương có tiến độ điều tra và nhập liệu chậm nhất<p>
                     <canvas id="barchartLow"></canvas>
-                    <p><span style="font-weight: bold;">Ghi chú:</span> ...</p>
-                
                 </div>
             </div>
-            <div class="provinceChart">
+            <div class="chart provinceChart">
                 <p>Theo dõi nhập liệu theo từng tỉnh/ thành phố</p>
                 <form class="row" action="">
                     <select type="input" name="province" id="province">
@@ -66,8 +59,8 @@
                 </form>
                 <div class="prvChart">
                     <div>
-                        <h3 style="margin: 20px 0 0 20px;">Số lượng người được khảo sát cập nhật theo ngày</h3>
-                        <span style="margin: 0 20px 0 20px;">Đơn vị: Người</span>
+                        <p>Số lượng người được khảo sát cập nhật theo ngày</p>
+                        <span>Đơn vị: Người</span>
                         <canvas style="max-height: 350px"; id="provinceLineChart"></canvas>
                     </div>
                     <div>

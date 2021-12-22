@@ -1,177 +1,477 @@
-.home-content .chart {
-    position: relative;
+.chart {
+  position: relative;
+  margin: auto;
+}
+.highcharts-figure,
+.highcharts-data-table table {
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.chart .chart_group {
+  position: relative;
+  max-width: 1030px;
+  margin: auto;
+  margin-top: 50px;
+}
+.chart .chart_group div {
+  background-color: rgba(255, 255, 255, 0.918);
+  width: 100%;
+  margin: 5px;
+}
+.chart .chart_group div canvas {
+  max-width: 100%;
+}
+.chart .chart_group div h3 {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  padding-top: 20px;
+  padding-left: 7px;
+}
+.chart .chart_group div span {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  padding-left: 7px;
+}
+.chart .pieChartgroup {
+  margin: auto;
+  width: 90%;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+.chart .pieChartgroup .title {
+  position: relative;
+  text-align: center;
+  color:rgb(12, 28, 63);
+  min-width: 300px!important;
+  padding-top: 30px;
+  background-color: white;
+  font-family: Arial, sans-serif;
+}
+.pieChartgroup .title h1 {
+  font-family: sans-serif;
+}
+
+.chart .pieChartgroup .title img {
+  height: 120px;
+}
+.chart .pieChartgroup .title::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;  
+  opacity: .4; 
+  z-index: 1;
+  background:rgba(0, 0, 0, 0.1);
+}
+.pieChartgroup .label {
+  display: block;
+  text-align: center;
+}
+.pieChartgroup .label button {
+  height: 10px;
+  width: 40px;
+  border: none;
+}
+.pieChartgroup .label label {
+  color: #686868;
+  font-size: 13px;
+}
+.chart .pieChartgroup div {
+  margin: auto;
+}
+.pieChartgroup div.canvas div{
+  flex: 1;
+}
+.pieChartgroup .canvas div canvas {
+  max-width: 100%;
+}
+.chart .table {
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color:rgb(43, 42, 42);
+  overflow-x: scroll;
+}
+.chart .table .title {
+  text-align: center;
+  font-weight: 500;
+  font-family: sans-serif;
+}
+.chart .table .title p{
+  font-size: 15px;
+  font-family: sans-serif;
+}
+.chart .table table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+.chart .table table thead {
+  font-family: sans-serif;
+  background: #5b2da5;
+  color: rgb(216, 214, 214);
+}
+.chart .table table thead th {
+  padding: 3px;
+  font-weight: unset;
+  border: 1px solid #d1d1d1;
+}
+.chart .table table tbody th {
+  font-family: sans-serif;
+  padding: 3px;
+}
+.chart .table table tbody tr td,
+.chart .table table tbody tr th {
+  text-align: center;
+  border: 1px solid #d1d1d1;
+}
+.chart .table table tbody tr td:first-child {
+  text-align: left;
+  text-indent: 7px;
+  min-width: 300px;
+}
+.chart .laborIndustry {
+  width: 80%;
+  margin: auto;
+}
+.chart .laborIndustry .title img {
+  width: 200px;
+  min-width: 300px;
+}
+.chart .laborIndustry .title h1{
+  font-family: sans-serif;
+}
+.chart .laborIndustry .title h1 label {
+  font-size: 15px;
+  font-weight: 400;
+}
+.chart .laborIndustry div canvas {
+    max-width: 100%;
+}
+
+.top {
+  position: relative;
+  background-color: white;
+}
+.top::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;  
+  opacity: .4; 
+  z-index: 1;
+  background:rgba(0, 0, 0, 0.1);
+}
+.top > div >h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #06204d;
+}
+.top span {
+  font-family: sans-serif;
+}
+.top >div > div> h1 {
+  margin: auto;
+  color: #06204d;
+}
+.top p {
+  color: #06204d;
+}
+.top .top-right {
+  width: 100%;
+  text-align: center;
+}
+
+.line {
+  width: 90%;
+  border-top: 1px solid #969595;
+  margin: auto;
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 2000px) {
+  .chart {
     width: 90%;
-    margin: auto;
   }
-  .highcharts-figure,
-  .highcharts-data-table table {
-    display: block;
-    width: 1020px;
-    margin: auto;
-    margin-top: 30px;
-  }
-  
-  .chart .chart_group {
-    position: relative;
-    width: 1030px;
-    margin: auto;
-    margin-top: 50px;
-  }
-  .chart .chart_group div {
-    background-color: rgba(255, 255, 255, 0.918);
-    width: 100%;
-    margin: 5px;
-  }
-  .chart .chart_group div h3 {
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    padding-top: 20px;
-    padding-left: 7px;
-  }
-  .chart .chart_group div span {
-    font-family: Arial, sans-serif;
-    font-size: 15px;
-    padding-left: 7px;
-  }
-  .chart .pieChartgroup {
-    margin: auto;
-    width: 90%;
-    margin-top: 10px;
-    margin-bottom: 50px;
-  }
-  .chart .pieChartgroup .title {
-    position: relative;
-    text-align: center;
-    color:rgb(12, 28, 63);
-    min-width: 300px!important;
-    padding-top: 30px;
-    background-color: white;
-    font-family: Arial, sans-serif;
-  }
-  .chart .pieChartgroup .title img {
-    height: 120px;
-  }
-  .chart .pieChartgroup .title::before {
-    content: "";
-    position: absolute;
-    top: 0; 
-    left: 0;
-    width: 100%; 
-    height: 100%;  
-    opacity: .4; 
-    z-index: 1;
-    background:rgba(0, 0, 0, 0.1);
-  }
-  .chart .pieChartgroup div {
-    margin: auto;
-  }
-  .chart .table {
-    width: 85%;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    color:rgb(43, 42, 42);
-  }
-  .chart .table .title {
-    font-size: 1.3rem;
-    text-align: center;
-    font-weight: 500;
-  }
-  .chart .table .title p{
-    font-size: 15px;
-  }
-  .chart .table table {
-    width: 100%;
-  }
-  .chart .table table thead {
-    font-family: sans-serif;
-    background: #5b2da5;
-    color: rgb(216, 214, 214);
-  }
-  .chart .table table thead th {
-    padding: 8px 5px;
-    font-weight: unset;
-  }
-  .chart .table table tbody tr td {
-    text-align: center;
-  }
-  .chart .table table tbody tr td:first-child {
-    text-align: left;
-    text-indent: 7px;
-    min-width: 300px;
-  }
-  .chart .laborIndustry {
-    width: 80%;
-    margin: auto;
-  }
-  .chart .laborIndustry .title img {
-    width: 200px;
-    min-width: 300px;
-  }
-  .chart .laborIndustry .title h1{
-    font-family: sans-serif;
-    font-size: 28px;
-  }
-  .chart .laborIndustry .chart {
-    position: relative;
-  }
-  .chart .laborIndustry .chart::before {
-    content: "";
-    position: absolute;
-    top: 0; 
-    left: 0;
-    width: 100%; 
-    height: 100%;  
-    opacity: .4; 
-    z-index: 1;
-    background:rgba(0, 0, 0, 0.1);
-  }
-  .chart .laborIndustry div {
-    margin: auto;
-  }
-  
-  .home-content .top {
-    position: relative;
-    background-color: white;
-  }
-  .home-content .top::before {
-    content: "";
-    position: absolute;
-    top: 0; 
-    left: 0;
-    width: 100%; 
-    height: 100%;  
-    opacity: .4; 
-    z-index: 1;
-    background:rgba(0, 0, 0, 0.1);
-  }
-  .home-content .top img{
+  .top img{
     height: 300px;
     margin-left: 80px;
   }
-  .home-content .top > div >h1 {
-    font-family: Arial, Helvetica, sans-serif;
+  .top > div >h1 {
     font-size: 35px;
-    color: #06204d;
     padding: 20px;
     padding-top: 80px;
   }
-  .home-content .top span {
-    font-family: sans-serif;
-    font-size: 18px;
-  }
-  .home-content .top >div > div> h1 {
+  .top >div > div> h1 {
     border-bottom: 3px solid #07204e;
     width: 450px;
-    margin: auto;
     font-size: 40px;
-    color: #06204d;
   }
-  .home-content .top p {
-    color: #06204d;
+  .top p {
+    font-size: 18px;
   }
-  .home-content .top .top-right {
-    width: 100%;
-    text-align: center;
+  .top .top-right {
     margin-right: 70px;
   }
+
+  .highcharts-figure {
+    width: 1020px;
+    margin-top: 30px;
+  }
+  .chart .chart_group {
+    margin-top: 30px;
+  }
+  .laborIndustry .title h1 {
+    font-size: 28px;
+  }
+  .chart .table {
+    width: 90%;
+  }
+  .table .title {
+    font-size: 1.4rem;
+  }
+  .table table {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .chart {
+    width: 92%;
+  }
+  .top img{
+    height: 280px;
+    margin-left: 70px;
+  }
+  .top > div >h1 {
+    font-size: 32px;
+    padding: 10px;
+    padding-top: 80px;
+  }
+  .top >div > div> h1 {
+    font-size: 35px;
+  }
+  .highcharts-figure {
+    width: calc(100% - 50px);
+  }
+  .pieChartgroup {
+    display: block;
+  }
+  .pieChartgroup div.title{
+    display: flex;
+    width: 100%;
+    text-align: center;
+  }
+  .pieChartgroup div.title h1 {
+    flex: 1;
+    text-align: right;
+    margin-top: 15px;
+    height: 83px;
+    padding-right: 15px;
+    border-right: 2.5px solid #a6a6a7;
+    padding-top: 10px;
+  }
+  
+  .pieChartgroup div.title > div {
+    flex: 1;
+    margin-left: auto;
+  }
+  .pieChartgroup div.title > div img {
+    float: left;
+    height: 110px;
+  }
+  
+  .laborIndustry {
+    display: block;
+  }
+  .laborIndustry div.title{
+    display: flex;
+    width: 100%;
+    text-align: center;
+  }
+  .laborIndustry div.title h1 {
+    font-size: 27px;
+    flex: 1;
+    text-align: right;
+    margin-top: 20px;
+    height: 160px;
+    padding-right: 15px;
+    border-right: 3px solid #a6a6a7;
+    padding-top: 23px;
+  }
+  .laborIndustry div.title > div img {
+    float: left;
+    height: 200px;
+  } 
+  .chart .laborIndustry div canvas {
+    max-height: 360px;
+  }
+  .chart .table {
+    width: 93%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .chart {
+    width: 95%;
+  }
+  .top > div >h1 {
+    font-size: 28px;
+    padding-top: 60px;
+  }
+  .top >div > div> h1 {
+    width: 410px;
+    font-size: 33px;
+  }
+  .top p {
+    font-size: 17px;
+  }
+  .top .top-right {
+    margin-right: 65px;
+  }
+  .highcharts-figure {
+    width: calc(100% - 20px);
+    margin-top: 20px;
+  }
+  .chart_group {
+    display: block;
+  }
+  .chart_group > div {
+    display: block;
+    max-width: calc(100% - 20px); 
+    margin: auto;
+  }
+  .chart_group > div canvas {
+    max-height: 280px;
+  }
+  .chart_group > div:last-child canvas {
+    margin-top: 10px;
+  }
+  .laborIndustry div.title h1 {
+    font-size: 25px;
+  }
+  .chart .table {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 850px) {
+  .chart {
+    width: 97%;
+  }
+  .top img{
+    height: 230px;
+    margin-left: 15px;
+  }
+  .top > div >h1 {
+    padding: 10px;
+    padding-top: 50px;
+    width: 400px;
+    font-size: 24px;
+  }
+  .top >div > div> h1 {
+    border-bottom: 2px solid #07204e;
+    font-size: 29px;
+  }
+  .top .top-right {
+    margin-right: 70px;
+    padding-right: 55px;
+  }
+  .highcharts-figure {
+    width: 100%;
+    margin-top: 15px;
+  }
+  .pieChartgroup div.title h1 {
+    font-size: 22px;
+    height: 77px;
+  }
+  .laborIndustry div.title h1 {
+    font-size: 22px;
+    margin-top: 20px;
+    height: 140px;
+    padding-top: 30px;
+  }
+  .laborIndustry div.title div img {
+    height: 180px;
+  }
+  .chart .table table {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 730px) {
+  .laborIndustry div.title{
+    width: 100%;
+    text-align: center;
+  }
+  .laborIndustry div.title h1 {
+    font-size: 28px;
+    text-align: center;
+    border-right: unset;
+  }
+  .laborIndustry div.title > div {
+    display: none;
+  }
+  .laborIndustry div.canvas canvas {
+    max-width: 100%!important;
+  }
+  .table .title {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 650px) {
+  .top div:first-child{
+    display: none;
+  }
+  .top > div >h1 {
+    padding: unset;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    width: unset;
+    font-size: 25px;
+  }
+  .top >div > div> h1 {
+    border-bottom: 2px solid #07204e;
+    font-size: 30px;
+  }
+  .top p {
+    font-size: 15px;
+  }
+  .top .top-right {
+    margin-right: unset;
+    padding: unset;
+  }
+  .highcharts-figure {
+    margin-top: 30px;
+  }
+
+  .pieChartgroup div.title{
+    width: 100%;
+    text-align: center;
+  }
+  .pieChartgroup div.title h1 {
+    font-size: 20px;
+    text-align: center;
+    border-right: unset;
+  }
+  .pieChartgroup div.title > div {
+    display: none;
+  }
+  .pieChartgroup div.canvas canvas {
+    max-width: 100%!important;
+  }
+  .chart .table {
+    width: 97%;
+  } 
+  .chart .table table {
+    font-size: 14px;
+  }
+  .table .title {
+    font-size: 1.1em;
+  }
+}  
+@media screen and (max-width: 600px) {
+  .table .title {
+    font-size: 1em;
+  }
+}
