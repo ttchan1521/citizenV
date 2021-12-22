@@ -17,7 +17,7 @@ class loginController extends Controller
 
         if ($user) {
             Session::put('user', $user);
-            return \response()->json(['success' =>true, 'url' => route('aSite.phanquyen', ['position' => $user->position])]);
+            return \response()->json(['success' =>true, 'url' => route('admin.phanquyen', ['position' => $user->position])]);
         }
         else {
             return \response()->json(['success' => false, 'error' => 'Tài khoản hoặc tên đăng nhập của bạn không chính xác']);

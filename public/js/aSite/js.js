@@ -29,8 +29,27 @@ function add_province(){
 function permis_click(self){
   addSchedule.style.display = "block";
 }
+
+let row;
 function edit_click(self) {
+  row = self.parentNode.parentNode;
+  let id = row.querySelector(".row_id").innerHTML;
+  let name = row.querySelector(".row_name").innerHTML;
+  edit_data.querySelector("#edit_id").value = id;
+  edit_data.querySelector("#edit_id").disabled = true;
+  edit_data.querySelector("#edit_name").value = name;
+
+  let start = row.querySelector(".row_start").innerHTML;
+  let end = row.querySelector(".row_end").innerHTML;
+  start = start.split(" ");
+  end = end.split(" ");
+
+  edit_data.querySelector("#startDate-reset").value = start[0];
+  edit_data.querySelector('#startTime-reset').value = start[1];
+  edit_data.querySelector('#endDate-reset').value = end[0];
+  edit_data.querySelector('#endTime-reset').value = end[1];
   edit_data.style.display = "block";
+
 }
 window.onclick = function(e){
   if(e.target == addProvince || e.target == addSchedule 
@@ -126,15 +145,19 @@ function addLocal(id, name) {
   let col1 = document.createElement('td');
   col1.innerHTML = "<input type='checkbox' class='check' onclick='tick_box(this)'>";
   let col2 = document.createElement('td');
+  col2.classList.add("row_id");
   col2.innerHTML = id;
   let col3 = document.createElement('td');
   col3.innerHTML = name;
   col3.classList.add('left');
+  col3.classList.add("row_name");
 
   let col4 = document.createElement('td');
   col4.classList.add('left');
+  col4.classList.add('row_start');
   let col5 = document.createElement('td');
   col5.classList.add('left');
+  col5.classList.add('row_end');
 
   let col6 = document.createElement('td');
   col6.innerHTML = '<div class="switch"><input type="checkbox"><label><i></i></label></div>';
@@ -144,9 +167,11 @@ function addLocal(id, name) {
   col7.classList.add('tick');
 
   let col8 = document.createElement('td');
-  col8.innerHTML = '<a href=""><i class="fas fa-edit"></i></a>';
+  col8.innerHTML = '<a ><i class="fas fa-history"></i>';
   let col9 = document.createElement('td');
-  col9.innerHTML = '<a href=""><i class="fas fa-trash-alt"></i></a>';
+  col9.innerHTML = '<a onclick="edit_click(this)"><i class="fas fa-edit"></i></a>';
+  let col10 = document.createElement('td');
+  col10.innerHTML = '<a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a>';
 
   row.appendChild(col1);
   row.appendChild(col2);
@@ -157,6 +182,7 @@ function addLocal(id, name) {
   row.appendChild(col7);
   row.appendChild(col8);
   row.appendChild(col9);
+  row.appendChild(col10);
 
   document.getElementById('list').appendChild(row);
   
@@ -183,14 +209,17 @@ function tick(self){
   }
 }
 
+
+
 $(document).ready(function() {
   $('#popup').submit(function(e) {
     e.preventDefault();
 
     let id = $('#local_id').val();
     let name = $('#local_name').val();
+    let url = $("#local_url").val();
 
-    $.post('/addLocal', {
+    $.post(url, {
       '_token': $("#token").val(),
       'id': id,
       'name': name,
@@ -218,7 +247,7 @@ $(document).ready(function() {
     for (var i=0; i<list.length; i++) {
       if (list[i].checked == true) {
         local.push(list[i].parentNode.parentNode);
-        checks.push(list[i].parentNode.nextSibling.nextSibling.innerHTML);
+        checks.push(list[i].parentNode.parentNode.querySelector(".row_id").innerHTML);
       }
     }
 
@@ -227,7 +256,9 @@ $(document).ready(function() {
     let end_time = $("#end_time").val();
     let end_date = $("#end_date").val();
 
-    $.post("/addSchedule", {
+    let url = $("#schedule_url").val();
+
+    $.post(url, {
       '_token': $("#token2").val(),
       'start_time': start_time,
       'start_date' : start_date,
@@ -241,8 +272,8 @@ $(document).ready(function() {
         alert("Thêm lịch khai báo thành công");
         for (var i=0; i<local.length; i++) {
           console.log(local[i]);
-          local[i].childNodes[7].innerHTML = start_date + " " + start_time;
-          local[i].childNodes[9].innerHTML = end_date + " " + end_time;
+          local[i].querySelector(".row_start").innerHTML = start_date + " " + start_time + ":00";
+          local[i].querySelector(".row_end").innerHTML = end_date + " " + end_time + ":00";
           local[i].querySelector(".switch input").checked = true;
           clear();
           
@@ -251,6 +282,44 @@ $(document).ready(function() {
     });
 
   });
+
+  $("#edit").submit(function(e) {
+    e.preventDefault();
+
+    let id = $("#edit_id").val();
+    let name = $("#edit_name").val();
+    let start_date = $("#startDate-reset").val();
+    let start_time = $("#startTime-reset").val();
+    let end_date = $("#endDate-reset").val();
+    let end_time = $("#endTime-reset").val();
+
+    let password = $("#password-reset").val();
+    if (password == "") {
+      password = false;
+    }
+
+    let url = $("#update_url").val();
+
+    $.post(url, {
+      '_token': $("#token3").val(),
+      'id' : id,
+      'name': name,
+      'start_date' : start_date,
+      'start_time' : start_time,
+      'end_date' : end_date,
+      'end_time' : end_time,
+      'password' : password
+    }, function(response) {
+      if (response.success) {
+        alert("Cập nhật thành công");
+        closePopup();
+        row.querySelector(".row_name").innerHTML = name;
+        row.querySelector(".row_start").innerHTML = start_date + " " + start_time;
+        row.querySelector(".row_end").innerHTML = end_date + " " + end_time;
+      }
+    })
+  });
+  
 });
 
 function find() {
@@ -258,8 +327,8 @@ function find() {
   let target_name = document.getElementById('find_name').value;
   let target_id = document.getElementById('find_id').value;
   for (var i=0; i<list.length; i++) {
-    var id = list[i].childNodes[3].innerHTML;
-    var name = list[i].childNodes[5].innerHTML;
+    var id = list[i].querySelector(".row_id").innerHTML;
+    var name = list[i].querySelector(".row_name").innerHTML;
     
     var res = id.indexOf(target_id);
     var result = name.indexOf(target_name);

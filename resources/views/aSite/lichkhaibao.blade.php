@@ -24,56 +24,12 @@
             </div>
 
             <div class="table-data">
-                <div class="user_data">
-                    <div class="province_list">
-                        <div class="head">
-                            <h3>Danh sách lịch khai báo đã tạo</h3>
-                        </div>
-                        <div class="province_list_top">
-                            <button class="delete" onclick="popup_del()">Xóa</button>
-                            <div class="pagination">
-                                <a href="#">«</a>
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">»</a>
-                            </div>
-                        </div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <input type="checkbox" id="check_all" onclick="tick_box_all(this)">
-                                    </th>
-                                    <th>STT</th>
-                                    <th>Thời điểm bắt đầu</th>
-                                    <th>Thời điểm kết thúc</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody id="list">
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" class="check" onclick="tick_box(this)">  
-                                    </td>
-                                    <td>01</td>
-                                    <td class="left">hjkj</td>
-                                    <td class="left">hgew</td>
-                                    <td>
-                                        <a onclick="edit_click(this)"><i class="fas fa-eye"></i></a>
-                                        <a onclick="edit_click(this)"><i class="fas fa-edit"></i></a>
-                                        <a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                
+                
                 <div class="todo">
                     <div class="head">
-                        <h3>Danh sách các tỉnh</h3>
-                        <p>Có lịch khai báo từ ngày ... đến ngày ...</p>
+                        <h3>Danh sách các {{ $down }} chưa hoàn thành</h3>
+                        <br>
                     </div>
                     
                     <div class="todo-list" id="todo-list">
@@ -82,7 +38,7 @@
                             <!-- <button>Thêm tỉnh/tp</button> -->
                         </div>
                         <ul>
-                            <li class="title">Tỉnh / Thành phố</li>
+                            <li class="title">{{ $down }}</li>
                             <li>
                                 <p>Thái Bình</p>
                                 <i><i class="fas fa-trash-alt"></i></i>
@@ -99,7 +55,7 @@
             
             <div class="schedule">
                 <div class="head">
-                    <h3>Lịch thông báo từ a1</h3>
+                    <h3>Lịch khai báo</h3>
                 </div>
                 <div class="province_list_top">
                     <div class="pagination">
@@ -116,34 +72,29 @@
                         <th>STT</th>
                         <th>Thời điểm bắt đầu</th>
                         <th>Thời điểm kết thúc</th>
+                        <th>Trạng thái</th>
                         <th>Đánh dấu hoàn thành</th>
                     </tr>
+                    @php
+                        $stt = 1;
+                    @endphp
+                    @foreach ($schedule as $schedule)
                     <tr>
-                        <td>1</td>
+                        <td>{{ $stt++}}</td>
                         <td>
-                            rthfg
+                            {{ $schedule->start_date." ".$schedule->start_time }}
                         </td>
                         <td>
-                            fdgfdf
+                            {{ $schedule->end_date." ".$schedule->end_time }}
                         </td>
+                        <td>Mở</td>
                         <td class="tick">
                             <input type="checkbox" onclick="tick(this)">
                             <label><i class="fas fa-check tick-uncheck"></i></label>
                         </td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            Time
-                        </td>
-                        <td>
-                            Time
-                        </td>
-                        <td class="tick">
-                            <input type="checkbox" onclick="tick(this)">
-                            <label><i class="fas fa-check tick-uncheck"></i></label>
-                        </td>
-                    </tr>
+                    @endforeach
+                    
                 </table>
             </div>
         </div>

@@ -47,6 +47,6 @@ class admin extends Model
         if ($local) {
             return true;
         }
-        return false;
+        return [];
     }
 }

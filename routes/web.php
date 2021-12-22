@@ -29,7 +29,7 @@ Route::redirect('/', '/login');
 
 Route::post('/checkLogin', [loginController::class, 'check']);
 
-Route::group(['prefix' => "/aSite/{position}", 'as' => "aSite."],function() {
+Route::group(['prefix' => "/admin/{position}", 'as' => "admin."],function() {
     Route::get('/phanquyen', [phanquyen::class, 'index'])->name('phanquyen');
     Route::get('/lichkhaibao', [phanquyen::class, 'schedule'])->name('lichkhaibao');
     Route::get('/', function($position) {
@@ -43,8 +43,11 @@ Route::group(['prefix' => "/aSite/{position}", 'as' => "aSite."],function() {
     
     Route::get('/input_citizen', [input_citizen::class, 'index'])->name('input_citizen');
     Route::get('/survey', [survey::class, 'index'])->name('survey');
+
+    Route::post('/addLocal', [phanquyen::class, 'addLocal'])->name('addLocal');
+
+    Route::post('/addSchedule', [phanquyen::class, 'addSchedule'])->name('addSchedule');
+
+    Route::post('/updateLocal', [phanquyen::class, 'updateLocal'])->name('updateLocal');
 });
 
-Route::post('/addLocal', [phanquyen::class, 'addLocal']);
-
-Route::post('/addSchedule', [phanquyen::class, 'addSchedule']);

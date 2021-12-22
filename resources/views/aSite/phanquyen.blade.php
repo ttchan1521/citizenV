@@ -13,7 +13,7 @@
  
     <link href="{{ asset('css/aSite/phanquyen.css') }}" rel="stylesheet">
     <link href="{{ asset('css/aSite/sidebar.css') }}" rel="stylesheet">
-    <title> document </title>
+    <title> Quản lý truy cập </title>
 </head>
 @include('aSite.header')
 
@@ -21,19 +21,19 @@
         <div class="province-box">
             <div class="title">
                 <h2>Quản lý truy cập</h2>
-                <p>Danh sách tỉnh/thành phố</p>
+                <p>Danh sách {{ $down }}</p>
             </div>
             <div class="add_province">
-                <button onclick="add_province()">Thêm tỉnh/thành phố</button>
+                <button onclick="add_province()">Thêm {{ $down }}</button>
             </div>
             <form action="">
                 <fieldset>
                     <legend>Tìm kiếm: </legend>
                     <div>
-                        <input type="text" id="find_name"  placeholder="Nhập tên tỉnh/tp">
+                        <input type="text" id="find_name"  placeholder="Nhập tên {{ $down }}">
                     </div>
                     <div>
-                        <input type="text" id="find_id" placeholder="Nhập mã tỉnh/tp">
+                        <input type="text" id="find_id" placeholder="Nhập mã {{ $down }}">
                     </div>
                     <div>
                         <button type="submit"><i class="fas fa-search"></i>Tìm kiếm</button>
@@ -44,7 +44,7 @@
                 <div class="province_list_top">
                     <div class="button" id="button_list">
                         <button id="permis_btn" onclick="permis_click()">Cấp quyền</button> 
-                        <button>Hoàn thành</button>
+                        <button>Đóng</button>
                         <button onclick="popup_del()">Xóa</button>
                     </div>
                     
@@ -65,8 +65,8 @@
                                     <input type="checkbox" id="check_all" onclick="tick_box_all(this)">
                                 </th>
                                 <th rowspan="2" class="nopadding">Mã đăng <br>nhập</th>
-                                <th rowspan="2">Tên tỉnh/ thành phố</th>
-                                <th colspan="4">Quyền khai báo</th>
+                                <th rowspan="2">Tên {{ $down }}</th>
+                                <th colspan="5">Quyền khai báo</th>
                                 <th rowspan="2">Sửa</th>
                                 <th rowspan="2">Xóa</th>
                             </tr>
@@ -75,6 +75,7 @@
                                 <th>Ngày kết thúc</th>
                                 <th class="nopadding">Trạng thái</th>
                                 <th class="nopadding">Hoàn thành</th>
+                                <th class="nopadding">Lịch sử</th>
                             </tr>
                         </thead>
                         <tbody id="list">
@@ -84,13 +85,18 @@
                                 <td>
                                     <input type="checkbox" class="check" onclick="tick_box(this)">  
                                 </td>
-                                <td>{{ $local->id }}</td>
-                                <td class="left">{{ $local->name }}</td>
-                                <td class="left">{{ $local->start_date.' '.$local->start_time }}</td>
-                                <td class="left">{{ $local->end_date.' '.$local->end_time }}</td>
+                                <td class="row_id">{{ $local->id }}</td>
+                                <td class="left row_name">{{ $local->name }}</td>
+                                <td class="left row_start">{{ $local->start_date.' '.$local->start_time }}</td>
+                                <td class="left row_end">{{ $local->end_date.' '.$local->end_time }}</td>
                                 <td>
                                     <div class="switch">
-                                        <input type="checkbox">
+                                        @if ($local->status == "Open") 
+                                            <input type="checkbox" checked>
+                                        @else
+                                            <input type="checkbox">
+                                        @endif
+                                        
                                         <label><i></i></label>
                                     </div>
                                 </td>
@@ -98,8 +104,9 @@
                                     <input type="checkbox" onclick="tick(this)">
                                     <label><i class="fas fa-check"></i></label>
                                 </td>
-                                <td><a onclick="edit_click(this)"><i class="fas fa-edit"></i></a></td>
-                                <td><a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a></td>
+                                <td><a ><i class="fas fa-history"></i></td>
+                                <td><a onclick="edit_click(this)" class="row_edit"><i class="fas fa-edit"></i></a></td>
+                                <td><a onclick="popup_del()" class="row_delete"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
 
 
@@ -113,20 +120,21 @@
 
             <form id="popup" class="popup" action="">
                 <input type="hidden" id="token" value="{{ @csrf_token() }}">
+                <input type="hidden" id="local_url" value="{{ route('admin.addLocal', ['position' => $user->position ]) }}">
                 <div class="popup-content">
                     <div class="title">
                         <!-- <span class="close-btn">&times;</span> -->
-                        <p>Thêm tỉnh hoặc thành phố</p>
+                        <p>Thêm {{ $down }}</p>
                     </div>
                     <div class="content">
                         <div>
-                            <label for="">Nhập mã tỉnh/tp <sup>(*)</sup></label>
-                            <input type="text" id="local_id" placeholder="Nhập mã tỉnh/tp"> 
+                            <label for="">Nhập mã {{ $down }} <sup>(*)</sup></label>
+                            <input type="text" id="local_id" placeholder="Nhập mã {{ $down }}"> 
                             <small></small>  
                         </div>
                         <div>
-                            <label for="">Nhập tên tỉnh/tp <sup>(*)</sup></label>
-                            <input type="text" id="local_name" placeholder="Nhập tên tỉnh/tp">  
+                            <label for="">Nhập tên {{ $down }} <sup>(*)</sup></label>
+                            <input type="text" id="local_name" placeholder="Nhập tên {{ $down }}">  
                             <small></small> 
                         </div>
                         <div>
@@ -144,6 +152,7 @@
 
             <form id="capquyen" class="popup" action="">
             <input type="hidden" id="token2" value="{{ @csrf_token() }}">
+            <input type="hidden" id="schedule_url" value="{{ route('admin.addSchedule', ['position' => $user->position ]) }}">
                 <div class="popup-content">
                     <div class="title">
                         <!-- <span class="close-btn">&times;</span> -->
@@ -201,19 +210,22 @@
                 </div>
             </form>
             <form id="edit" class="popup" action="">
+                <input type="hidden" id="token3" value="{{ @csrf_token() }}">
+                <input type="hidden" id="update_url" value="{{ route('admin.updateLocal', ['position' => $user->position ]) }}">
                 <div class="popup-content">
                     <div class="title">
+                        Chỉnh sửa
                     </div>
                     <div class="content">
                         <div class="group row">
                             <div class="div-row">
                                 <label for="">Mã đăng nhập: </label>
-                                <input type="text" placeholder="Mã đăng nhập" id="provinceCode-reset">
+                                <input type="text" id="edit_id" placeholder="Mã đăng nhập" id="provinceCode-reset">
                                 <small></small>
                             </div>
                             <div class="div-row">
                                 <label for="">Tên tỉnh/tp: </label>
-                                <input type="text" placeholder="Tên tỉnh/tp" id="provinceName-reset">
+                                <input type="text" id="edit_name" placeholder="Tên {{ $down }}" id="provinceName-reset">
                                 <small></small>
                             </div>
                         </div>
@@ -261,6 +273,9 @@
         </div>
     </div>
   </section>
+  <script>
+      
+  </script>
   <script src="{{ asset('js/aSite/js.js')}}"></script>
 
 </body>
