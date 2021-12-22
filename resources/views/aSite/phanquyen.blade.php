@@ -104,9 +104,9 @@
                                     <input type="checkbox" onclick="tick(this)">
                                     <label><i class="fas fa-check"></i></label>
                                 </td>
-                                <td><a ><i class="fas fa-history"></i></td>
+                                <td><a onclick="showHistory(this)"><i class="fas fa-history"></i></td>
                                 <td><a onclick="edit_click(this)" class="row_edit"><i class="fas fa-edit"></i></a></td>
-                                <td><a onclick="popup_del()" class="row_delete"><i class="fas fa-trash-alt"></i></a></td>
+                                <td><a onclick="popup_del(this)" class="row_delete"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
 
 
@@ -194,6 +194,8 @@
             </form>
 
             <form id="delete" class="popup" action="">
+            <input type="hidden" id="token4" value="{{ @csrf_token() }}">
+            <input type="hidden" id="delete_url" value="{{ route('admin.deleteLocal', ['position' => $user->position ]) }}">
                 <div class="popup-content">
                     <div class="title">
                         <!-- <span class="close-btn">&times;</span> -->
@@ -205,10 +207,20 @@
                     </div>
                     <div class="btn">
                         <button class="cancel_btn" type="reset" onclick="closePopup()">Hủy bỏ</button>
-                        <button id="del_btn" class="submit_btn" type="submit" onclick="dell_click(this)">Xóa</button>
+                        <button id="del_btn" class="submit_btn" type="submit" >Xóa</button>
                     </div>
                 </div>
             </form>
+
+            <div id="history" class="popup">
+                    <div id="his-content">
+
+                    </div>
+                    <div class="btn">
+                        <button class="cancel_btn" type="reset" onclick="closePopup()">Hủy bỏ</button>
+                        
+                    </div>
+            </div>
             <form id="edit" class="popup" action="">
                 <input type="hidden" id="token3" value="{{ @csrf_token() }}">
                 <input type="hidden" id="update_url" value="{{ route('admin.updateLocal', ['position' => $user->position ]) }}">

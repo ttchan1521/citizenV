@@ -15,9 +15,9 @@ class admin extends Model
         $locals = DB::select('select id, name from admin where boss = ?', [$id]);
 
         if ($locals) {
-
+            $now = Date("Y-m-d");
             foreach($locals as $local) {
-                $schedule = DB::select('select start_date, start_time, end_date, end_time, status from schedule where nhan_quyen = ? limit 1', [$local->id]);
+                $schedule = DB::select('select start_date, start_time, end_date, end_time, status from schedule where nhan_quyen = ? and end_date > ? limit 1', [$local->id, $now]);
                 $local->start_date = "";
                     $local->start_time = "";
                     $local->end_date = "";
@@ -48,5 +48,14 @@ class admin extends Model
             return true;
         }
         return [];
+    }
+
+    public static function deleteLocal($id) {
+        $result = DB::delete('delete from admin where id = ?', [$id]);
+
+        if ($result) {
+            return true;
+        }
+        return false;
     }
 }

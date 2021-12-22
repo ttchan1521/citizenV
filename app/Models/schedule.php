@@ -36,6 +36,16 @@ class schedule extends Model
         return [];
     }
 
+    public static function loadHistory($nhan_quyen) {
+        $now = Date("Y-m-d");
+        $result = DB::select('select * from schedule where nhan_quyen = ? and end_date < ?', [$nhan_quyen, $now]);
+
+        if ($result) {
+            return $result;
+        }
+        return false;
+    }
+
     public static function updateLocal($nhan_quyen, $name, $password, $start_date, $start_time, $end_date, $end_time) {
         try {
             $result1 = DB::update('update admin set name = ? where id = ?', [$name, $nhan_quyen]);
@@ -60,7 +70,7 @@ class schedule extends Model
         }
 
     
-        
+        if ($end_date) {
 
         $id = DB::select('select sche_id from schedule where nhan_quyen = ? limit 1', [$nhan_quyen]);
 
@@ -85,6 +95,7 @@ class schedule extends Model
 
             
         }
+    }
 
     
 

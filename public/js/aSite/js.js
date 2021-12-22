@@ -22,6 +22,9 @@ var addProvince = document.querySelector(".province-box #popup");
 var addSchedule = document.querySelector(".province-box #capquyen");
 var delete_btn = document.querySelector(".province-box #delete");
 var edit_data = document.querySelector(".province-box #edit");
+var history_box = document.querySelector("#history");
+
+console.log(history_box);
 
 function add_province(){
   addProvince.style.display = "block";
@@ -31,6 +34,7 @@ function permis_click(self){
 }
 
 let row;
+let id;
 function edit_click(self) {
   row = self.parentNode.parentNode;
   let id = row.querySelector(".row_id").innerHTML;
@@ -53,11 +57,12 @@ function edit_click(self) {
 }
 window.onclick = function(e){
   if(e.target == addProvince || e.target == addSchedule 
-    || e.target == delete_btn || e.target == edit_data){
+    || e.target == delete_btn || e.target == edit_data || e.target == history_box){
     addProvince.style.display = "none";
     addSchedule.style.display = "none";
     delete_btn.style.display = "none";
     edit_data.style.display = "none";
+    history_box.style.display = "none";
   }
 }
 
@@ -66,9 +71,13 @@ function closePopup(){
   addProvince.style.display = "none";
   delete_btn.style.display = "none";
   edit_data.style.display = "none";
+  history_box.style.display = "none";
 }
-function popup_del(){
+function popup_del(self){
+  row = self.parentNode.parentNode;
+  id = row.querySelector(".row_id").innerHTML;
   delete_btn.style.display = "block";
+
 }     
 
 function view_citizen(){
@@ -138,6 +147,10 @@ function tick(self){
   } else {
       self.nextElementSibling.childNodes[0].classList.remove("tick-background");
   }
+}
+
+function showHistory(self) {
+  history_box.style.display = "block";
 }
 
 function addLocal(id, name) {
@@ -281,6 +294,8 @@ $(document).ready(function() {
       }
     });
 
+
+
   });
 
   $("#edit").submit(function(e) {
@@ -318,6 +333,22 @@ $(document).ready(function() {
         row.querySelector(".row_end").innerHTML = end_date + " " + end_time;
       }
     })
+  });
+
+  $("#delete").submit(function(e) {
+    e.preventDefault();
+
+    let url = $("#delete_url").val();
+    $.post(url, {
+      '_token': $("#token4").val(),
+      'id' : id
+    }, function(response) {
+      if (response.success) {
+        alert("Xóa thành công");
+        closePopup();
+        row.remove();
+      }
+    });
   });
   
 });

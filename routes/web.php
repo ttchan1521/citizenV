@@ -49,5 +49,9 @@ Route::group(['prefix' => "/admin/{position}", 'as' => "admin."],function() {
     Route::post('/addSchedule', [phanquyen::class, 'addSchedule'])->name('addSchedule');
 
     Route::post('/updateLocal', [phanquyen::class, 'updateLocal'])->name('updateLocal');
+
+    Route::post('/deleteLocal', [phanquyen::class, 'deleteLocal'])->name('deleteLocal');
+
+    Route::post('/loadHistory', [phanquyen::class, 'loadHistory'])->name('loadHistory');
 });
 

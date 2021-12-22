@@ -60,6 +60,14 @@ class phanquyen extends Controller
         }
         return \response()->json(['success' => false]);
     }
+
+    function loadHistory(Request $request) {
+        $nhan_quyen = $request->get('id');
+        $result = schedule::loadHistory($nhan_quyen);
+
+       return \response()->json(['data' => $result]);
+        
+    } 
     
     function addSchedule(Request $request) {
         $start_date = $request->get('start_date');
@@ -91,6 +99,18 @@ class phanquyen extends Controller
             return \response()->json(['success' => true]);
         }
         return \response()->json(['success' => false]);
+    }
+
+    function deleteLocal(Request $request) {
+        $id = $request->get('id');
+
+        $result = admin::deleteLocal($id);
+
+        if ($result) {
+            return \response()->json(['success' => true]);
+        }
+
+        return \response()->json(['success' =>false]);
     }
 
     function nameDown($position) {
