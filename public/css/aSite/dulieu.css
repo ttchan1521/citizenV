@@ -1,7 +1,10 @@
-h2 {
+  
+  h2 {
+    font-family: sans-serif;
     display: block;
     color: #323c4e;
     margin-bottom: 20px;
+    font-size: 27px;
   }
   .search_loca {
     position: relative;
@@ -12,6 +15,12 @@ h2 {
     display: block;
     height: 340px;
     width: 100%;
+    border: 1px solid #bcc1c9;
+    box-shadow: 0 4px 12px 0 rgb(34 41 47 / 30%);
+  }
+  .search_loca .search-box fieldset legend {
+    text-indent: 15px;
+    color:rgb(54, 53, 53)
   }
   
   .search_loca .search-box fieldset.select select,
@@ -20,6 +29,10 @@ h2 {
     width: 90%;
     margin: auto;
     margin-top: 13px;
+  }
+  .search_loca .search-box fieldset.select select,
+  .search_loca .search-box fieldset.select input {
+    border: 1px solid #b6c5e0;
   }
   .search_loca .search-box fieldset.select select:hover,
   .search_loca .search-box fieldset.select input:hover {
@@ -48,6 +61,9 @@ h2 {
     border-radius: 7px;
     color:rgb(32, 32, 32)
   }
+  .data div canvas {
+    max-width: 100%;
+  }
   input, select, option {
     display: block;
     border: 1px solid rgb(209, 208, 208);
@@ -60,12 +76,23 @@ h2 {
     background-color: rgb(240, 240, 240);
     text-indent: 12px;
   }
-  .search_loca .table table{
+  .search_loca .table {
+    position: relative;
     width: 100%;
+    border: 1px solid #b0b6ca;
+    background-color: rgb(241, 238, 241);
+    box-shadow: 0 4px 12px 0 rgb(34 41 47 / 50%);
+    margin-top: 12px;
+    margin-bottom: 30px;
+  }
+  .search_loca .table table{
+    position: relative;
+    width: 95%;
+    margin: auto;
     border-collapse: collapse;
     margin: auto;
-    margin-top: 0;
-    margin-left: 0.7%;
+    margin-bottom: 40px;
+    color: #323436;
   }
   .search_loca .table .paging {
     display: inline-block;
@@ -74,20 +101,57 @@ h2 {
   .search_loca .table .paging div {
     float: right;
   }
-  .search_loca .table th {
-    background-color: rgb(78, 15, 180);
-    color: #e7e8eb;
+  .pagination {
+    display: inline-block;
+    padding: 2.5%;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 3px 12px;
+    text-decoration: none;
+    border: 1px solid rgb(168, 166, 166);
+    margin: 1px;
+  }
+  .pagination a:hover {
+    background-color: #a4a9d8;
+    border: #a4a9d8;
+  }
+  .pagination a.active {
+    background-color: #6a84d8;
+    color: white;
+    border: 1px solid #757fd6;
+  }
+  table tbody tr:nth-child(odd){
+    background-color: rgb(241, 238, 241);
+  }
+  table tbody tr:nth-child(even){
+    background-color: rgb(212, 209, 212);
+  }
+  .table table th{
+    border-bottom: 3px solid rgb(184, 182, 182);
+    text-align: left;
+    font-family: sans-serif;
+    padding: 7px 0;
+  }
+  .table table td i {
+    color:rgb(12, 21, 153);
+    font-size: 19px;
+    margin: 0 3px;
+  }
+  .table table td{
+    border-bottom: 1px solid rgb(184, 182, 182);
     font-weight: 400;
   }
-  .search_loca .table th, 
-  .search_loca .table td {
-    padding: 4px 10px;
-    border: 1px solid #ddd;
-    font-size: 16px;
+  table tbody tr td {
+    padding: 5px 0;
   }
-  .search_loca .table td {
-    color: #333;
+  
+  .table table tbody tr:hover {
+    background-color: #b5b8c0;
   }
+  
   .search_loca .table th:first-child,
   .search_loca .table th:last-child {
     padding: unset;
@@ -98,13 +162,22 @@ h2 {
   .search_loca .table th:last-child {
     min-width: 40px;
   }
-  .search_loca .table td:first-child,
-  .search_loca .table td:last-child {
+  .table td:first-child,
+  .table th:first-child,
+  .table td:last-child,
+  .table th:last-child {
     text-align: center;
   }
-  .search_loca .table .setWidth {
-    min-width: 130px;
+  .table table th:first-child {
+    min-width: 50px!important;
   }
+  .table table th:last-child {
+    min-width: 70px!important;
+  }
+  .table .setWidth {
+    min-width: 130px!important;
+  }
+  /* ------------------------- */
   div.cancel_btn, div.next_btn {
     display: inline-block;
   }
@@ -159,39 +232,26 @@ h2 {
       width: 270px;
       margin: 10px;
     }
-    .dataEntry div.barChart {
-      display: flex;
-    }
-    .dataEntry div.barChart > div canvas {
-      margin: 20px 0;
-    }
-    .dataEntry .provinceChart .prvChart{
-      display: flex;
-    }
-    .dataEntry .provinceChart .prvChart div:first-child{
-      flex: 3;
-    }
-    .dataEntry .provinceChart .prvChart div:last-child{
-      flex: 1;
-    }
-    .dataEntry .provinceChart .prvChart div:last-child canvas{
-      max-width: 100%; 
-      margin-top: 20%;
-    }
     .search_loca {
       display: flex;
     }
     .search_loca .search-box {
-      flex: 2;
+      flex: 1;
     }
     .search_loca div.table {
-      flex: 5;
+      flex: 3;
     }
     .search_loca div.table .tbl {
       overflow-x: auto;
     }
+    .search_loca .table {
+      margin-left: 17px;
+    }
+    .search_loca .table th {
+      font-size: 17px;
+    }
   } 
-  @media screen and (max-width: 1050px) {
+  @media screen and (max-width: 1100px) {
     .province-box {
       width: 95%;
       margin: auto;
@@ -226,9 +286,12 @@ h2 {
     .search_loca div.table .paging {
       display: inline-block;
     }
+    .search_loca .table {
+      margin-left: 0px;
+    }
   }
   
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 700px) {
     .province-box {
       width: 97%;
     }
@@ -239,31 +302,14 @@ h2 {
     .province_list {
       overflow-x:auto;
     }
-    .dataEntry div.barChart {
-      display: block;
-    }
-    .dataEntry .barChart div {
-      display: block;
-    }
-    .dataEntry div.barChart > div canvas {
-      max-height: 250px;
-      margin: 10px 0;
-    }
-    .dataEntry .provinceChart .prvChart{
-      display: block;
-    }
-    .dataEntry .provinceChart .prvChart div{
-      display: block;
-    }
-    .dataEntry .provinceChart .prvChart div:last-child {
-      width: 40%;
-      margin: auto;
-    }
-    .dataEntry .provinceChart .prvChart div:last-child canvas {
-      margin-top: 10px;
-    }
     .search_loca .search-box {
       display: block;
+    }
+    .search_loca .table {
+      font-size: 15px;
+    }
+    .search_loca .table th {
+      font-size: 16px;
     }
   }
   @media screen and (max-width: 600px) {
@@ -284,16 +330,5 @@ h2 {
     width: 100%;
     height: 40px;
   }
-  .province-box .title {
-    text-align: center;
-  }
-  .province-box .title h2 {
-    margin: 0;
-    margin-top: 10px;
-  }
-  .province-box .add_province button{
-    float:unset;
-    margin-top: 20px;
-  }
-  }
+}
   

@@ -1,13 +1,17 @@
+* {
+  color:rgb(59, 54, 54);
+}
+p {
+  font-family: sans-serif;
+}
+canvas {
+  max-width: 100%;
+}
 .dataEntry {
     position: relative;
     width: 95%;
     margin: auto;
     margin-bottom: 30px;
-  }
-  .dataEntry h3,
-  .dataEntry span {
-    color:rgb(24, 25, 26);
-    font-weight: 400;
   }
   .dataEntry .lineChart {
     position: relative;
@@ -19,18 +23,12 @@
     border-radius: 10px;
     background-color: rgb(252, 252, 252);
     }
-  .dataEntry .lineChart p {
-    display: block;
-    margin: 25px 0 0 5%;
-    font-size: 20px;
-    font-weight: 500;
-    }
   .dataEntry .lineChart canvas {
     position: relative;
     display: block;
+    max-width: 95%;
+    min-width: 94%;
     margin: auto;
-    margin-right: 2%!important;
-    margin-left: 6%!important;
     }
    .dataEntry div.barChart {
      position: relative;
@@ -47,14 +45,6 @@
     padding: 30px;
     background-color: rgb(253, 251, 251);
     }
-  .dataEntry  div.barChart > div span {
-    font-size: 15px;
-    }
-  .dataEntry  div.barChart > div p {
-    text-align: center;
-    font-size: 15px;
-    font-style: oblique;
-    }
   .provinceChart {
     background-color: #d7deec;
     border-radius: 10px;
@@ -63,41 +53,64 @@
   }
   .provinceChart p {
     padding: 20px;
-    font-size: 25px;
-    color:rgb(32, 32, 32);
-    font-family: sans-serif;
+    font-size: 23px;
   }
   .provinceChart form {
     margin-left: 20px;
   }
   .provinceChart form select {
-    width: 250px;
-    background-color: white;
-    border: 1px solid #96a7df;
+    background-color: rgb(248, 244, 244);
+    border: 1px solid #8991ad;
+    border-radius: 3px;
+    text-indent: 5px;
+    font-family: sans-serif;
   }
   .provinceChart form .btn {
     margin-left: 10px;
   }
   .provinceChart form .btn button {
-    height: 37px;
-    width: 110px;
-    font-size: 16px;
-    background-color: #0e1474;
+    border: 1px solid #374681;
+    background-color: #30347c;
+    color: rgb(231, 229, 229);
+  }
+  .provinceChart form .btn button i {
+    color: rgb(231, 229, 229);
   }
   .provinceChart form .btn button:hover {
     font-size: 15px;
   }
   @media screen and (max-width: 2000px) {
-    .province-box {
-      width: 90%;
-      margin-left: 4%;
+    .home-content > p {
+      font-size: 27px;
+      padding: 3%;
+      font-weight: 550;
+      padding-bottom: 0;
     }
-    fieldset div:first-child input {
-      margin-left: 30px;
+    .chart:first-child p {
+      font-size: 23px;
+      padding: 2.5% 0 0 2.5%;
     }
-    fieldset div input {
-      width: 270px;
-      margin: 10px;
+    .chart p {
+      font-size: 20px;
+    }
+    .provinceChart .prvChart p{
+      padding: 20px;
+      font-size: 18px;
+      padding-bottom: 0;
+    }
+    .provinceChart .prvChart span {
+      font-size: 15px;
+      padding-left: 20px;
+    }
+    .provinceChart form select {
+      width: 250px;
+      font-size: 16px;
+    }
+    .provinceChart form .btn button {
+      height: 37px;
+      width: 110px;
+      font-size: 16px;
+      border-radius: 10px 10px 10px 0;
     }
     .dataEntry div.barChart {
       display: flex;
@@ -108,76 +121,62 @@
     .dataEntry .provinceChart .prvChart{
       display: flex;
     }
-    .dataEntry .provinceChart .prvChart div:first-child{
+    .provinceChart .prvChart div:first-child{
       flex: 3;
     }
-    .dataEntry .provinceChart .prvChart div:last-child{
+    .provinceChart .prvChart div:last-child{
       flex: 1;
     }
-    .dataEntry .provinceChart .prvChart div:last-child canvas{
+    .provinceChart .prvChart div:last-child canvas{
       max-width: 100%; 
       margin-top: 20%;
     }
-    .search_loca {
-      display: flex;
-    }
-    .search_loca .search-box {
-      flex: 2;
-    }
-    .search_loca div.table {
+  } 
+  @media screen and (max-width: 1150px) {
+    .dataEntry .provinceChart .prvChart div:first-child{
       flex: 5;
     }
-    .search_loca div.table .tbl {
-      overflow-x: auto;
+    .dataEntry .provinceChart .prvChart div:last-child{
+      flex: 2;
     }
-  } 
+  }
   @media screen and (max-width: 1050px) {
     .province-box {
       width: 95%;
       margin: auto;
     }
-    fieldset div input {
-      width: 240px;
-      margin: 8px;
+    .provinceChart .prvChart p{
+      font-size: 17px;
+    }
+    .provinceChart .prvChart span {
+      font-size: 14px;
     }
     .province_list div.table {
       overflow-x:auto;
     }
-    
-    .search_loca {
-      display: block;
+    .dataEntry .provinceChart .prvChart div:first-child{
+      flex: 9;
     }
-    .search_loca .search-box {
-      display: flex;
-    }
-    .search_loca .search-box form {
-      flex: 2;
-      width: 100%;
-      margin-right: 20px;
-    }
-    .search_loca .search-box div {
-      flex: 3;
-      width: 100%;
-    }
-    .search_loca div.table {
-      display: block;
-      margin-top: 20px;
-    }
-    .search_loca div.table .paging {
-      display: inline-block;
+    .dataEntry .provinceChart .prvChart div:last-child{
+      flex: 4;
     }
   }
   
   @media screen and (max-width: 900px) {
-    .province-box {
-      width: 97%;
+    .chart:first-child p {
+      font-size: 21px;
     }
-    fieldset div input {
-      width: 100%;
-      margin: 8px;
+    .chart p {
+      font-size: 19px;
     }
-    .province_list {
-      overflow-x:auto;
+    .provinceChart form select {
+      width: 240px;
+      height: 34px;
+    }
+    .provinceChart form .btn button {
+      height: 35px;
+      width: 105px;
+      border-radius: 9px 9px 9px 0;
     }
     .dataEntry div.barChart {
       display: block;
@@ -196,44 +195,43 @@
       display: block;
     }
     .dataEntry .provinceChart .prvChart div:last-child {
-      width: 40%;
+      width: 50%;
       margin: auto;
     }
     .dataEntry .provinceChart .prvChart div:last-child canvas {
       margin-top: 10px;
     }
-    .search_loca .search-box {
-      display: block;
-    }
   }
   @media screen and (max-width: 600px) {
-  fieldset {
-    display: block;
-    height: 175px;
-  }
-  fieldset div:first-child input {
-    margin-left: 0px;
-  }
-  fieldset div {
-    position: relative;
-    display: block;
-    width: 90%;
-    margin: auto;
-  }
-  fieldset div button {
-    width: 100%;
-    height: 40px;
-  }
-  .province-box .title {
-    text-align: center;
-  }
-  .province-box .title h2 {
-    margin: 0;
-    margin-top: 10px;
-  }
-  .province-box .add_province button{
-    float:unset;
-    margin-top: 20px;
-  }
+    .home-content > p {
+      font-size: 25px;
+      text-align: center;
+    }
+    .chart:first-child p {
+      font-size: 19px;
+    }
+    .chart p {
+      font-size: 17px;
+    }
+    .provinceChart .prvChart p{
+      font-size: 16px;
+    }
+    .provinceChart .prvChart span {
+      font-size: 13px;
+    }
+    .provinceChart form select {
+      width: 235px;
+      height: 33px;
+      font-size: 15px;
+    }
+    .provinceChart form .btn button {
+      height: 34px;
+      width: 95px;
+      font-size: 15px;
+      border-radius: 8px 8px 8px 0;
+    }
+    .dataEntry .provinceChart .prvChart div:last-child {
+      width: 65%;
+    }
   }
   

@@ -144,34 +144,43 @@ function addLocal(id, name) {
   let row = document.createElement('tr');
   let col1 = document.createElement('td');
   col1.innerHTML = "<input type='checkbox' class='check' onclick='tick_box(this)'>";
+  col2.classList.add("center");
+
   let col2 = document.createElement('td');
   col2.classList.add("row_id");
+  col2.classList.add("center");
   col2.innerHTML = id;
+
   let col3 = document.createElement('td');
   col3.innerHTML = name;
-  col3.classList.add('left');
+  col3.classList.add('min-width');
   col3.classList.add("row_name");
 
   let col4 = document.createElement('td');
-  col4.classList.add('left');
+  col4.classList.add('min-width');
   col4.classList.add('row_start');
   let col5 = document.createElement('td');
-  col5.classList.add('left');
+  col5.classList.add('min-width');
   col5.classList.add('row_end');
 
   let col6 = document.createElement('td');
-  col6.innerHTML = '<div class="switch"><input type="checkbox"><label><i></i></label></div>';
+  col6.innerHTML = '<a ><i class="fas fa-history"></i>';
+  col5.classList.add('center');
 
+  // let col7 = document.createElement('td');
+  // col7.innerHTML = '<input type="checkbox" onclick="tick(this)"><label><i class="fas fa-check"></i></label>';
+  // col7.classList.add('tick');
   let col7 = document.createElement('td');
-  col7.innerHTML = '<input type="checkbox" onclick="tick(this)"><label><i class="fas fa-check"></i></label>';
-  col7.classList.add('tick');
+  col7.innerHTML = '<small class="W-100">90.00%</small><div><div class="percent"></div></div>';
+  col7.classList.add('progress');
 
   let col8 = document.createElement('td');
-  col8.innerHTML = '<a ><i class="fas fa-history"></i>';
+  col8.innerHTML = '<div class="switch"><input type="checkbox"><label><i></i></label></div>';
+  
   let col9 = document.createElement('td');
   col9.innerHTML = '<a onclick="edit_click(this)"><i class="fas fa-edit"></i></a>';
-  let col10 = document.createElement('td');
-  col10.innerHTML = '<a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a>';
+  col9.innerHTML = '<a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a>';
+  col5.classList.add('center');
 
   row.appendChild(col1);
   row.appendChild(col2);

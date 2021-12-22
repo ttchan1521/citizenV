@@ -35,9 +35,9 @@ button {
 }
 .container h5 {
     padding: 10px;
-    font-size: 1.5rem;
     color:rgba(29, 29, 165, 0.651);
     font-weight: 700;
+    font-family: sans-serif;
 }
 
 #dkthongtin {
@@ -144,7 +144,10 @@ div.next_btn button:hover {
     cursor: not-allowed;
 }
 
-@media screen and (max-width: 200000px) {
+@media screen and (max-width: 2000px) {
+    .container h5 {
+        font-size: 1.5rem;
+    }
     #selection input {
       width: 20px;
       height: 20px;
@@ -182,7 +185,9 @@ div.next_btn button:hover {
     }
 }
 @media screen and (max-width: 750px) {
-    
+    .container h5 {
+        font-size: 1.4rem;
+    }
     input, select {
       margin-top: 10px!important;
     }
@@ -208,7 +213,10 @@ div.next_btn button:hover {
         margin-left: 15px;
     }
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 550px){
+    .container h5 {
+        font-size: 1.3rem;
+    }
     .col-4, .col-3, .col-2, .col-1 {
       float: left;
       width: 90%;
@@ -223,6 +231,11 @@ div.next_btn button:hover {
     div.btn button {
         width: 80px;
         height: 30px;
+        border-radius: 6px 6px 6px 0;
+        font-size: 16px;
+    }
+    h5 {
+        font-size: 20px;
     }
 }
 
@@ -241,6 +254,7 @@ div.next_btn button:hover {
 	padding-bottom: 12px;
 	text-align: left;
 	border-bottom: 1px solid rgba(61, 61, 61, 0.192);
+    font-family: sans-serif;
 }
 .user_data table tbody {
 	height: 400px;
@@ -368,7 +382,9 @@ div.next_btn button:hover {
     main {
         display: block;
     }
-
+    h5 {
+        text-align: center;
+    }
     .noti .notifi {
         top: 25%;
         left: 35%;

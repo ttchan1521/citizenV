@@ -1,0 +1,404 @@
+input, select, option {
+    display: block;
+    border: 1px solid rgb(209, 208, 208);
+    width: 100%;
+    height: 37px;
+    border-radius: 3px;
+    outline: none;
+    font-size: 15px;
+    color: rgb(105, 103, 103);
+    background-color: rgb(240, 240, 240);
+    text-indent: 12px;
+  }
+@keyframes popup-content {
+    0% {
+        transform: scale(0);
+    }
+    70% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+  }  
+  .popup-content {
+    animation-name: popup-content;
+    animation-duration: 1s;
+  }  
+  .popup {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(14, 13, 13, 0.5);
+      z-index: 500;
+  }
+  .province-box .popup .btn {
+    display: flex;
+    margin: auto;
+  }
+  .province-box .popup-content {
+      position: relative;
+      box-shadow: 0 4px 12px 0 rgb(54, 50, 50);
+      border-radius: 3px;
+      border: 1px solid rgb(138, 136, 136);
+      margin: auto;
+      background-color: rgb(240, 240, 240);
+  }
+  .province-box .popup p {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 10px;
+    font-size: 19px;
+    font-weight: bold;
+    color: rgb(87, 85, 85);
+  }
+  .province-box #popup .content {
+    width: 95%;
+    margin: auto;
+  }
+  .province-box #popup .content div {
+    margin: auto;
+    width: 100%;
+    padding: 7px;
+  }
+  /* ------------------------------------------------------------------------ */
+  .province-box .popup .content div label {
+    position: relative;
+    font-size: 15px;
+    font-weight: 550;
+    display: block;
+    color: rgb(105, 104, 104);
+    margin-left: 5px;
+    margin-bottom: 3px;
+  }
+  small {
+    position: absolute;
+    margin-left: 8px;
+    color: rgb(226, 34, 34);
+    font-size: 12px;
+  }
+  .province-box #capquyen .popup-content{
+    margin-top: 100px;
+  }
+  .province-box #capquyen .popup-content p {
+    padding-bottom: 0px;
+    padding-top: 25px;
+    font-family: sans-serif;
+  }
+  .province-box #capquyen .popup-content {
+    width: 600px;
+    height: 350px;
+  }
+  .province-box #capquyen .popup-content>div>label {
+    margin-left: 7%;
+    padding-top: 15px;
+    display: block;
+    color: rgb(68, 67, 67);
+  }
+  .province-box #capquyen .content div label {
+    font-weight: 400;
+  }
+  .province-box #capquyen .popup-content .row {
+    width: 85%;
+    margin: auto;
+  }
+  .province-box #capquyen .popup-content .row div {
+    width: 100%;
+  }
+  .province-box #capquyen .popup-content input{
+      height: 33px;
+  }
+  .province-box #capquyen .popup-content input[type="time"]{
+    width: 90%;
+  }
+  .province-box #capquyen .popup-content .btn {
+    width: 230px;
+  }
+  .province-box #capquyen .popup-content button {
+    width: 85px;
+    height: 35px;
+    font-size: 14px;
+  }
+  .province-box #delete .popup-content p {
+    font-family: sans-serif;
+  }
+  .province-box #delete .popup-content i {
+    text-align: center;
+    width: 100%;
+    color: rgb(138, 139, 141);
+  }
+  .province-box #delete .popup-content .btn {
+    width: 55%;
+    margin: auto;
+    margin-top: 15px;
+  }
+  .province-box #delete .popup-content .btn button {
+    border-radius: 6px 6px 6px 0px;
+  }
+  
+  .province-box #edit .popup-content {
+    border: none;
+    background-color: rgb(247, 244, 244);
+  }
+  .province-box #edit .popup-content .title {
+    background-color: rgb(73, 75, 150);
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .province-box #edit .popup-content p {
+    font-family: sans-serif;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 3px;
+    color:rgb(54, 47, 47);
+  }
+  .province-box #edit .popup-content label {
+      font-family: sans-serif;
+      font-weight: unset;
+  }
+  .province-box #edit .popup-content .content {
+    margin: auto;
+    max-height: 370px;
+    overflow-y: auto;
+  }
+  .province-box #edit .popup-content .content #password-reset {
+    width: 235px;
+  }
+  .province-box #edit .popup-content .bottom {
+    background-color: rgb(190, 198, 235);
+  }
+  sup {
+    position: absolute;
+    color: rgb(226, 34, 34);
+    font-size: 13px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+    font-weight: normal;
+  }
+  .province-box .popup .content div input {
+    margin: 5px;
+    height: 40px;
+    border: 1px solid #b0b6ca;
+  }
+  .province-box .popup .btn button.submit_btn {
+    background-color: #292c83;
+    color: white;
+  }
+  .province-box .popup .btn button.submit_btn:hover {
+    background-color: #18277c;
+    font-size: 15px;
+  }
+  .province-box .popup .btn button.cancel_btn {
+    background-color: #d6d2d2;
+    color: rgb(68, 67, 67);
+  }
+  .province-box .popup .btn button.cancel_btn:hover {
+    background-color: rgb(180, 179, 179);
+  }
+  @media screen and (max-width: 2000px) {
+      .province-box .popup .btn {
+        width: 40%;
+      }
+      .province-box .popup .btn {
+        margin-top: 30px;
+      }
+      .btn button {
+        font-size: 16px;
+      }
+      .province-box .popup .btn button {
+        margin: auto;
+        height: 40px;
+        width: 115px;
+        border: 1px solid #768daa;
+      }
+      #popup .content {
+        display: flex;
+      }
+      #popup .popup-content {
+        width: 700px;
+        height: 280px;
+        margin-top: 155px!important;
+      }
+      #popup .title p {
+        font-family: sans-serif;
+        color:rgb(59, 52, 52);
+      }
+      #popup .content label {
+        font-family: sans-serif;
+      }
+     .province-box #delete .popup-content {
+        width: 365px;
+        height: 190px;
+        margin-top: 200px;
+        background-color: rgb(249, 249, 250);
+      }
+      .province-box #delete .popup-content i {
+        font-size: 60px;
+      }
+      .province-box #delete .popup-content .btn {
+        margin-top: 15px;
+      }
+      .province-box #delete .popup-content .btn button {
+        height: 33px;
+        margin: 5px;
+      }
+      .province-box #delete .popup-content p {
+        padding-top: 20px;
+        padding-bottom: 15px;
+      } 
+    #edit .popup-content .title {
+      height: 40px;
+    }
+    #edit .popup-content {
+      width: 550px;
+      margin-top: 80px;
+    }
+    #edit .popup-content .bottom .btn {
+      padding-bottom: 20px;
+      padding-top: 20px;
+      width: 45%;
+    }
+    #edit .popup-content .bottom .btn button {
+      height: 36px;
+    }
+    #edit .popup-content p {
+      font-size: 18px;
+    }
+    #edit .popup-content label {
+        font-size: 17px;
+    }
+    #edit .popup-content input {
+      height: 34px;
+    }
+    #edit .popup-content .content {
+      width: 90%;
+    }
+    #edit .popup-content .content .group {
+      margin-bottom: 15px;
+    }
+    #edit .popup-content .content .div-row{
+      flex: 1;
+      margin-right: 15px;
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .province-box .popup .btn button {
+      height: 35px;
+      width: 105px;
+      border: 1px solid #768daa;
+    }
+    #popup .popup-content {
+      width: 600px;
+      height: 230px;
+      margin-top: 155px!important;
+    }
+    .province-box .popup .btn {
+      margin-top: 15px;
+    }
+    #popup .title p {
+      padding: 15px;
+      padding-top: 25px;
+    }
+    #edit .popup-content .title {
+      height: 30px;
+    }
+    #edit .popup-content {
+      width: 70%;
+      min-width: 440px;
+    }
+    #edit .popup-content .bottom .btn {
+      padding-bottom: 15px;
+      padding-top: 15px;
+      width: 47%;
+    }
+    #edit .popup-content .bottom .btn button {
+      height: 34px;
+      width: 100px;
+    }
+    #edit .popup-content .bottom .btn button {
+      height: 36px;
+    }
+    
+  }
+  
+  @media screen and (max-width: 650px) {
+    .province-box .popup .btn button {
+      height: 35px;
+      width: 105px;
+      border: 1px solid #768daa;
+    }
+    .province-box .popup .btn {
+      width: 65%;
+    }
+    #popup .popup-content {
+      max-width: 360px;
+      height: unset;
+      margin-top: 155px!important;
+    }
+    .province-box .popup .btn {
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+    #popup .popup-content .content {
+      display: block;
+    }
+  }
+  @media screen and (max-width: 600px) {
+      .btn button {
+        font-size: 15px;
+      }
+     .province-box #delete .popup-content {
+        width: 335px;
+        height: 160px;
+        margin-top: 200px;
+        background-color: rgb(249, 249, 250);
+      }
+      .province-box #delete .popup-content i {
+        font-size: 55px;
+      }
+      .province-box #delete .popup-content .btn {
+        margin-top: 10px;
+      }
+      .province-box #delete .popup-content .btn button {
+        height: 31px;
+        margin: 5px;
+      }
+      .province-box #delete .popup-content p {
+        font-family: sans-serif;
+        padding-top: 12px;
+        padding-bottom: 10px;
+      }
+      #edit .popup-content .title {
+        height: 20px;
+      }
+      #edit .popup-content {
+        width: 60%;
+        min-width: 350px;
+      }
+      #edit .popup-content .bottom .btn {
+        padding-bottom: 12px;
+        padding-top: 12px;
+        width: 60%;
+      }
+      #edit .popup-content .bottom .btn button {
+        height: 32px;
+        width: 90px;
+      }
+      #edit .popup-content input {
+        height: 35px;
+        width: 100%;
+      }
+      #edit .popup-content .content .group {
+        display: block;
+      }
+      #edit .popup-content .content .group div {
+        display: block;
+      }
+      #edit .popup-content .content .div-row{
+        display: block;
+        margin-bottom: 20px;
+      }
+  }

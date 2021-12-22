@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
@@ -67,9 +67,9 @@
               <span>Đơn vị: người</span>
               <canvas id="ktxh_chart" style="max-height: 250px;"></canvas>
             </div>
-            <div class="" style="flex: 1">
+            <div class="" style="flex: 1;">
               <h3>Quy mô dân số theo thành thị và nông thôn năm 2020</h3>
-              <canvas id="pieChart" style="max-width: 228px; margin: auto; margin-top: 10px"></canvas>
+              <canvas id="pieChart" style="max-width: 228px; margin: auto; margin-top: 10px; margin-bottom: 10px;"></canvas>
             </div>
           </div>
 
@@ -80,17 +80,30 @@
           <div class="pieChartgroup row">
             <div class="title">
               <h1>Tỷ lệ chênh lệch giới tính <br> qua giai đoạn 10 năm</h1>
-              <img src="{{ asset('img/genderEquality.png')}}" alt="">
-            </div>
-            <div style="margin-top: 35px;">
-              <canvas id="pieChart2000" style="max-width: 205px;"></canvas>
+              <div>
+                <img src="{{ asset('img/genderEquality.png')}}" alt="">
+              </div>
             </div>
             <div>
-              <canvas id="pieChart2010" style="max-width: 240px"></canvas>
+              <div class="label">
+                <button style="background-color: #5b93e7;"></button> 
+                <label>Nam</label>
+                <button style="background-color: rgb(211, 102, 157);"></button>
+                <label>Nữ </label>
+              </div>
+              <div class="canvas row">
+                <div>
+                  <canvas id="pieChart2000"></canvas>
+                </div>
+                <div>
+                  <canvas id="pieChart2010"></canvas>
+                </div>
+                <div>
+                  <canvas id="pieChart2020"></canvas>
+                </div>
+              </div>
             </div>
-            <div  style="margin-top: 35px;">
-              <canvas id="pieChart2020" style="max-width: 205px; "></canvas>
-            </div>
+            
           </div>
 
           <figure class="highcharts-figure">
@@ -226,13 +239,21 @@
               </tbody>
             </table>
           </div>
-
+          <div class="line"></div>
           <div class="laborIndustry row">
-            <div class="title">
-              <h1>Cơ cấu dân số theo <br> ngành nghề lao động <br> năm 2020</h1>
-              <img src="{{ asset('img/labor.png')}}" alt="">
+            <div class="title" style="flex: 2">
+              <h1>
+                Cơ cấu dân số theo <br> ngành nghề lao động <br> năm 2020
+                <br>
+                <label>Đơn vị: %</label>
+              </h1>
+              <div>
+                <img src="{{ asset('img/labor.png')}}" alt="">
+              </div>
             </div>
-            <div class="chart" id = "container6" style = "margin: auto;"></div>
+            <div style="flex: 3">
+              <canvas id="container6"></canvas>
+            </div>
           </div>
           
         </div>
