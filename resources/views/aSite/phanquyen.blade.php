@@ -95,20 +95,12 @@
                                         
                                         <label><i></i></label>
                                     </div>
-                                </td>
-                                <td class="tick">
-                                    <input type="checkbox" onclick="tick(this)">
-                                    <label><i class="fas fa-check"></i></label>
-                                </td>
-                                <td><a onclick="showHistory(this)"><i class="fas fa-history"></i></td>
-                                
-                            
-                                        
+                                </td> 
                                     
-                                    <td class="center">
-                                        <a onclick="edit_click(this)"><i class="fas fa-edit"></i></a>
-                                        <a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
+                                <td class="center">
+                                    <a onclick="edit_click(this)"><i class="fas fa-edit"></i></a>
+                                    <a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a>
+                                </td>
                                 </tr>
 
 
@@ -132,23 +124,22 @@
                 <input type="hidden" id="local_url" value="{{ route('admin.addLocal', ['position' => $user->position ]) }}">
                 <div class="popup-content">
                     <div class="title">
-                        <!-- <span class="close-btn">&times;</span> -->
                         <p>Thêm {{ $down }}</p>
                     </div>
                     <div class="content">
                         <div>
                             <label for="">Nhập mã {{ $down }} <sup>(*)</sup></label>
-                            <input type="text" id="local_id" placeholder="Nhập mã {{ $down }}"> 
-                            <small></small>  
+                            <input type="text" id="local_id" name="id" placeholder="Nhập mã {{ $down }}"> 
+                            <small>{{ $errors }}</small>
                         </div>
                         <div>
                             <label for="">Nhập tên {{ $down }} <sup>(*)</sup></label>
-                            <input type="text" id="local_name" placeholder="Nhập tên {{ $down }}">  
+                            <input type="text" id="local_name" name="name" placeholder="Nhập tên {{ $down }}">  
                             <small></small> 
                         </div>
                         <div>
                             <label for="">Cấp mật khẩu <sup>(*)</sup></label>
-                            <input type="text" id="local_pass" placeholder="Nhập mật khẩu">
+                            <input type="text" id="local_pass" name="pass" placeholder="Nhập mật khẩu">
                             <small></small>   
                         </div>
                     </div>

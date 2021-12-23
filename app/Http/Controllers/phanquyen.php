@@ -39,11 +39,18 @@ class phanquyen extends Controller
     }
 
     function addLocal(Request $request) {
+
+        $this->validate($request,[
+            'id' => 'bail|required|min:2|max:8',
+            'name' => 'bail|'
+        ]);
+
+        
         $id = $request->get('id');
         $name = $request->get('name');
         $password = $request->get('password');
 
-        $position = "a2";
+        $position = "a2"; 
 
         if (Session::get('user')->position == "a2")  {
             $position = "a3";
@@ -52,9 +59,9 @@ class phanquyen extends Controller
         } elseif (Session::get('user')->position == "b1") {
             $position = "b2";
         }
-
-        $result = admin::addLocal($id, $name, $password, Session::get('user')->id, $position);
-
+        
+        $result = admin::addLocal($id, $name, $password, Session::get('user')->id, $position); 
+        
         if ($result) {
             return \response()->json(['success' => true]);
         }

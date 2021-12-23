@@ -247,7 +247,6 @@ $(document).ready(function() {
       'name': name,
       'password': $('local_pass').val()
     }, function (response) {
-
         if (response.success) {
           alert('Thêm thành công');
           closePopup();
@@ -574,7 +573,7 @@ Validator.isEndDate = function(selector) {
 Validator({
   errorSelector: 'small',
   rule : [
-      Validator.isProvinceCode("#local_id"),
+      // Validator.isProvinceCode("#local_id"),
       Validator.isProvinceName('#local_name'),
       Validator.isPassword('#local_pass'),
       Validator.isStartDate('#startDate'),
