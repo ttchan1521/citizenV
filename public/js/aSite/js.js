@@ -247,7 +247,6 @@ $(document).ready(function() {
       'name': name,
       'password': $('local_pass').val()
     }, function (response) {
-
         if (response.success) {
           alert('Thêm thành công');
           closePopup();
@@ -300,9 +299,20 @@ $(document).ready(function() {
           clear();
           
         }
+      } else {
+          if (response.msg_start_date != '') {
+              $('#error-start-date').text(response.msg_start_date);
+          } else {
+            $('#error-start-date').text('');
+          }
+          if (response.msg_end_date != '') {
+    
+            $('#error-end-date').text(response.msg_end_date);
+          } else {
+            $('#error-end-date').text('');
+        }
       }
     });
-
 
 
   });
@@ -406,7 +416,7 @@ function Validator(options) {
       }
       return !errorMessage;
   }
-
+  var formElement = document.querySelector(options.form);
   var btn = document.querySelector("#submitForm");
 
 
@@ -421,6 +431,11 @@ function Validator(options) {
               valid = false;
           }
       });
+      if (!valid) {
+        formElement.onsubmit = function(){
+          return false;
+        }
+      }
   };
 
   options.rule.forEach(function(rule){
@@ -574,7 +589,7 @@ Validator.isEndDate = function(selector) {
 Validator({
   errorSelector: 'small',
   rule : [
-      Validator.isProvinceCode("#local_id"),
+      // Validator.isProvinceCode("#local_id"),
       Validator.isProvinceName('#local_name'),
       Validator.isPassword('#local_pass'),
       Validator.isStartDate('#startDate'),
