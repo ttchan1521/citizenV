@@ -46,6 +46,14 @@ class schedule extends Model
         return false;
     }
 
+    public static function complete($nhan_quyen) {
+        $result = DB::update('update schedule set status = "Done" where nhan_quyen = ? and status = "Open"', [$nhan_quyen]);
+
+        if($result) {
+            return true;
+        }
+        return false;
+    }
     public static function updateLocal($nhan_quyen, $name, $password, $start_date, $start_time, $end_date, $end_time) {
         try {
             $result1 = DB::update('update admin set name = ? where id = ?', [$name, $nhan_quyen]);

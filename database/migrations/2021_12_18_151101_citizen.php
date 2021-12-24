@@ -31,6 +31,7 @@ class Citizen extends Migration
             $table->foreign('education_level')->references('level_id')->on('level')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedInteger('job');
             $table->foreign('job')->references('job_id')->on('job')->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamp('update')->useCurrent();
         });
     }
 

@@ -53,5 +53,15 @@ Route::group(['prefix' => "/admin/{position}", 'as' => "admin."],function() {
     Route::post('/deleteLocal', [phanquyen::class, 'deleteLocal'])->name('deleteLocal');
 
     Route::post('/loadHistory', [phanquyen::class, 'loadHistory'])->name('loadHistory');
+
+    Route::post('/on', [phanquyen::class, 'onSchedule'])->name('on');
+
+    Route::post('off', [phanquyen::class, 'offSchedule'])->name('off');
+
+    Route::post('/done', [phanquyen::class, 'done'])->name('done');
+
+    Route::post('/getCitizen', [input_citizen::class, 'getOne'])->name('getOne');
+
+    Route::post('/test', [input_citizen::class, 'test'])->name('test');
 });
 

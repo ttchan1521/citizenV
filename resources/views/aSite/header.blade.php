@@ -16,7 +16,7 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Quản lý truy cập</a></li>
-          <li><a href="{{ route('admin.phanquyen', ['position' => $user->position ]) }}">Danh sách tỉnh/tp</a></li>
+          <li><a href="{{ route('admin.phanquyen', ['position' => $user->position ]) }}">Danh sách {{ $down }}</a></li>
           <li><a href="{{ route('admin.lichkhaibao', ['position' => $user->position ]) }}">Lịch khai báo</a></li>
         </ul>
       </li>

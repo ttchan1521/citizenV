@@ -78,7 +78,7 @@
                                     <td class="min-width row_name">{{ $local->name }}</td>
                                     <td class="min-width row_start">{{ $local->start_date.' '.$local->start_time }}</td>
                                     <td class="min-width row_end">{{ $local->end_date.' '.$local->end_time }}</td>
-                                    <td class="center"><a><i class="fas fa-history"></i></td>
+                                    <td class="center"><a onclick="showHistory(this)"><i class="fas fa-history"></i></td>
                                     <td class="progress">
                                         <small class="W-100">90.00%</small>
                                         <div>
@@ -87,10 +87,13 @@
                                     </td>
                                     <td>
                                     <div class="switch">
+                                    <input type="hidden" id="token6" value="{{ @csrf_token() }}">
+                                    <input type="hidden" id="on_url" value="{{ route('admin.on', ['position' => $user->position ]) }}">
+                                    <input type="hidden" id="off_url" value="{{ route('admin.off', ['position' => $user->position ]) }}">
                                         @if ($local->status == "Open") 
-                                            <input type="checkbox" checked>
+                                            <input type="checkbox" onclick="onoff(this)" checked>
                                         @else
-                                            <input type="checkbox">
+                                            <input type="checkbox" onclick="onoff(this)">
                                         @endif
                                         
                                         <label><i></i></label>
@@ -100,14 +103,10 @@
                                     <input type="checkbox" onclick="tick(this)">
                                     <label><i class="fas fa-check"></i></label>
                                 </td>
-                                <td><a onclick="showHistory(this)"><i class="fas fa-history"></i></td>
-                                
-                            
-                                        
-                                    
+              
                                     <td class="center">
                                         <a onclick="edit_click(this)"><i class="fas fa-edit"></i></a>
-                                        <a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a>
+                                        <a onclick="popup_del(this)"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 
@@ -222,6 +221,9 @@
             </form>
 
             <div id="history" class="popup">
+                <div class="popup-content">
+                <input type="hidden" id="token5" value="{{ @csrf_token() }}">
+                <input type="hidden" id="history_url" value="{{ route('admin.loadHistory', ['position' => $user->position ]) }}">
                     <div id="his-content">
 
                     </div>
@@ -229,6 +231,7 @@
                         <button class="cancel_btn" type="reset" onclick="closePopup()">Hủy bỏ</button>
                         
                     </div>
+                </div>
             </div>
             <form id="edit" class="popup" action="">
                 <input type="hidden" id="token3" value="{{ @csrf_token() }}">

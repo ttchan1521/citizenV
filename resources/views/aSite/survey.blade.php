@@ -26,7 +26,7 @@
                         <div id="quochieu">
                             <div class="half">
                                 <div class="cent">
-                                    <p>Ủy ban Nhân dân Xã Trung Mầu</p>
+                                    <p>Ủy ban Nhân dân {{ $user->name }}</p>
                                 </div>
                             </div>
 

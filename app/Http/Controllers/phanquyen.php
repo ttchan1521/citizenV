@@ -11,9 +11,10 @@ class phanquyen extends Controller
 {
     //
 
-    function load($id) {
+    function load($id, $name) {
+        $admin = new admin($id, $name);
 
-        return admin::loadLocal($id);
+        return $admin->loadSchedule();
     }
 
 
@@ -22,7 +23,7 @@ class phanquyen extends Controller
             return redirect()->route('login');
         }
         else {
-            $local = $this->load(Session::get('user')->id);
+            $local = $this->load(Session::get('user')->id, Session::get('user')->name);
             $down = $this->nameDown(Session::get('user')->position);
             return view('aSite.phanquyen', ['user' => Session::get('user'), 'down' => $down, 'local' => $local]);
         }
@@ -33,9 +34,32 @@ class phanquyen extends Controller
         }
         else {
             $schedule = schedule::loadSchedule(Session::get('user')->id);
+            $admin = new admin(Session::get('user')->id, Session::get('user')->name);
+            $local = $admin->uncomplete();
             $down = $this->nameDown(Session::get('user')->position);
-            return view('aSite.lichkhaibao', ['user' => Session::get('user'), 'down' => $down, 'schedule' => $schedule]);
+
+            return view('aSite.lichkhaibao', ['user' => Session::get('user'), 'down' => $down, 'schedule' => $schedule, 'locals' => $local]);
         }
+    }
+
+    function onSchedule(Request $request) {
+        $id = $request->get('id');
+
+        $result = admin::open($id);
+
+        if ($result) {
+            return \response()->json(['success' => true]);
+        }
+        return \response()->json(['success' => false]);
+    }
+
+    function offSchedule(Request $request) {
+        $id = $request->get('id');
+        $admin = new admin(Session::get('user')->id, Session::get('user')->name);
+
+        $admin->closeOne($id);
+
+        return \response()->json(['success' => true]);
     }
 
     function addLocal(Request $request) {
@@ -111,6 +135,16 @@ class phanquyen extends Controller
         }
 
         return \response()->json(['success' =>false]);
+    }
+
+    function done() {
+        $result = schedule::complete(Session::get('user')->id);
+
+        if ($result) {
+            return response()->json(['success' => true]);
+        }
+
+        return \response()->json(['success' => false]);
     }
 
     function nameDown($position) {

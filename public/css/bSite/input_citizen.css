@@ -403,3 +403,12 @@ div.next_btn button:hover {
     }
     
 }
+
+#test {
+    display: none;
+    position: fixed;
+    width: 50%;
+    height: 60%;
+    margin: auto;
+    
+}

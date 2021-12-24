@@ -24,6 +24,8 @@
                 <div id="declare" class="container">
                     <h5>Khai báo dân số</h5>
                     <div id="dkthongtin">
+                        <input type="hidden" id="token1" value="{{ @csrf_token() }}">
+                        <input type="hidden" id="test_url" value="{{ route('admin.test', ['position' => $user->position ]) }}">
                     
                         <!-- <br> -->
                         <div class="ttkhaibao col-4">
@@ -40,14 +42,27 @@
                             <label for="gioitinh">Giới tính <sup>(*)</sup></label>
                             <select name="" id="gioitinh" name="gender">
                                 <option value="">Giới tính</option>
-                                <option value="Nam">Nam</option>
-                                <option value="Nữ">Nữ</option>
+                                <option value="2">Nam</option>
+                                <option value="1">Nữ</option>
                             </select>
                             <small></small>
                         </div>
                         <div class="ttkhaibao col-4">
                             <label for="job">Nghề nghiệp <sup>(*)</sup></label>
-                            <input id="job" name="job" type="text" placeholder="Nghề nghiệp">
+                            <select name="" id="job">
+                                <option value="">Nghề nghiệp</option>
+                                <option value="1">Cơ khí, Điện, Viễn thông</option>
+                                <option value="2">Du lịch và dịch vụ</option>
+                                <option value="3">Kế toán, Tài chính ngân hàng</option>
+                                <option value="4">Kinh doanh, Marketing</option>
+                                <option value="5">Kỹ thuật, công nghệ</option>
+                                <option value="6">Nông-Lâm-Thủy sản</option>
+                                <option value="7">Pháp lý, Hành chính văn phòng</option>
+                                <option value="8">Thủy điên, Xây dựng</option>
+                                <option value="9">Giáo dục, Sư phạm</option>
+                                <option value="10">Y tế</option>
+                                <option value="11">Ngành nghề khác</option>
+                            </select>
                             <small></small>
                         </div>
                         <div class="ttkhaibao col-2">
@@ -62,20 +77,28 @@
                         </div>
                         <div class="ttkhaibao col-4">
                             <label for="">Tôn giáo</label>
-                            <input id = "" type="text" placeholder="Tôn giáo" name="">
+                            <input id = "tongiao" type="text" placeholder="Tôn giáo" name="">
                         </div>
                         <div class="ttkhaibao col-4">
                             <label for="">Trình độ văn hóa</label>
-                            <input id="" name="" type="text" placeholder="Trình độ văn hóa">
+                            <select name="" id="level">
+                                <option value="">Trình độ văn hóa</option>
+                                <option value="1">Chưa bao giờ đi học</option>
+                                <option value="2">Chưa tốt nghiệp tiểu học</option>
+                                <option value="3">Tốt nghiệp tiểu học</option>
+                                <option value="4">Tốt nghiệp THCS</option>
+                                <option value="5">Tốt nghiệp THPT</option>
+                                <option value="6">Tốt nghiệp đại học trở lên</option>
+                            </select>
                         </div>
                         <div class="ttkhaibao col-4">
                             <label for="">Địa chỉ tạm trú</label>
-                            <input id="" type="text" placeholder="Địa chỉ tạm trú" name="">
+                            <input id="tamtru" type="text" placeholder="Địa chỉ tạm trú" name="">
                         </div>
                         
                         <div class="ttkhaibao col-2">
                             <label for="">Địa chỉ thường trú</label>
-                            <input id="" type="text" placeholder="Địa chỉ thường trú" name="">
+                            <input id="thuongtru" type="text" placeholder="Địa chỉ thường trú" name="">
                         </div>
 
                         <div class="btn btn1" id="btn1">
@@ -84,7 +107,7 @@
                             </div>
 
                             <div class="next_btn">
-                                <button id="check">Kiểm tra</button>
+                                <button id="check" onclick="check()">Kiểm tra</button>
 
                             </div>
                             <div class="next_btn" id="moveto_medical_history">
@@ -107,149 +130,26 @@
                                 </tr>
                             </thead>
                             <tbody id="registerList">
-                                <tr>
-                                    <td class="td_first">
-                                        <p>Trần Thị Trang</p>
-                                    </td>
-                                    <td class='identity_number'>usisls</td>
-                                    <td>
-                                        <a>
-                                            <span class='view'><i class='far'>&#xf2ed;</i></span>
-                                        </a>
-                                    </td>
-                                </tr>
+                                <input type="hidden" id="token" value="{{ @csrf_token() }}">
+                                <input type="hidden" id="getOne_url" value="{{ route('admin.getOne', ['position' => $user->position ]) }}">
 
+                                @foreach($citizen as $ctzen)
                                 <tr>
+                                    <input type="hidden" class="row_id" value="{{ $ctzen->citizen_id }}">
                                     <td class="td_first">
-                                        <p>Trần Thị Trang</p>
+                                        <a onclick="getOne(this)">{{ $ctzen->fullname }}</a>
                                     </td>
-                                    <td class='identity_number'>usisls</td>
+                                    <td class='identity_number'>{{ $ctzen->identity_num }}</td>
                                     <td>
                                         <a>
                                             <span class='view'><i class='far'>&#xf2ed;</i></span>
                                         </a>
                                     </td>
                                 </tr>
+                                @endforeach
+                                
 
-                                <tr>
-                                    <td class="td_first">
-                                        <p>Trần Thị Trang</p>
-                                    </td>
-                                    <td class='identity_number'>usisls</td>
-                                    <td>
-                                        <a>
-                                            <span class='view'><i class='far'>&#xf2ed;</i></span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="td_first">
-                                        <p>Trần Thị Trang</p>
-                                    </td>
-                                    <td class='identity_number'>usisls</td>
-                                    <td>
-                                        <a>
-                                            <span class='view'><i class='far'>&#xf2ed;</i></span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="td_first">
-                                        <p>Trần Thị Trang</p>
-                                    </td>
-                                    <td class='identity_number'>usisls</td>
-                                    <td>
-                                        <a>
-                                            <span class='view'><i class='far'>&#xf2ed;</i></span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="td_first">
-                                        <p>Trần Thị Trang</p>
-                                    </td>
-                                    <td class='identity_number'>usisls</td>
-                                    <td>
-                                        <a>
-                                            <span class='view'><i class='far'>&#xf2ed;</i></span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="td_first">
-                                        <p>Trần Thị Trang</p>
-                                    </td>
-                                    <td class='identity_number'>usisls</td>
-                                    <td>
-                                        <a>
-                                            <span class='view'><i class='far'>&#xf2ed;</i></span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="td_first">
-                                        <p>Trần Thị Trang</p>
-                                    </td>
-                                    <td class='identity_number'>usisls</td>
-                                    <td>
-                                        <a>
-                                            <span class='view'><i class='far'>&#xf2ed;</i></span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="td_first">
-                                        <p>Trần Thị Trang</p>
-                                    </td>
-                                    <td class='identity_number'>usisls</td>
-                                    <td>
-                                        <a>
-                                            <span class='view'><i class='far'>&#xf2ed;</i></span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="td_first">
-                                        <p>Trần Thị Trang</p>
-                                    </td>
-                                    <td class='identity_number'>usisls</td>
-                                    <td>
-                                        <a>
-                                            <span class='view'><i class='far'>&#xf2ed;</i></span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="td_first">
-                                        <p>Trần Thị Trang</p>
-                                    </td>
-                                    <td class='identity_number'>usisls</td>
-                                    <td>
-                                        <a>
-                                            <span class='view'><i class='far'>&#xf2ed;</i></span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="td_first">
-                                        <p>Trần Thị Trang</p>
-                                    </td>
-                                    <td class='identity_number'>usisls</td>
-                                    <td>
-                                        <a>
-                                            <span class='view'><i class='far'>&#xf2ed;</i></span>
-                                        </a>
-                                    </td>
-                                </tr>
+                                
                                 
                             </tbody>
                         </table>
@@ -259,6 +159,17 @@
 
                 </div>
 
+                <div id="test">
+                    Dữ liệu người dân
+                    <div id="test-content">
+
+                    </div>
+                    <div>
+                        <button id="test-close" onclick="close_test()">Đóng</button>
+                        <button id="test-apply" onclick="apply()">Áp dụng</button>
+                    </div>
+                    
+                </div>
                 <div class="noti" id="confirm">
                     <div class="notifi">
                         <div class="icon">

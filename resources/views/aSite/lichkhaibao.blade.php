@@ -27,6 +27,8 @@
             <div class="table-data">
             <div class="table background-box"> 
                     <p>Lịch khai báo</p>
+                    <input type="hidden" id="token" value="{{ @csrf_token() }}">
+                    <input type="hidden" id="done_url" value="{{ route('admin.done', ['position' => $user->position ]) }}">
                     <table>
                         <tr>
                             <th class="center">STT</th>
@@ -47,9 +49,9 @@
                             <td>
                                 {{ $schedule->end_date." ".$schedule->end_time }}
                             </td>
-                            <td>Mở</td>
+                            <td>{{ $schedule->status }}</td>
                             <td class="tick">
-                                <input type="checkbox" onclick="tick(this)">
+                                <a onclick="tick(this)">
                                 <label><i class="fas fa-check tick-uncheck"></i></label>
                             </td>
                         </tr>
@@ -65,96 +67,29 @@
                     </div>
                     
                     <div class="todo-list" id="todo-list">
-                        <p>Tổng: </p>
+                        <p>Tổng: {{ count($locals) }} </p>
                         <ul>
-                            <li class="title">{{ $down }}</li>
-                            <li>
-                                <p>Thái Bình</p>
-                                <a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a>
-                            </li>
-                            <li>
-                                <p>Hải Dương</p>
-                                <a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a>
-                            </li>
-                        </ul>
+                            <li class="title">Tên {{ $down }}</li>
+
+                            @foreach($locals as $local)
+                                <li>
+                                    <p>{{ $local->name }}</p>
+                                    <a onclick="">Nhắc nhở</a>
+                                </li>
+                            @endforeach
+                            
                     </div>
 
             </div>
             
-            <form id="delete" class="popup" action="">
-                <div class="popup-content">
-                    <div class="title">
-                        <p>Bạn có chắc chắn muốn xóa ?</p>
-                        <i class="far fa-question-circle"></i>
-                    </div>
-                    <div class="content">
-                       
-                    </div>
-                    <div class="btn">
-                        <button class="cancel_btn" type="reset" onclick="closePopup()">Hủy bỏ</button>
-                        <button id="del_btn" class="submit_btn" type="submit" onclick="dell_click(this)">Xóa</button>
-                    </div>
-                </div>
-            </form>
-            <!-- <form id="edit" class="popup" action="">
-                <div class="popup-content">
-                    <div class="title">
-                    </div>
-                    <div class="content">
-                        <div class="group" >
-                           <p>Quyền khai báo</p>
-                           <div class="row">
-                                <div class="div-row">
-                                    <label for="">Thời điểm bắt đầu:</label>
-                                    <div style="margin-bottom: 20px">
-                                        <input type="time" id="startTime-reset">
-                                        <small></small>
-                                    </div>
-                                    <div>
-                                        <input type="date" id="startDate-reset">
-                                        <small></small>
-                                    </div>
-                                </div>
-                                <div class="div-row">
-                                    <label for="">Ngày kết thúc:</label>
-                                    <div style="margin-bottom: 20px">
-                                        <input type="time" id="endTime-reset">
-                                        <small></small>
-                                    </div>
-                                    <div>
-                                        <input type="date" id="endDate-reset">
-                                        <small></small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom">
-                        <div class="btn">    
-                            <button class="cancel_btn" type="reset" onclick="closePopup()">Hủy bỏ</button>
-                            <button id="del_btn" class="submit_btn" type="submit">Cập nhật</button>
-                        </div>
-                    </div>
-                </div>
-            </form> -->
-           
+            
         </div>
     </div>
   </section>
-  
   <script src="{{ asset('js/aSite/js.js')}}"></script>
-  <script>
-    var delete_btn = document.querySelector(".province-box #delete");
-    window.onclick = function(e){
-        if(e.target == delete_btn || e.target == edit_data){
-            delete_btn.style.display = "none";
-        }
-    }
-
-    function closePopup(){
-        delete_btn.style.display = "none";
-    }
-  </script>
+  <script src="{{ asset('js/aSite/schedule.js')}}"></script>
+  
+  
 </body>
 </html>
 

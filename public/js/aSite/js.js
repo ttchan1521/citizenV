@@ -150,6 +150,27 @@ function tick(self){
 }
 
 function showHistory(self) {
+  let row = self.parentNode.parentNode;
+  let id = row.querySelector(".row_id").innerHTML;
+  let url = $("#history_url").val();
+  $.post(url, {
+    '_token': $("#token5").val(),
+    'id' : id
+  }, function(response) {
+    document.getElementById('his-content').innerHTML = "";
+    if (response.data) {
+  
+      for (var i=0; i<response.data.length; i++) {
+        let sche = document.createElement('div');
+        sche.innerHTML = response.data[i]["start_date"] + " " + response.data[i]["start_time"] + response.data[i]["end_date"] + response.data[i]['end_time'] + response.data[i]["status"];
+        
+        document.getElementById('his-content').appendChild(sche);
+      }
+    }
+    else {
+      document.getElementById('his-content').innerHTML = "Chưa có lịch khai báo nào";
+    }
+  })
   history_box.style.display = "block";
 }
 
@@ -157,7 +178,7 @@ function addLocal(id, name) {
   let row = document.createElement('tr');
   let col1 = document.createElement('td');
   col1.innerHTML = "<input type='checkbox' class='check' onclick='tick_box(this)'>";
-  col2.classList.add("center");
+  
 
   let col2 = document.createElement('td');
   col2.classList.add("row_id");
@@ -204,7 +225,7 @@ function addLocal(id, name) {
   row.appendChild(col7);
   row.appendChild(col8);
   row.appendChild(col9);
-  row.appendChild(col10);
+  
 
   document.getElementById('list').appendChild(row);
   
@@ -231,6 +252,23 @@ function tick(self){
   }
 }
 
+function onoff(self) {
+  let id = self.parentNode.parentNode.parentNode.querySelector(".row_id").innerHTML;
+  console.log(id);
+  if (self.checked == true) {
+    url = $("#on_url").val();
+  }
+  else {
+    url = $("#off_url").val();
+  }
+
+  $.post(url, {
+    '_token': $("#token6").val(),
+    'id' : id
+  }, function (response) {
+
+  });
+}
 
 
 $(document).ready(function() {
@@ -293,7 +331,7 @@ $(document).ready(function() {
         closePopup();
         alert("Thêm lịch khai báo thành công");
         for (var i=0; i<local.length; i++) {
-          console.log(local[i]);
+
           local[i].querySelector(".row_start").innerHTML = start_date + " " + start_time + ":00";
           local[i].querySelector(".row_end").innerHTML = end_date + " " + end_time + ":00";
           local[i].querySelector(".switch input").checked = true;
@@ -494,7 +532,7 @@ Validator.isPassword = function(selector) {
       test: function(value) {
           if (!value.trim()) {
             return "Vui lòng nhập vào trường này";
-          } else if (value.length < 8) {
+          } else if (value.length < 5) {
             return "Mật khẩu phải dài hơn 8 ký tự";
           } else if (!(value.match(/[A-Z]/g))) {
             return "Mật khẩu phải chứa ký tự in hoa"
