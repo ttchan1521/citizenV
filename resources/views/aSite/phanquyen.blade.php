@@ -24,6 +24,8 @@
                 <h2>Quản lý truy cập</h2>
                 <p>Danh sách {{ $down }}</p>
             </div>
+            <div id="notificate">
+            </div>
             <div class="tool">
                 <div class="button row hidden" id="button_list">
                     <button id="permis_btn" onclick="permis_click()">Cấp quyền</button> 
@@ -130,7 +132,7 @@
                         <div>
                             <label for="">Nhập mã {{ $down }} <sup>(*)</sup></label>
                             <input type="text" id="local_id" name="id" placeholder="Nhập mã {{ $down }}"> 
-                            <small>{{ $errors }}</small>
+                            <small></small>
                         </div>
                         <div>
                             <label for="">Nhập tên {{ $down }} <sup>(*)</sup></label>
@@ -169,7 +171,7 @@
                             <div>
                                 <label for="">Chọn ngày <sup>(*)</sup></label>
                                 <input type="date" id="start_date">
-                                <small></small>
+                                <small id="error-start-date"></small>
                             </div>
                         </div>
                         <label for="">Thời điểm kết thúc: </label>
@@ -182,7 +184,7 @@
                             <div>
                                 <label for="">Chọn ngày <sup>(*)</sup></label>
                                 <input type="date" id="end_date">
-                                <small></small>
+                                <small id="error-end-date"></small>
                             </div>
                         </div>
                     </div>

@@ -231,8 +231,12 @@ function tick(self){
   }
 }
 
-
-
+function openNotify(){
+  document.getElementById("notificate").style.display = "block";
+}
+function del(self){
+  self.parentNode.style.display="none";
+}
 $(document).ready(function() {
   $('#popup').submit(function(e) {
     e.preventDefault();
@@ -248,7 +252,9 @@ $(document).ready(function() {
       'password': $('local_pass').val()
     }, function (response) {
         if (response.success) {
-          alert('Thêm thành công');
+          $('#notificate').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Thêm thành công!</p>");
+          openNotify();
+          $('#notificate').fadeOut(5000); 
           closePopup();
           addLocal(id, name);
         }
@@ -289,8 +295,10 @@ $(document).ready(function() {
 
     }, function(response) {
       if (response.success) {
+        $('#notificate').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Thêm lịch khai báo thành công!</p>");
+        openNotify();
+        $('#notificate').fadeOut(5000); 
         closePopup();
-        alert("Thêm lịch khai báo thành công");
         for (var i=0; i<local.length; i++) {
           console.log(local[i]);
           local[i].querySelector(".row_start").innerHTML = start_date + " " + start_time + ":00";
@@ -299,9 +307,20 @@ $(document).ready(function() {
           clear();
           
         }
+      } else {
+          if (response.msg_start_date != '') {
+              $('#error-start-date').text(response.msg_start_date);
+          } else {
+            $('#error-start-date').text('');
+          }
+          if (response.msg_end_date != '') {
+    
+            $('#error-end-date').text(response.msg_end_date);
+          } else {
+            $('#error-end-date').text('');
+        }
       }
     });
-
 
 
   });
@@ -334,7 +353,9 @@ $(document).ready(function() {
       'password' : password
     }, function(response) {
       if (response.success) {
-        alert("Cập nhật thành công");
+        $('#notificate').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Cập nhật thành công!</p>");
+        openNotify();
+        $('#notificate').fadeOut(5000); 
         closePopup();
         row.querySelector(".row_name").innerHTML = name;
         row.querySelector(".row_start").innerHTML = start_date + " " + start_time;
@@ -352,7 +373,9 @@ $(document).ready(function() {
       'id' : id
     }, function(response) {
       if (response.success) {
-        alert("Xóa thành công");
+        $('#notificate').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Xóa thành công!</p>");
+        openNotify();
+        $('#notificate').fadeOut(5000); 
         closePopup();
         row.remove();
       }
@@ -405,7 +428,7 @@ function Validator(options) {
       }
       return !errorMessage;
   }
-
+  var formElement = document.querySelector(options.form);
   var btn = document.querySelector("#submitForm");
 
 
@@ -420,6 +443,11 @@ function Validator(options) {
               valid = false;
           }
       });
+      if (!valid) {
+        formElement.onsubmit = function(){
+          return false;
+        }
+      }
   };
 
   options.rule.forEach(function(rule){
@@ -573,7 +601,7 @@ Validator.isEndDate = function(selector) {
 Validator({
   errorSelector: 'small',
   rule : [
-      // Validator.isProvinceCode("#local_id"),
+      Validator.isProvinceCode("#local_id"),
       Validator.isProvinceName('#local_name'),
       Validator.isPassword('#local_pass'),
       Validator.isStartDate('#startDate'),

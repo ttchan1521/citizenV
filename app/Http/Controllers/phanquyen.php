@@ -41,11 +41,10 @@ class phanquyen extends Controller
     function addLocal(Request $request) {
 
         $this->validate($request,[
-            'id' => 'bail|required|min:2|max:8',
-            'name' => 'bail|'
+            'name' => 'bail|alpha|min:5|max:50',
+            'pass' => 'bail|min:8'
         ]);
-
-        
+        $localid = Session::get('user')->id;
         $id = $request->get('id');
         $name = $request->get('name');
         $password = $request->get('password');
@@ -54,12 +53,20 @@ class phanquyen extends Controller
 
         if (Session::get('user')->position == "a2")  {
             $position = "a3";
+            $this->validate($request,[
+                'id' => 'bail|required|digits:4',
+            ]);
         } elseif (Session::get('user')->position == "a3") {
             $position = "b1";
+            $this->validate($request,[
+                'id' => 'bail|required|digits:6',
+            ]);
         } elseif (Session::get('user')->position == "b1") {
             $position = "b2";
+            $this->validate($request,[
+                'id' => 'bail|required|digits:8',
+            ]);
         }
-        
         $result = admin::addLocal($id, $name, $password, Session::get('user')->id, $position); 
         
         if ($result) {
@@ -83,6 +90,23 @@ class phanquyen extends Controller
         $end_time = $request->get('end_time');
         $local = $request->get('local');
 
+        $d1 = new \DateTime($start_date);
+        $d2 = new \DateTime('NOW');
+        $d3 = new \DateTime($end_date);
+        $interval_1 = $d2->diff($d1);
+        $interval_2 = $d1->diff($d3);
+        if (strtotime($start_date) < strtotime("now")) {
+            return \response()->json(['success' => false, 'msg_start_date' => 'Ngày nhập không hợp lệ!']);
+        }
+        if ($interval_1->m > 3) {
+            return \response()->json(['success' => false, 'msg_start_date' => 'Thời điểm bắt đầu hơn hiện tại không quá 3 tháng!']);
+        } 
+        if (strtotime($end_date) < strtotime($start_date))  {
+            return \response()->json(['success' => false, 'msg_end_date' => 'Thời điểm kết thúc không hợp lệ!']);
+        } 
+        if ($interval_2->m > 6)  {
+            return \response()->json(['success' => false, 'msg_end_date' => 'Thời điểm kết thúc hơn bắt đầu không quá 6 tháng!']);
+        } 
         $result =  schedule::addSchedule($local, $start_date, $start_time, $end_date, $end_time);
 
         if ($result) {
