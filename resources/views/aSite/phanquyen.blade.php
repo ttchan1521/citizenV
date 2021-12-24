@@ -226,11 +226,9 @@
                 <input type="hidden" id="token5" value="{{ @csrf_token() }}">
                 <input type="hidden" id="history_url" value="{{ route('admin.loadHistory', ['position' => $user->position ]) }}">
                     <div id="his-content">
-
                     </div>
                     <div class="btn">
-                        <button class="cancel_btn" type="reset" onclick="closePopup()">Hủy bỏ</button>
-                        
+                        <button class="cancel_btn" type="reset" onclick="closePopup()">Quay lại</button>
                     </div>
                 </div>
             </div>

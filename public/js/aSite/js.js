@@ -161,14 +161,20 @@ function showHistory(self) {
     if (response.data) {
   
       for (var i=0; i<response.data.length; i++) {
-        let sche = document.createElement('div');
+        let title = document.createElement('div');
+        title.innerHTML="<p>Lịch sử khai báo</p>";
+        let sche = document.createElement('h1');
         sche.innerHTML = response.data[i]["start_date"] + " " + response.data[i]["start_time"] + response.data[i]["end_date"] + response.data[i]['end_time'] + response.data[i]["status"];
         
         document.getElementById('his-content').appendChild(sche);
+        document.getElementById('his-content').appendChild(title);
       }
     }
     else {
-      document.getElementById('his-content').innerHTML = "Chưa có lịch khai báo nào";
+      // document.createElement('div').innerHTML = "";
+      let p = document.createElement('p');
+      p.innerHTML = "Chưa có lịch khai báo nào!";
+      document.getElementById('his-content').appendChild(p);
     }
   })
   history_box.style.display = "block";
