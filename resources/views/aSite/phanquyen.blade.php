@@ -24,6 +24,8 @@
                 <h2>Quản lý truy cập</h2>
                 <p>Danh sách {{ $down }}</p>
             </div>
+            <div id="notificate">
+            </div>
             <div class="tool">
                 <div class="button row hidden" id="button_list">
                     <button id="permis_btn" onclick="permis_click()">Cấp quyền</button> 
@@ -131,23 +133,22 @@
                 <input type="hidden" id="local_url" value="{{ route('admin.addLocal', ['position' => $user->position ]) }}">
                 <div class="popup-content">
                     <div class="title">
-                        <!-- <span class="close-btn">&times;</span> -->
                         <p>Thêm {{ $down }}</p>
                     </div>
                     <div class="content">
                         <div>
                             <label for="">Nhập mã {{ $down }} <sup>(*)</sup></label>
-                            <input type="text" id="local_id" placeholder="Nhập mã {{ $down }}"> 
-                            <small></small>  
+                            <input type="text" id="local_id" name="id" placeholder="Nhập mã {{ $down }}"> 
+                            <small></small>
                         </div>
                         <div>
                             <label for="">Nhập tên {{ $down }} <sup>(*)</sup></label>
-                            <input type="text" id="local_name" placeholder="Nhập tên {{ $down }}">  
+                            <input type="text" id="local_name" name="name" placeholder="Nhập tên {{ $down }}">  
                             <small></small> 
                         </div>
                         <div>
                             <label for="">Cấp mật khẩu <sup>(*)</sup></label>
-                            <input type="text" id="local_pass" placeholder="Nhập mật khẩu">
+                            <input type="text" id="local_pass" name="pass" placeholder="Nhập mật khẩu">
                             <small></small>   
                         </div>
                     </div>
@@ -177,7 +178,7 @@
                             <div>
                                 <label for="">Chọn ngày <sup>(*)</sup></label>
                                 <input type="date" id="start_date">
-                                <small></small>
+                                <small id="error-start-date"></small>
                             </div>
                         </div>
                         <label for="">Thời điểm kết thúc: </label>
@@ -190,7 +191,7 @@
                             <div>
                                 <label for="">Chọn ngày <sup>(*)</sup></label>
                                 <input type="date" id="end_date">
-                                <small></small>
+                                <small id="error-end-date"></small>
                             </div>
                         </div>
                     </div>
