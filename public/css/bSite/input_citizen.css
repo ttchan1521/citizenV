@@ -184,7 +184,7 @@ div.next_btn button:hover {
         margin-left: 15px;
     }
     #test {
-        display: block;
+        display: none;
         position: fixed;
         top: 95px;
         left: 80px;

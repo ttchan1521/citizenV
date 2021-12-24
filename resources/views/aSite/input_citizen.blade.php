@@ -162,7 +162,7 @@
                 <div id="test">
                     <p>Dữ liệu người dân</p>
                     <div id="test-content">
-                        <div>Họ và tên: trần Thị Trang</div>
+                        <!-- <div>Họ và tên: trần Thị Trang</div>
                         <div>Ngày sinh</div>
                         <div>Họ và tên: trần Thị Trang</div>
                         <div>Ngày sinh</div>
@@ -171,7 +171,7 @@
                         <div>Họ và tên: trần Thị Trang</div>
                         <div>Ngày sinh</div>
                         <div>Họ và tên: trần Thị Trang</div>
-                        <div>Ngày sinh</div>
+                        <div>Ngày sinh</div> -->
                     </div>
                     <div class="button">
                         <button id="test-close" onclick="close_test()">Đóng</button>
