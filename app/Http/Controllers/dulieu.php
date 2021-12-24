@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\admin;
 
 class dulieu extends Controller
 {
@@ -14,9 +15,15 @@ class dulieu extends Controller
         }
         else {
             $down = $this->nameDown(Session::get('user')->position);
-            return view('aSite.dulieu', ['user' => Session::get('user'), 'down' => $down]);
+            $local = $this->loadLocal();
+            return view('aSite.dulieu', ['user' => Session::get('user'), 'down' => $down, 'locals' => $local]);
         }
     }
+
+    function loadLocal() {
+        $admin = new amin(Session::get('user')->id, Session::get('user')->name);
+        return $admin->loadLocal();
+    } 
 
     function nameDown($position) {
         if ($position == "a1") {

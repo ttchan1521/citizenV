@@ -53,6 +53,38 @@ class input_citizen extends Controller
         return \response()->json(['data' => false]);
     }
 
+
+    function declare(Request $request) {
+        $id = $request->get('id');
+        $fullname = $request->get('fullname');
+        $birthdate = $request->get('birthdate');
+        $gender = $request->get('gender');
+        $hometown = $request->get('hometown');
+        $address = $request->get('address');
+        $temporary_add = $request->get('temporary_add');
+        $identity_num = $request->get('identity_num');
+        $ton_giao = $request->get('ton_giao');
+        $education_level = $request->get('level');
+        $job = $request->get('job');
+
+        $admin = new b1(Session::get('user')->id, Session::get('user')->name);
+
+        $result = false;
+
+        if ($id == "false") {
+            $result = $admin->addCitizen($fullname, $birthdate, $gender, $hometown, $address, $temporary_add, $identity_num, $ton_giao, $education_level, $job);
+        }
+        else {
+            $result = $admin->updateCitizen($id, $fullname, $birthdate, $gender, $hometown, $address, $temporary_add, $identity_num, $ton_giao, $education_level, $job);
+        }
+        
+
+        if ($result) {
+            return \response()->json(['success' => true]);
+        }
+
+        return \response()->json(['success' => false]);
+    }
     function nameDown($position) {
         if ($position == "a1") {
             return "tỉnh/thành phố";

@@ -167,6 +167,7 @@ function apply(data = infor) {
     document.getElementById("thuongtru").value = data.address;
 
     originData = data;
+    document.getElementById("btn1_submit").disabled = false;
 
 }
 function getOne(self) {
@@ -207,9 +208,11 @@ function check() {
         }
         else {
             document.getElementById("test-content").innerHTML = "Không có dữ liệu";
+            originData = null;
         }
         document.getElementById("test").style.display = "block";
-        document.getElementById("btn1_submit").disabled = false;
+        
+        
     });
 }
 
@@ -218,3 +221,43 @@ function close_test() {
 }
 
 
+function declareCtzen() {
+    let url = $("#declare_url").val();
+    let id = false;
+
+    if (originData) {
+        id = originData.citizen_id;
+    }
+
+    let cccd = $("#cccd").val().trim();
+    if (!cccd) {
+        cccd = "";
+    }
+
+    let ton_giao = $("#tongiao").val().trim();
+    if (!ton_giao) {
+        ton_giao = "";
+    }
+
+    $.post(url, {
+        '_token' : $("#token1").val(),
+        'id' : id,
+        'fullname' : $("#fullname").val(),
+        'birthdate' : $("#ngaysinh").val(),
+        'gender' : $("#gioitinh").val(),
+        'job' : $("#job").val(),
+        'hometown' : $("#quequan").val(),
+        'identity_num' : cccd,
+        'ton_giao' : ton_giao,
+        'level' : $("#level").val(),
+        'temporary_add' : $("#tamtru").val(),
+        'address' : $("#thuongtru").val()
+    }, function(response) {
+        if (response.success) {
+            alert("Khai báo thành công");
+        }
+        else {
+            alert("Khai báo không thành công");
+        }
+    });
+}

@@ -63,5 +63,7 @@ Route::group(['prefix' => "/admin/{position}", 'as' => "admin."],function() {
     Route::post('/getCitizen', [input_citizen::class, 'getOne'])->name('getOne');
 
     Route::post('/test', [input_citizen::class, 'test'])->name('test');
+
+    Route::post('/declare', [input_citizen:: class, 'declare'])->name('declare');
 });
 

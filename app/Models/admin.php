@@ -28,6 +28,10 @@ class admin extends Model
 
     }
 
+    function loadLocal() {
+        return $this->child;
+    }
+
     public function loadSchedule() {
         $temps = $this->child;
 

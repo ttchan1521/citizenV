@@ -30,4 +30,23 @@ class b1 extends admin
         return $result;
     }
 
+    function addCitizen($fullname, $birthdate, $gender, $hometown, $address, $temporary_add, $identity_num, $ton_giao, $education_level, $job) {
+        $result = DB::insert('insert into citizen(fullname, birthdate, gender, hometown, address, hamlet, temporary_add, identity_num, ton_giao, education_level, job) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+                            [$fullname, $birthdate, $gender, $hometown, $address, $this->id, $temporary_add, $identity_num, $ton_giao, $education_level, $job]);
+        
+        if ($result) {
+            return true;
+        }
+        return false;
+    }
+
+    function updateCitizen($id, $fullname, $birthdate, $gender, $hometown, $address, $temporary_add, $identity_num, $ton_giao, $education_level, $job) {
+        $result = DB::update('update citizen set fullname = ?, birthdate = ?, gender = ?, hometown = ?, address = ?, temporary_add = ?, identity_num = ?, ton_giao = ?, education_level = ?, job = ? where citizen_id = ?', 
+                            [$fullname, $birthdate, $gender, $hometown, $address, $temporary_add, $identity_num, $ton_giao, $education_level, $job, $id]);
+        
+        if ($result) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -26,6 +26,7 @@
                     <div id="dkthongtin">
                         <input type="hidden" id="token1" value="{{ @csrf_token() }}">
                         <input type="hidden" id="test_url" value="{{ route('admin.test', ['position' => $user->position ]) }}">
+                        <input type="hidden" id="declare_url" value="{{ route('admin.declare', ['position' => $user->position ]) }}">
                     
                         <!-- <br> -->
                         <div class="ttkhaibao col-4">
@@ -111,7 +112,7 @@
 
                             </div>
                             <div class="next_btn" id="moveto_medical_history">
-                                <button type="button" id="btn1_submit">Khai báo</button>
+                                <button type="button" id="btn1_submit" onclick="declareCtzen()">Khai báo</button>
                         
                             </div> 
                         </div>  
