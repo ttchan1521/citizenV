@@ -161,11 +161,20 @@
                 </div>
 
                 <div id="test">
-                    Dữ liệu người dân
+                    <p>Dữ liệu người dân</p>
                     <div id="test-content">
-
+                        <!-- <div>Họ và tên: trần Thị Trang</div>
+                        <div>Ngày sinh</div>
+                        <div>Họ và tên: trần Thị Trang</div>
+                        <div>Ngày sinh</div>
+                        <div>Họ và tên: trần Thị Trang</div>
+                        <div>Ngày sinh</div>
+                        <div>Họ và tên: trần Thị Trang</div>
+                        <div>Ngày sinh</div>
+                        <div>Họ và tên: trần Thị Trang</div>
+                        <div>Ngày sinh</div> -->
                     </div>
-                    <div>
+                    <div class="button">
                         <button id="test-close" onclick="close_test()">Đóng</button>
                         <button id="test-apply" onclick="apply()">Áp dụng</button>
                     </div>
