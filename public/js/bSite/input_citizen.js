@@ -145,10 +145,10 @@ Validator.isDate = function(selector) {
 Validator({
     errorSelector: 'small',
     rule : [
-        //Validator.isName("#fullname"),
+        Validator.isName("#fullname"),
         Validator.isDate('#ngaysinh'),
         Validator.isRequired('#gioitinh'),
-        //Validator.isRequired('#quequan')
+        Validator.isRequired('#quequan')
     ]
 });
 
@@ -221,7 +221,12 @@ function close_test() {
     document.getElementById("test").style.display = "none";
 }
 
-
+function openNotify(){
+    document.getElementById("notificate").style.display = "block";
+}
+function del(self){
+    self.parentNode.style.display="none";
+  }
 function declareCtzen() {
     console.log("hi");
     let url = $("#declare_url").val();
@@ -256,7 +261,9 @@ function declareCtzen() {
         'address' : $("#thuongtru").val()
     }, function(response) {
         if (response.success) {
-            alert("Khai báo thành công");
+            $('#notificate').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Khai báo thành công!</p>");
+            openNotify();
+            $('#notificate').fadeOut(5000); 
         }
         else {
             alert("Khai báo không thành công");

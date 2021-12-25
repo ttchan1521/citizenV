@@ -1,21 +1,4 @@
 
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e)=>{
-      let arrowParent = e.target.parentElement.parentElement;
-      arrowParent.classList.toggle("showMenu");
-    });
-  }
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".sidebarBtn");
-  sidebarBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("close");
-    if(sidebar.classList.contains("close")){
-      sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-    }else
-      sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-  });
-
 // trang phanquyen
 
 var addProvince = document.querySelector(".province-box #popup");
@@ -450,13 +433,6 @@ document.getElementById('find_name').addEventListener('keyup', find);
 document.getElementById('find_id').addEventListener('keyup', find);
 // -------------------------------------------------------
 
-// ---------------trang thông báo----------------------------
-function noticeChecked(){
-  var notice = document.querySelectorAll(".notification div");
-  notice.forEach(element => {
-    element.classList.add("noticeBackground");
-  });
-}
 
 /// -----------------------------------------------------------
 //Xác minh dữ liệu nhập

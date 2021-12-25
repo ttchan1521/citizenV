@@ -263,7 +263,7 @@
     <input type="hidden" value="{{ json_encode($sinh)}}" id="sinh">
     <input type="hidden" value="{{ json_encode($tu) }}" id="tu">
   </section>
-  <script src="{{ asset('js/aSite/js.js')}}"></script>
+  
   <script>
     
     

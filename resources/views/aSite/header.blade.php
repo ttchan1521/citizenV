@@ -126,3 +126,5 @@
         <label class="admin_name">Xin chào admin!</label>
       </div>
     </nav>
+    
+    <script src="{{ asset('js/aSite/sidebar.js')}}"></script>

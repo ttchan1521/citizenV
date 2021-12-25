@@ -39,20 +39,18 @@ class admin extends Model
         
         
 
-        $citizen = DB::select('select C.citizen_id, C.hamlet, C.fullname,  thon_table.name as Thon, 
+        $citizen = DB::select('select C.citizen_id, C.hamlet, C.fullname, 
         xa_table.name as Xa, 
         huyen_table.name as Huyen, 
         tinh_table.name as Tinh
         FROM citizen C,
-        (SELECT id, name FROM admin WHERE CHAR_LENGTH(id) = 8) thon_table,
         (SELECT id, name FROM admin WHERE CHAR_LENGTH(id) = 6) xa_table,
         (SELECT id, name FROM admin WHERE CHAR_LENGTH(id) = 4) huyen_table,
         (SELECT id, name FROM admin WHERE CHAR_LENGTH(id) = 2) tinh_table
-        WHERE SUBSTRING(C.hamlet, 1, 8) = thon_table.id
-        AND SUBSTRING(C.hamlet, 1, 6) = xa_table.id
+        WHERE SUBSTRING(C.hamlet, 1, 6) = xa_table.id
         AND SUBSTRING(C.hamlet, 1, 4) = huyen_table.id
         AND SUBSTRING(C.hamlet, 1, 2) = tinh_table.id
-        AND C.hamlet like ?',["$id%"]);
+         AND C.hamlet like ?',["$id%"]);
         if ($citizen) {
             foreach($citizen as $each){
                 $this->allCitizen[] = $each;

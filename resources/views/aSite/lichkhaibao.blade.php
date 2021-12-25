@@ -86,7 +86,6 @@
         </div>
     </div>
   </section>
-  <script src="{{ asset('js/aSite/js.js')}}"></script>
   <script src="{{ asset('js/aSite/schedule.js')}}"></script>
   
   

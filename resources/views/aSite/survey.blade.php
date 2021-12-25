@@ -78,6 +78,5 @@
     </section>
 
     <script src="{{ asset('js/bSite/survey.js')}}"></script>
-    <script src="{{ asset('js/aSite/js.js')}}"></script>
 </body>
 </html>

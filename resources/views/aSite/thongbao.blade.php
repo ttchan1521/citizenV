@@ -44,7 +44,7 @@
     </div>
 
   </section>
-  <script src="{{ asset('js/aSite/js.js')}}"></script>
+  <script src="{{ asset('js/aSite/thongbao.js')}}"></script>
 </body>
 </html>
 

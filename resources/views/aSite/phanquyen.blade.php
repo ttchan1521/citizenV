@@ -30,7 +30,7 @@
                 <div class="button row hidden" id="button_list">
                     <button id="permis_btn" onclick="permis_click()">Cấp quyền</button> 
                     <!-- <button>Hoàn thành</button> -->
-                    <button onclick="popup_del()">Xóa</button>
+                    <button onclick="popup_del(this)">Xóa</button>
                 </div>
                 <div class="add_province">
                     <button onclick="add_province()">Thêm {{ $down }}</button>
@@ -89,23 +89,19 @@
                                         </div>
                                     </td>
                                     <td>
-                                    <div class="switch">
-                                    <input type="hidden" id="token6" value="{{ @csrf_token() }}">
-                                    <input type="hidden" id="on_url" value="{{ route('admin.on', ['position' => $user->position ]) }}">
-                                    <input type="hidden" id="off_url" value="{{ route('admin.off', ['position' => $user->position ]) }}">
-                                        @if ($local->status == "Open") 
-                                            <input type="checkbox" onclick="onoff(this)" checked>
-                                        @else
-                                            <input type="checkbox" onclick="onoff(this)">
-                                        @endif
-                                        
-                                        <label><i></i></label>
-                                    </div>
-                                </td>
-                                <td class="tick">
-                                    <input type="checkbox" onclick="tick(this)">
-                                    <label><i class="fas fa-check"></i></label>
-                                </td>
+                                        <div class="switch">
+                                        <input type="hidden" id="token6" value="{{ @csrf_token() }}">
+                                        <input type="hidden" id="on_url" value="{{ route('admin.on', ['position' => $user->position ]) }}">
+                                        <input type="hidden" id="off_url" value="{{ route('admin.off', ['position' => $user->position ]) }}">
+                                            @if ($local->status == "Open") 
+                                                <input type="checkbox" onclick="onoff(this)" checked>
+                                            @else
+                                                <input type="checkbox" onclick="onoff(this)">
+                                            @endif
+                                            
+                                            <label><i></i></label>
+                                        </div>
+                                    </td>
               
                                     <td class="center">
                                         <a onclick="edit_click(this)"><i class="fas fa-edit"></i></a>
@@ -300,7 +296,7 @@
   <script>
       
   </script>
-  <script src="{{ asset('js/aSite/js.js')}}"></script>
+  <script src="{{ asset('js/aSite/phanquyen.js')}}"></script>
 </body>
 </html>
 
