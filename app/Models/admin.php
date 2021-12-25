@@ -13,6 +13,7 @@ class admin extends Model
     public $id;
     public $name;
     protected $child = array();
+    protected $allCitizen = array();
 
     public function __construct($id, $name) {
         $this->id = $id;
@@ -24,12 +25,37 @@ class admin extends Model
                 $this->child[] = $smallAdd;
             }
         }
-    
+        
+        
+        
 
+        $citizen = DB::select('select C.citizen_id, C.hamlet, C.fullname,  thon_table.name as Thon, 
+        xa_table.name as Xa, 
+        huyen_table.name as Huyen, 
+        tinh_table.name as Tinh
+        FROM citizen C,
+        (SELECT id, name FROM admin WHERE CHAR_LENGTH(id) = 8) thon_table,
+        (SELECT id, name FROM admin WHERE CHAR_LENGTH(id) = 6) xa_table,
+        (SELECT id, name FROM admin WHERE CHAR_LENGTH(id) = 4) huyen_table,
+        (SELECT id, name FROM admin WHERE CHAR_LENGTH(id) = 2) tinh_table
+        WHERE SUBSTRING(C.hamlet, 1, 8) = thon_table.id
+        AND SUBSTRING(C.hamlet, 1, 6) = xa_table.id
+        AND SUBSTRING(C.hamlet, 1, 4) = huyen_table.id
+        AND SUBSTRING(C.hamlet, 1, 2) = tinh_table.id
+        AND C.hamlet like ?',["$id%"]);
+        if ($citizen) {
+            foreach($citizen as $each){
+                $this->allCitizen[] = $each;
+            }
+        }
+        
     }
 
     function loadLocal() {
         return $this->child;
+    }
+    function loadCitizen() { 
+        return $this->allCitizen;
     }
 
     public function loadSchedule() {

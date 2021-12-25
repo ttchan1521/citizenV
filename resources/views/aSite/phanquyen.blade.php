@@ -300,7 +300,6 @@
       
   </script>
   <script src="{{ asset('js/aSite/js.js')}}"></script>
-
 </body>
 </html>
 

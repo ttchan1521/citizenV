@@ -80,11 +80,6 @@ function popup_del(self){
 
 }     
 
-function view_citizen(){
-  var popup = document.querySelector(".search_loca .popup");
-  popup.style.display = "block";
-}
-
 function tick_box(self){
   let check_all_btn = document.getElementById("check_all");
   let dell = document.getElementById("button_list");
@@ -159,15 +154,17 @@ function showHistory(self) {
   }, function(response) {
     document.getElementById('his-content').innerHTML = "";
     if (response.data) {
-  
+      
+      
+      let title = document.createElement('div');
+      document.getElementById('his-content').appendChild(title);
+      title.innerHTML="<p>Lịch sử khai báo</p>";
+
       for (var i=0; i<response.data.length; i++) {
-        let title = document.createElement('div');
-        title.innerHTML="<p>Lịch sử khai báo</p>";
         let sche = document.createElement('h1');
-        sche.innerHTML = response.data[i]["start_date"] + " " + response.data[i]["start_time"] + response.data[i]["end_date"] + response.data[i]['end_time'] + response.data[i]["status"];
+        sche.innerHTML =response.data[i]["start_time"] +" "+ response.data[i]["start_date"] + "   " + response.data[i]['end_time'] +" " + response.data[i]["end_date"] +"   "+ response.data[i]["status"];
         
         document.getElementById('his-content').appendChild(sche);
-        document.getElementById('his-content').appendChild(title);
       }
     }
     else {
@@ -450,7 +447,7 @@ function find() {
 }
 document.getElementById('find_name').addEventListener('keyup', find);
 document.getElementById('find_id').addEventListener('keyup', find);
-
+// -------------------------------------------------------
 
 // ---------------trang thông báo----------------------------
 function noticeChecked(){
