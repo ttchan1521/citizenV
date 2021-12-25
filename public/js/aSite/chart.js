@@ -1,6 +1,18 @@
 
 // BIỂU ĐỒ
 // Biều đồ thống kê số lượng dân qua các năm
+let year = document.getElementById("year").value;
+year = JSON.parse(year);
+let data = document.getElementById("data").value;
+data = JSON.parse(data);
+
+let sinh = document.getElementById("sinh").value;
+sinh = JSON.parse(sinh);
+console.log(sinh);
+let tu = document.getElementById("tu").value;
+tu = JSON.parse(tu);
+console.log(tu);
+
 Highcharts.chart('populationIncreaseChart', {
   chart: {
     zoomType: 'xy'
@@ -12,8 +24,7 @@ Highcharts.chart('populationIncreaseChart', {
     text: ''
   },
   xAxis: [{
-    categories: ['2000', '2002', '2004', '2006', '2008', '2010',
-      '2012', '2014', '2016', '2018', '2020'],
+    categories: year,
     crosshair: true
   }],
   yAxis: [{ // Primary yAxis
@@ -31,7 +42,7 @@ Highcharts.chart('populationIncreaseChart', {
     }
   }, { // Secondary yAxis
     title: {
-      text: 'Đơn vị: Triệu người',
+      text: 'Đơn vị: Người',
       style: {
         color: Highcharts.getOptions().colors[0]
       }
@@ -62,15 +73,15 @@ Highcharts.chart('populationIncreaseChart', {
     name: 'Dân số ',
     type: 'column',
     yAxis: 1,
-    data: [23, 30, 34, 42, 49, 52, 64, 76, 81, 90, 101],
+    data: data,
     tooltip: {
-      valueSuffix: ' triệu người'
+      valueSuffix: ' người'
     }
 
   }, {
     name: 'Tỉ lệ gia tăng tự nhiên',
     type: 'line',
-    data: [1.1, 4, 3, 3.4, 3.2, 2.5, 2.2, 1.4, 1.3, 1.5, 1.2],
+    data: [1.1, 4, 3, 3.4, 3.2, 2.5, 2.2, 1.4, 1.3, 1.5],
     tooltip: {
       valueSuffix: '%'
     }
@@ -78,8 +89,8 @@ Highcharts.chart('populationIncreaseChart', {
 });
 // --------------------------------------------------------
 /* --Biểu đồ tình hình gia tăng dân số tự nhiên từ 2005-2020-- */
-  var bienx = ['2006','2008','2010','2012','2014','2016','2018','2020'];
-  var bieny = [32,29,23,23,22,21,20,17];
+  var bienx = year;
+  var bieny = sinh;
   var pieChart = document.getElementById('linechart').getContext('2d');
   
   var lineChart = new Chart(pieChart, {
@@ -99,7 +110,7 @@ Highcharts.chart('populationIncreaseChart', {
               data: bieny
           }, {
             label: 'Tỉ suất tử',
-            data: [7,8,5,6,8,7,9,12],
+            data: tu,
             backgroundColor: '#a70808',
             borderColor: '#a70808',
             borderWidth: 2,

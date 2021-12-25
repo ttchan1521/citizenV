@@ -10,6 +10,13 @@ class schedule extends Model
 {
     use HasFactory;
 
+    public $sche_id;
+    public $start_date;
+    public $start_time;
+    public $end_date;
+    public $end_time;
+    public $status;
+
     public static function addSchedule($nhan_quyen, $start_date, $start_time, $end_date, $end_time) {
 
         foreach ($nhan_quyen as $nhan_quyen) {

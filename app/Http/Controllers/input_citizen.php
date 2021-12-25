@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\b1;
+use App\Models\b2;
 
 class input_citizen extends Controller
 {
@@ -20,15 +21,22 @@ class input_citizen extends Controller
         }
     }
 
+    function getModel() {
+        if (Session::get('user')->position == "b1") {
+            return new b1(Session::get('user')->id, Session::get('user')->name);
+        }
+        return new b2(Session::get('user')->id, Session::get('user')->name);
+    }
+
     function getCitizen() {
-        $admin = new b1(Session::get('user')->id, Session::get('user')->name);
+        $admin = $this->getModel();
         $result = $admin->getCitizen(Session::get('user')->id);
 
         return $result;
     }
 
     function getOne(Request $request) {
-        $admin = new b1(Session::get('user')->id, Session::get('user')->name);
+        $admin = $this->getModel();
 
         $id = $request->get('id');
 
@@ -42,7 +50,7 @@ class input_citizen extends Controller
         $birthdate = $request->get('birthdate');
         $gender = $request->get('gender');
 
-        $admin = new b1(Session::get('user')->id, Session::get('user')->name);
+        $admin = $this->getModel();
 
         $result = $admin->test($fullname, $birthdate, $gender);
 
@@ -67,7 +75,7 @@ class input_citizen extends Controller
         $education_level = $request->get('level');
         $job = $request->get('job');
 
-        $admin = new b1(Session::get('user')->id, Session::get('user')->name);
+        $admin = $this->getModel();
 
         $result = false;
 

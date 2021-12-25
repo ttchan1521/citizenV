@@ -258,8 +258,16 @@
           
         </div>
     </div>
+    <input type="hidden" value="{{ json_encode($year) }}" id="year">
+    <input type="hidden" value="{{ json_encode($data)}}" id="data">
+    <input type="hidden" value="{{ json_encode($sinh)}}" id="sinh">
+    <input type="hidden" value="{{ json_encode($tu) }}" id="tu">
   </section>
   <script src="{{ asset('js/aSite/js.js')}}"></script>
+  <script>
+    
+    
+  </script>
   <script src="{{ asset('js/aSite/chart.js')}}"></script>
 </body>
 </html>

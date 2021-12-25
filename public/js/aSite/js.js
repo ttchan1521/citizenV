@@ -55,6 +55,7 @@ function edit_click(self) {
   edit_data.style.display = "block";
 
 }
+
 window.onclick = function(e){
   if(e.target == addProvince || e.target == addSchedule 
     || e.target == delete_btn || e.target == edit_data || e.target == history_box){

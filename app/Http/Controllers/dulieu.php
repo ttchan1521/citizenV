@@ -21,7 +21,7 @@ class dulieu extends Controller
     }
 
     function loadLocal() {
-        $admin = new amin(Session::get('user')->id, Session::get('user')->name);
+        $admin = new admin(Session::get('user')->id, Session::get('user')->name);
         return $admin->loadLocal();
     } 
 

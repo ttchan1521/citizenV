@@ -64,6 +64,8 @@ Route::group(['prefix' => "/admin/{position}", 'as' => "admin."],function() {
 
     Route::post('/test', [input_citizen::class, 'test'])->name('test');
 
-    Route::post('/declare', [input_citizen:: class, 'declare'])->name('declare');
+    Route::post('/declare', [input_citizen::class, 'declare'])->name('declare');
+
+    Route::post('/updateChart', [theodoi::class, 'updateChart'])->name('updateChart');
 });
 

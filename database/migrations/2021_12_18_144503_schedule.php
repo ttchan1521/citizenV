@@ -23,6 +23,8 @@ class Schedule extends Migration
             $table->date('end_date');
             $table->time('end_time');
             $table->string('status');
+            $table->integer('sinh')->default(0);
+            $table->integer('tu')->default(0);
         
         });
     }

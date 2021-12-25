@@ -69,6 +69,7 @@
                                 </tr>
                             </thead>
                             <div>
+                        
                                 <tbody id="list">
 
                                 @foreach ($local as $local)
@@ -127,7 +128,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <form id="popup" class="popup" action="">
                 <input type="hidden" id="token" value="{{ @csrf_token() }}">
                 <input type="hidden" id="local_url" value="{{ route('admin.addLocal', ['position' => $user->position ]) }}">

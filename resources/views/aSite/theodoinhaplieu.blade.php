@@ -50,8 +50,13 @@
             <div class="chart provinceChart">
                 <p>Theo dõi nhập liệu theo từng tỉnh/ thành phố</p>
                 <form class="row" action="">
+                    <input type="hidden" id="token" value="{{ @csrf_token() }}">
+                    <input type="hidden" id="each_url" value="{{ route('admin.updateChart', ['position' => $user->position ]) }}">
                     <select type="input" name="province" id="province">
                       <option value="0">Chọn Tỉnh/ TP</option>
+                      @foreach($locals as $local)
+                        <option value="{{ $local->id }}">{{ $local->name }}</option>
+                      @endforeach
                     </select>
                     <div class="btn next_btn">
                       <button type="submit" name="submit"><i class="fas fa-search"></i> Tra cứu</button>
@@ -67,6 +72,13 @@
                         <canvas id="provincePieChart"></canvas>
                     </div>
                 </div>
+
+                <input type="hidden" value="{{ json_encode($time) }}" id ="getpro">
+                <input type="hidden" value="{{ json_encode($data) }}" id="getpro1">
+                <input type="hidden" value="{{ json_encode($fast) }}" id="fast">
+                <input type="hidden" value="{{ json_encode($slow) }}" id="slow">
+                <input type="hidden" value="{{ $total }}" id="total">
+                <input type="hidden" value="{{ $done }}" id="done">
             </div>
         </div>
         
@@ -76,8 +88,12 @@
   
 
   <script>
-    var bienx = ['24/9','25/9','26/9','27/9','28/9','30/9','1/10','2/10','3/10','4/10','5/10','6/10','7/10','8/10','9/10','10/10','11/10','12/10','13/10','14/10','15/10','16/10','17/10','18/10','19/10','20/10','21/10'];
-    var bieny = [50,80,10,10,79,100,34,23,45,78,45,67,30,10,78,56,54,12,34,56,120,150];
+    let pro = document.getElementById("getpro").value;
+    pro = JSON.parse(pro);
+    let pro1 = document.getElementById("getpro1").value;
+    pro1 = JSON.parse(pro1);
+    var bienx = pro;
+    var bieny = pro1;
     var CHART = document.getElementById('linechart').getContext('2d');
     
     var lineChart = new Chart(CHART, {
@@ -98,13 +114,22 @@
         },
     }) 
 //    -----------------------------------------------------     // 
-    const labelTop = ['Phú Thọ','Hà Tĩnh','Bình Phước','Cao Bằng','Sơn La','Bạc Liêu',
-    'Thái Bình','Điện Biên','Nghệ An','Hà Nội'];
+
+    let fast = document.getElementById("fast").value;
+    fast = JSON.parse(fast);
+    let local_f = [];
+    let data_f = [];
+    for (var i=0; i<fast.length; i++) {
+        local_f.push(fast[i]["local_name"]);
+        data_f.push(fast[i]["total"]);
+    } 
+    
+    const labelTop = local_f;
     const data = {
         labels: labelTop,
         datasets: [{
             label: 'Hoàn thành',
-            data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80],
+            data: data_f,
             backgroundColor: '#2929a3',
             borderColor: '#2929a3',
             categoryPercentage: 0.6,
@@ -130,12 +155,21 @@
    
     const chartTop = new Chart(document.getElementById('barchartTop'), configTop);
  // ----------------------------------------------------
-    const labelLow = ['Phú Thọ','Hà Tĩnh','Bình Phước','Cao Bằng','Sơn La','Bạc Liêu','Thái Bình','Điện Biên','Nghệ An','Hà Nội'];
+
+    let slow = document.getElementById("slow").value;
+    slow = JSON.parse(slow);
+    let local_s = [];
+    let data_s = [];
+    for (var i=0; i<slow.length; i++) {
+        local_s.push(slow[i]["local_name"]);
+        data_s.push(slow[i]["total"]);
+    } 
+    const labelLow = local_s;
     const dataLow = {
         labels: labelLow,
         datasets: [{
             label: 'Hoàn thành',
-            data: [65, 59, 52, 61, 56, 55, 53, 55, 56, 50],
+            data: data_s,
             backgroundColor: '#008ae6',
             borderColor: '#008ae6',
             categoryPercentage: 0.6,
@@ -160,8 +194,16 @@
     }
     const chartLow = new Chart(document.getElementById('barchartLow'), configLow);
 // ---------------------------------------------------------------------
-    var date = ['24/9','25/9','26/9','27/9','28/9','30/9','1/10','2/10','3/10','4/10','5/10','6/10','7/10','8/10','9/10','10/10','11/10','12/10','13/10','14/10','15/10','16/10','17/10','18/10','19/10','20/10','21/10'];
-    var y = [50,80,10,10,79,100,34,23,45,78,45,67,30,10,78,56,54,12,34,56,120,150];
+
+    let selector = document.getElementById("province");
+    let tinh = selector.value;
+
+    let total = document.getElementById("total").value;
+    let done = document.getElementById("done").value;
+    
+
+    var date = pro;
+    var y = pro1;
     var provinceLineChart = document.getElementById('provinceLineChart').getContext('2d');
     
     var provinceLineChart = new Chart(provinceLineChart, {
@@ -189,6 +231,7 @@
         }
     });
     // ---------------------------------------------------------
+
     var provincePieChart = document.getElementById("provincePieChart").getContext("2d");
 
     var provincePieData = {
@@ -198,7 +241,7 @@
                 label: "",
                 backgroundColor: ["#0c267e","#7b7b7c"],
                 borderColor: "#bac6dd",
-                data: [3,9]
+                data: [done,total-done]
             }
         ]
     };
@@ -210,12 +253,12 @@
           plugins: {
             title: {
               display: true,
-              text: 'Cơ cấu dân số theo độ tuổi và giới tính',
+              text: 'Tiến độ',
               position:'top',
             },
             subtitle: {
                 display: true,
-                text: 'Đơn vị: Triệu người'
+                text: 'Đơn vị: Người'
             },
             legend:{
               display: true,
@@ -227,6 +270,45 @@
           }
         },
     });
+
+    //Thay đổi, chọn các địa phương
+    $("#province").on('change', function() {
+        let selectPro = this.value;
+        let selectTotal = total;
+        let selectDone = done;
+        let selectTime = pro;
+        let selectData = pro1;
+        if (selectPro != '0') {
+            let url = $("#each_url").val();
+            $.post(url, {
+                '_token' : $("#token").val(),
+                'id' : selectPro
+            }, function(response) {
+                if (response.success) {
+                    selectTotal = response.total;
+                    selectDone = response.done;
+                    selectTime = response.time;
+                    selectData = response.data;
+                    updateChart(selectTotal, selectDone, selectTime, selectData);
+                }
+            });
+            
+        }
+        else {
+            updateChart(selectTotal, selectDone, selectTime, selectData);
+        }
+    });
+
+    function updateChart(SelectTotal, SelectDone, SelectTime, SelectData) {
+        provinceLineChart.data.label = SelectTime;
+        provinceLineChart.data.datasets[0].data = SelectData;
+        provinceLineChart.update();
+
+        provincePieChart.data.datasets[0].data = [SelectTotal,SelectTotal-SelectDone];
+        provincePieChart.update();
+
+
+    }
   </script>
   <script src="{{ asset('js/aSite/js.js')}}"></script>
 </body>

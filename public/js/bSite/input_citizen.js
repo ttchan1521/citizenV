@@ -208,6 +208,7 @@ function check() {
         }
         else {
             document.getElementById("test-content").innerHTML = "Không có dữ liệu";
+            document.getElementById("btn1_submit").disabled = false;
             originData = null;
         }
         document.getElementById("test").style.display = "block";
@@ -222,6 +223,7 @@ function close_test() {
 
 
 function declareCtzen() {
+    console.log("hi");
     let url = $("#declare_url").val();
     let id = false;
 

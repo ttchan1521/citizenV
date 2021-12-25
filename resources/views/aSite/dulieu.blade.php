@@ -35,6 +35,7 @@
                       <option value="0">Chọn vùng kt</option>
                   </select>
                   <select type="input" name="province" id="province">
+                      
                       <option value="0">Chọn Tỉnh/ TP</option>
                   </select>
                   <select type="input" name="" id="district">
