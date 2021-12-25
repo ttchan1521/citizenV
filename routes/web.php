@@ -39,6 +39,9 @@ Route::group(['prefix' => "/admin/{position}", 'as' => "admin."],function() {
     Route::get('/phantich', [phantich::class, 'index'])->name('phantich');
     Route::get('/theodoi', [theodoi::class, 'index'])->name('theodoi');
     Route::get('/dulieu', [dulieu::class, 'index'])->name('dulieu');
+    //Route::get('/isPosition', [dulieu::class, 'isPosition'])->name('isPosition');
+    Route::post('/load_InfoCitizen', [dulieu::class, 'load_InfoCitizen'])->name('load_InfoCitizen');
+
     Route::get('/thongbao', [thongbao::class, 'index'])->name('thongbao');
     
     Route::get('/input_citizen', [input_citizen::class, 'index'])->name('input_citizen');

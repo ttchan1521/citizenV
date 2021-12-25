@@ -39,7 +39,7 @@ input, select, option {
     display: flex;
     margin: auto;
   }
-  .province-box .popup-content {
+  .popup-content {
       position: relative;
       box-shadow: 0 4px 12px 0 rgb(54, 50, 50);
       border-radius: 3px;
@@ -47,7 +47,7 @@ input, select, option {
       margin: auto;
       background-color: rgb(240, 240, 240);
   }
-  .province-box .popup p {
+  .popup p {
     text-align: center;
     padding-top: 40px;
     padding-bottom: 10px;
@@ -169,6 +169,49 @@ input, select, option {
   }
   .province-box #edit .popup-content .bottom {
     background-color: rgb(190, 198, 235);
+  }
+  
+  #citizen .popup-content {
+      width: 500px;
+      height: 400px;
+      margin-top: 100px;
+  }
+  #citizen #citiInfo-content {
+    height: 340px;
+  }
+  #citizen #citiInfo-content p {
+    font-family: sans-serif!important;
+    color: #34353a;
+  }
+  #citiInfo-content .title p{
+    padding-top: 30px;
+    padding-bottom: 0;
+  }
+  #citiInfo-content > p {
+    text-align: left;
+    font-weight: unset;
+    padding: 17px 5px 3px 5px;
+    width: 90%;
+    margin: auto;
+    border-bottom: 1px solid #9cafc5;
+
+  }
+  #citizen .btn {
+    margin-top: 17px;
+  }
+  #citizen .btn button{
+    border: none;
+    width: 99%;
+    margin-left:0.5%;
+    border-radius: unset;
+    height: 39px;
+    background-color: #2e3c79;
+    box-shadow: 0 4px 12px 0 rgba(5, 24, 192, 0.5);
+    color: #e5e2e2;;
+  }
+  #citizen .btn button:hover {
+    font-size: 16px;
+    background-color: #225492;
   }
   sup {
     position: absolute;

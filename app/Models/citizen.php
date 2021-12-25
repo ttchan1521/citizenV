@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 
 class citizen extends Model
@@ -37,5 +38,26 @@ class citizen extends Model
         $this->education_level = $education_level;
         $this->job = $job;
 
+    }
+    public static function load_info_Citizen($id) {
+        $result = DB::select('select *, gender.gender_name, level.level_name, job.job_name  from citizen
+        join gender on gender.gender_id = citizen.gender
+        join job on job.job_id = citizen.job 
+        join level on level.level_id = citizen.education_level
+        where citizen_id = ?', [$id]);
+        if ($result) {
+            return $result;
+        }
+
+        return [];
+    }
+    public static function totalPopulation($id) {
+        $result = DB::select('select count(citizen_id) from citizen 
+        where hamlet LIKE ', "[$id%]");
+        if ($result) {
+            return $result;
+        }
+
+        return [];
     }
 }
