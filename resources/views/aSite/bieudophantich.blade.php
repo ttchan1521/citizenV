@@ -276,6 +276,7 @@
     <input type="hidden" value="{{ json_encode($level4) }}" id="level4">
     <input type="hidden" value="{{ json_encode($level5) }}" id="level5">
     <input type="hidden" value="{{ json_encode($job) }}" id="job">
+    <input type="hidden" value="{{ json_encode($cc) }}" id="cc">
   </section>
   
   <script>

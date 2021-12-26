@@ -21,7 +21,8 @@ class admin extends Model
     public function __construct($id, $name) {
         $this->id = $id;
         $this->name = $name;
-        $locals = DB::select('select id, name, position from admin where boss = ?', [$id]);
+        $locals = DB::table('admin')->select('id', 'name', 'position')->where('boss', '=', $id)->get();
+        //$locals = DB::select('select id, name, position from admin where boss = ?', [$id]);
         if ($locals) {
             foreach($locals as $local) {
                 $smallAdd = new admin($local->id, $local->name);
@@ -97,7 +98,9 @@ class admin extends Model
     
 
     public function closeOne($smallId) {
-        $result = DB::update('update schedule set status = "Close" where nhan_quyen = ? and status = "Open" ', [$smallId]);
+        $result = DB::table('schedule')->where('status', 'Open')->where('nhan_quyen', $smallId)
+                    ->update(array('status' => 'Close'));
+        //$result = DB::update('update schedule set status = "Close" where nhan_quyen = ? and status = "Open" ', [$smallId]);
         $temp = $this->getChild($smallId);
         if ($temp) {
             $temp->closeAll();
@@ -127,7 +130,11 @@ class admin extends Model
     public function getSchedule() {
         $schedule = new schedule();
         $now = Date("Y-m-d");
-        $sche = DB::select('select sche_id, start_date, start_time, end_date, end_time, status from schedule where nhan_quyen = ? and end_date > ? limit 1', [$this->id, $now]);
+        $sche = DB::table('schedule')
+                    ->select('sche_id', 'start_date', 'start_time', 'end_date', 'end_time', 'status')
+                    ->where('nhan_quyen', $this->id)
+                    ->where('end_date', '>', $now)->get();
+        //$sche = DB::select('select sche_id, start_date, start_time, end_date, end_time, status from schedule where nhan_quyen = ? and end_date > ? limit 1', [$this->id, $now]);
         $schedule->sche_id = "";
         $schedule->start_date = "";
         $schedule->start_time = "";
@@ -532,7 +539,9 @@ class admin extends Model
     }
 
     public static function open($smallId) {
-        $result = DB::update('update schedule set status = "Open" where nhan_quyen = ? and status = "Close" ', [$smallId]);
+        $result = DB::table('schedule')->where('status', 'Close')->where('nhan_quyen', $smallId)
+                    ->update(array('status' => 'Open'));
+        //$result = DB::update('update schedule set status = "Open" where nhan_quyen = ? and status = "Close" ', [$smallId]);
 
         if ($result) {
             return true;
@@ -542,7 +551,14 @@ class admin extends Model
 
     public static function addLocal($id, $name, $password, $boss, $position) {
         $password = md5($password);
-        $local = DB::insert('insert into admin(id, name, password, boss, position) values(?, ?, ?, ?, ?)', [$id, $name, $password, $boss, $position]);
+        $local = DB::table('admin')->insert([
+            'id' => $id,
+            'name' => $name,
+            'password' => $password,
+            'boss' => $boss,
+            'position' => $position
+        ]);
+        //$local = DB::insert('insert into admin(id, name, password, boss, position) values(?, ?, ?, ?, ?)', [$id, $name, $password, $boss, $position]);
 
         if ($local) {
             return true;
@@ -551,7 +567,9 @@ class admin extends Model
     }
 
     public static function deleteLocal($id) {
-        $result = DB::delete('delete from admin where id = ?', [$id]);
+
+        $result = DB::table('admin')->where('id', $id)->delete();
+        //$result = DB::delete('delete from admin where id = ?', [$id]);
 
         if ($result) {
             return true;

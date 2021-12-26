@@ -12,27 +12,51 @@ class b1 extends admin
     use HasFactory;
 
     function getCitizen() {
-        $result = DB::select('select * from citizen where hamlet = ?', [$this->id]);
+        $result = DB::table('citizen')->where('hamlet', $this->id)->get();
+        //$result = DB::select('select * from citizen where hamlet = ?', [$this->id]);
 
         return $result;
     }
 
     function test($fullname, $birthdate, $gender) {
-        $result = DB::select('select * from citizen where hamlet = ? and fullname = ? and birthdate = ? and gender = ?', [$this->id, $fullname, $birthdate, $gender]);
+        $result = DB::table('citizen')
+                        ->where('hamlet', $this->id)
+                        ->where('fullname', $fullname)
+                        ->where('birthdate', $birthdate)
+                        ->where('gender', $gender)
+                        ->get();
+        //$result = DB::select('select * from citizen where hamlet = ? and fullname = ? and birthdate = ? and gender = ?', [$this->id, $fullname, $birthdate, $gender]);
 
         return $result;
 
     }
 
     function getOne($id) {
-        $result = DB::select('select * from citizen where hamlet = ? and citizen_id = ?', [$this->id, $id]);
+        $result = DB::table('citizen')
+                    ->where('hamlet', $this->id)
+                    ->where('citizen_id', $id);
+        //$result = DB::select('select * from citizen where hamlet = ? and citizen_id = ?', [$this->id, $id]);
 
         return $result;
     }
 
     function addCitizen($fullname, $birthdate, $gender, $hometown, $address, $temporary_add, $identity_num, $ton_giao, $education_level, $job) {
-        $result = DB::insert('insert into citizen(fullname, birthdate, gender, hometown, address, hamlet, temporary_add, identity_num, ton_giao, education_level, job, update_by) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
-                            [$fullname, $birthdate, $gender, $hometown, $address, $this->id, $temporary_add, $identity_num, $ton_giao, $education_level, $job, $this->id]);
+        $result = DB::table('citizen')->insert([
+            'fullname' => $fullname,
+            'birthdate' => $birthdate,
+            'gender' => $gender,
+            'hometown' => $hometown,
+            'address' => $address,
+            'hamlet' => $this->id,
+            'temporary_add' => $temporary_add,
+            'identity_num' => $identity_num,
+            'ton_giao' => $ton_giao,
+            'education_level' => $level,
+            'job' => $job,
+            'update_by' => $this->id
+        ]);
+        //$result = DB::insert('insert into citizen(fullname, birthdate, gender, hometown, address, hamlet, temporary_add, identity_num, ton_giao, education_level, job, update_by) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+          //                  [$fullname, $birthdate, $gender, $hometown, $address, $this->id, $temporary_add, $identity_num, $ton_giao, $education_level, $job, $this->id]);
         
         if ($result) {
             return true;

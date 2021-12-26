@@ -36,14 +36,14 @@ class phantich extends Controller
             }
             
             if ($cc != 0) {
-                foreach($ccNam as $nam) {
-                    $nam = $nam/$cc * 100;
-                    $nam = \round($nam, 1);
-                    $nam = -$nam;
+                foreach($ccNam as $i => $nam) {
+                    $ccNam[$i] = $nam/$cc * 100;
+                    $ccNam[$i] = \round($ccNam[$i], 1);
+                    $ccNam[$i] = -$ccNam[$i];
                 }
-                foreach($ccNu as $nu ){
-                    $nu = $nu/$cc * 100;
-                    $nu = \round($nu, 1);
+                foreach($ccNu as $i => $nu ){
+                    $ccNu[$i] = $nu/$cc * 100;
+                    $ccNu[$i] = \round($ccNu[$i], 1);
                 }
             }
             $male = $this->maleEachYear();
@@ -57,7 +57,7 @@ class phantich extends Controller
 
             $job = $this->eachJob();
             return view('aSite.bieudophantich', ['user' => Session::get('user'), 'down' =>$down, 'year' => $data[0], 'data' => $data[1], 
-                        'sinh' => $sinh[1], 'tu' => $tu[1], 'ccNam' => $ccNam, 'ccNu' => $ccNu, 'male' => $male[1], 'female' => $female[1],
+                        'sinh' => $sinh[1], 'tu' => $tu[1], 'ccNam' => $ccNam, 'ccNu' => $ccNu, 'cc' => $cc, 'male' => $male[1], 'female' => $female[1],
                         'young' => $young[1], 'work' => $work[1], 'old' => $old[1],'level0' => $level[0], 'level1' => $level[1], 'level2' => $level[2], 
                         'level3' => $level[3], 'level4' => $level[4], 'level5' => $level[5], 'job' => $job]);
         }

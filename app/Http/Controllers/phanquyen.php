@@ -55,7 +55,7 @@ class phanquyen extends Controller
             return \response()->json(['success' => false, 'error' => 'Bạn không có quyền']);
         }
         $schedule = $admin->getSchedule();
-        if ($schedule->status != "Open") {
+        if ($schedule->status != "Open" && Session::get('user')->position != "a1") {
             return \response()->json(['success' => false, 'error' => 'Bạn không có lịch khai báo nào']);
         }
         $result = admin::open($id);

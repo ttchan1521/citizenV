@@ -108,16 +108,24 @@ Validator.isName = function(selector) {
     return {
         selector: selector,
         test: function(value) {
+            value = value.toLowerCase();
+            value = value.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+            value = value.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+            value = value.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+            value = value.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+            value = value.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+            value = value.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+            value = value.replace(/đ/g, "d");
             if (!value.trim()) {
-                return "Vui lòng nhập vào trường này";
+                return "Vui lòng nhập vào trường này!";
             } else if (!(/^[A-Za-z ]+$/.test(value))){
-                return "Tên của bạn không hợp lệ";
+                return "Tên của bạn không hợp lệ!";
             }
             else {
                 return undefined;
             }
         }
-    };
+      };
 }
 
 Validator.isDate = function(selector) {
@@ -148,8 +156,7 @@ Validator({
         Validator.isName("#fullname"),
         Validator.isDate('#ngaysinh'),
         Validator.isRequired('#gioitinh'),
-        Validator.isRequired('#quequan'),
-        Validator.isRequired('#job'),
+        
     ]
 });
 

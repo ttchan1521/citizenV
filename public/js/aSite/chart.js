@@ -12,17 +12,14 @@ let tu = document.getElementById("tu").value;
 tu = JSON.parse(tu);
 
 let tile1 = [0.7, 4.0, 4.0, 4.7, 3.0, -4.0, 4.7, 4.3, -6.0, -3.3];
-let tile = [];
-for (var i=0; i<sinh.length; i++) {
-  let rate = (sinh[i]-tu[i])/data[0]*100 + 4;
-  rate = rate.toFixed(1);
-  tile.push(rate);
-}
+
 
 let ccNam = document.getElementById("ccnam").value;
 ccNam = JSON.parse(ccNam);
+console.log(ccNam);
 let ccNu = document.getElementById("ccNu").value;
 ccNu = JSON.parse(ccNu);
+
 
 let male = document.getElementById("male").value;
 male = JSON.parse(male);
