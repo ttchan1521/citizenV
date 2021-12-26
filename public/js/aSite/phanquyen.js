@@ -241,6 +241,12 @@ function tick(self){
       self.nextElementSibling.childNodes[0].classList.remove("tick-background");
   }
 }
+function openError(){
+  document.getElementById("error").style.display = "block";
+}
+function openNotify(){
+  document.getElementById("notificate").style.display = "block";
+}
 
 function onoff(self) {
   let id = self.parentNode.parentNode.parentNode.querySelector(".row_id").innerHTML;
@@ -257,16 +263,17 @@ function onoff(self) {
     'id' : id
   }, function (response) {
     if (!response.success) {
-      alert(response.error);
+      // alert(response.error);
+      $('#error').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Chưa có lịch khai báo nào!</p>");
+      openError();
+      $('#error').fadeOut(5000);
       self.checked = false;
     } 
   });
 }
 
 
-function openNotify(){
-  document.getElementById("notificate").style.display = "block";
-}
+
 function del(self){
   self.parentNode.style.display="none";
 }
@@ -378,6 +385,9 @@ function Validator(options) {
               }
               else {
                 alert(response.error);
+                // $('#notificate').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Chưa có lịch khai báo nào!</p>");
+                // openNotify();
+                // $('#notificate').fadeOut(5000);
               }
       
           });

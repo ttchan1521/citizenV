@@ -426,7 +426,7 @@ table .min-width {
     0 -1px 0 #808da7;
 }
 /* ---------------------------------- */
-#notificate {
+#notificate, #error {
   position: fixed;
   display: none;
   top: 0;
@@ -435,25 +435,39 @@ table .min-width {
   margin-right: 2.5%;
   z-index: 5000;
   height: 60px;
-  background-color: #5f68e0;
-  box-shadow: 2px 2px 10px rgb(144, 132, 243);
   border-radius: 5px;
 }
-#notificate p {
+#notificate {
+  background-color: #5f68e0;
+  box-shadow: 2px 2px 10px rgb(144, 132, 243);
+}
+#error {
+  background-color: #b82d44;
+  box-shadow: 2px 2px 10px rgb(170, 23, 23);
+}
+#notificate p,
+#error p {
   position: relative;
   display: inline;
   padding: 13px;
   color: white;
 }
-#notificate button {
+#notificate button,
+#error button {
   display: inline;
   border-radius: 6px;
   cursor: pointer;
-  background-color: #5f68e0;
   border: none;
   height: 100%;
 }
-#notificate button i {
+#notificate button {
+  background-color: #5f68e0;
+}
+#error button {
+  background-color: #b82d44;
+}
+#notificate button i,
+#error button i {
   color: white;
   font-size: 20px;
   margin-left: 15px;

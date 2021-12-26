@@ -198,54 +198,54 @@ Highcharts.chart('populationIncreaseChart', {
     const chartLow = new Chart(document.getElementById('barchartLow'), configLow);
 // ------------------------------------------------------
 // vùng kinh tế _ vkt 
-    const label_vkt = ['Trung du và miền núi  phía Bắc',
-    'Đồng bằng sông Hồng','Bắc Trung Bộ và Duyên hải miền Trung',
-    'Tây Nguyên','Đông Nam Bộ','Đồng bằng sông Cửu Long'];
-    const data_vkt = {
-        labels: label_vkt,
-        datasets: [{
-            label: 'Người',
-            data: [12, 22, 20, 56, 13, 42, 10],
-            backgroundColor: '#008ae6',
-            borderColor: '#008ae6',
-            categoryPercentage: 0.6,
-        }]
-    };
-    const config_vkt = {
-        type: 'bar',
-        data: data_vkt,
-        options: {
-            indexAxis: 'y',
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    }
-    const chart_vkt = new Chart(document.getElementById('ktxh_chart'), config_vkt);
+    // const label_vkt = ['Trung du và miền núi  phía Bắc',
+    // 'Đồng bằng sông Hồng','Bắc Trung Bộ và Duyên hải miền Trung',
+    // 'Tây Nguyên','Đông Nam Bộ','Đồng bằng sông Cửu Long'];
+    // const data_vkt = {
+    //     labels: label_vkt,
+    //     datasets: [{
+    //         label: 'Người',
+    //         data: [12, 22, 20, 56, 13, 42, 10],
+    //         backgroundColor: '#008ae6',
+    //         borderColor: '#008ae6',
+    //         categoryPercentage: 0.6,
+    //     }]
+    // };
+    // const config_vkt = {
+    //     type: 'bar',
+    //     data: data_vkt,
+    //     options: {
+    //         indexAxis: 'y',
+    //         scales: {
+    //             y: {
+    //                 beginAtZero: true
+    //             }
+    //         }
+    //     }
+    // }
+    // const chart_vkt = new Chart(document.getElementById('ktxh_chart'), config_vkt);
 
 // --------------------------------------------------------------
-  var pieChart = document.getElementById('pieChart').getContext('2d');
-  var pieChart = new Chart(pieChart, {
-      title: '',
-      type: 'pie',
-      data:{
-         labels: [
-            'Thành thị',
-            'Nông thôn'
-          ],
-          datasets:[{
-            label: 'Người',
-            data: [200, 50],
-            backgroundColor: [
-              'rgb(255, 99, 132)',
-              'rgb(54, 162, 235)'
-            ],
-            hoverOffset: 4
-          }]
-      },
-  }) 
+  // var pieChart = document.getElementById('pieChart').getContext('2d');
+  // var pieChart = new Chart(pieChart, {
+  //     title: '',
+  //     type: 'pie',
+  //     data:{
+  //        labels: [
+  //           'Thành thị',
+  //           'Nông thôn'
+  //         ],
+  //         datasets:[{
+  //           label: 'Người',
+  //           data: [200, 50],
+  //           backgroundColor: [
+  //             'rgb(255, 99, 132)',
+  //             'rgb(54, 162, 235)'
+  //           ],
+  //           hoverOffset: 4
+  //         }]
+  //     },
+  // }) 
 
 // -------------------------------------------------------------
 //Biểu đồ cớ cấu dân số theo độ tuổi và giới tính ----->
@@ -549,8 +549,8 @@ const careerLabels = ['Cơ khí, Điện, Viễn thông','Du lịch và dịch v
                   'Pháp lý, Hành chính văn phòng','Thủy điện, Xây dựng',
                   'Giáo dục, Sư phạm','Y tế','Ngành nghề khác'];
 const backgroundc = ['#5b93e7','rgb(211, 102, 157)','red','blue', 
-'#5b93e7','rgb(211, 102, 157)','red','blue',
-'#5b93e7','rgb(211, 102, 157)','red'];
+'green','pink','rgb(211, 100, 189)','#730099',
+'#009999','#ff0000','#990000'];
 var careerData = job;
 
 var CareerChart = new Chart(pieChartCareer, {
