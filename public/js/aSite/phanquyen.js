@@ -502,7 +502,7 @@ Validator.isProvinceCode = function(selector) {
       test: function(value) {
           if (!value.trim()) {
               return "Vui lòng nhập vào trường này!";
-          } else if (value.length !=2 ){
+          } else if (value.length % 2 !=0 ){
               return "Mã tỉnh/tp không hợp lệ!";
           }
           else {
