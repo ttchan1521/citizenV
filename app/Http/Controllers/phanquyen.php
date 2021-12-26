@@ -23,9 +23,10 @@ class phanquyen extends Controller
             return redirect()->route('login');
         }
         else {
+            $name = Session::get('user')->name;
             $local = $this->load(Session::get('user')->id, Session::get('user')->name);
             $down = $this->nameDown(Session::get('user')->position);
-            return view('aSite.phanquyen', ['user' => Session::get('user'), 'down' => $down, 'local' => $local]);
+            return view('aSite.phanquyen', ['user' => Session::get('user'),'name'=>$name, 'down' => $down, 'local' => $local]);
         }
     }
     public function schedule() {
@@ -33,6 +34,7 @@ class phanquyen extends Controller
             return redirect()->route('login');
         }
         else {
+            
             $schedule = schedule::loadSchedule(Session::get('user')->id);
             $admin = new admin(Session::get('user')->id, Session::get('user')->name);
             $local = $admin->uncomplete();

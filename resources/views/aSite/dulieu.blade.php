@@ -46,17 +46,23 @@
                 -->
                  
                                            
-                @if ( $position == "a3" || $position == "a2")                        
+                @if ( $position == "a3" || $position == "a2" || $position=="b1")                        
                   <input type="text" id="province" style="display:none" placeholder="Nhập Tỉnh/tp">
                 @else <input type="text" id="province" placeholder="Nhập Tỉnh/tp">
                 @endif
-                @if ( $position == "a3")  
+
+                @if ( $position == "a3" || $position=="b1" )  
                   <input type="text" id="district" style="display:none" placeholder="Nhập Quận/huyện">
                 @else 
                   <input type="text" id="district" placeholder="Nhập Quận/huyện"> 
                 @endif
+
+                @if ( $position=="b1" )
+                  <input type="text" id="ward" style="display:none" placeholder="Nhập Xã/phường">
+                @else 
                   <input type="text" id="ward" placeholder="Nhập Xã/phường">
-                  
+                @endif  
+
                   <input type="text" id="citizenName" placeholder="Nhập tên người dân">  
                
                     
@@ -105,6 +111,10 @@
                           <th class="setWidth">Họ và tên</th>
                           <th class="setWidth">Xã/Phường</th>
                           <th>Chi tiết</th>
+                        @elseif ($position == "b1") 
+                          <th>STT</th>
+                          <th class="setWidth">Họ và tên</th>
+                          <th>Chi tiết</th>
                         @endif
                       </tr>
                   </thead>
@@ -120,13 +130,20 @@
                         
                         <!-- <input  type="hidden" value=""></input> -->
                         <td class="row_citizenName"> {{ $citizen->fullname }}</td>
-                        <td class="row_ward">{{ $citizen->Xa }}</td>
-                      @if ( $position == "a3") 
+
+                      @if ($position == "b1")  
+                        <td class="row_ward" style="display: none">{{ $citizen->Xa }}</td>
+                      @else 
+                      <td class="row_ward">{{ $citizen->Xa }}</td>
+                      @endif
+
+                      @if ( $position == "a3" || $position == "b1") 
                         <td class="row_district" style="display: none">{{ $citizen->Huyen }}</td>
                       @else
                         <td class="row_district">{{ $citizen->Huyen }}</td>
                       @endif
-                      @if ($position == "a2" || $position == "a3")
+
+                      @if ($position == "a2" || $position == "a3" || $position == "b1")
                         <td class="row_province" style="display: none">{{ $citizen->Tinh }}</td>
                       @else 
                         <td class="row_province" >{{ $citizen->Tinh }}</td>

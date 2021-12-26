@@ -16,11 +16,12 @@ class phantich extends Controller
             return redirect()->route('login');
         }
         else {
+            $name = Session::get('user')->name;
             $down = $this->nameDown(Session::get('user')->position);
             $data = $this->quanEachYear();
             $sinh = $this->sinhEachYear();
             $tu = $this->tuEachYear();
-            return view('aSite.bieudophantich', ['user' => Session::get('user'), 'down' =>$down, 'year' => $data[0], 'data' => $data[1], 
+            return view('aSite.bieudophantich', ['user' => Session::get('user'),'name'=>$name, 'down' =>$down, 'year' => $data[0], 'data' => $data[1], 
                         'sinh' => $sinh[1], 'tu' => $tu[1]]);
         }
     }

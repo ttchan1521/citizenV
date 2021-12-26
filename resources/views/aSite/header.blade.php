@@ -102,7 +102,17 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard"> Bộ Y tế</span>
+        @if ($down == "tỉnh/thành phố") 
+          <span class="dashboard"> Bộ Y tế </span>
+        @elseif ($down == "quận/huyện")
+          <span class="dashboard"> Sở Y tế {{$name}} </span>
+        @elseif ($down == "xã/phường")  
+          <span class="dashboard"> Phòng Y tế {{$name}} </span>
+        @elseif ($down == "thôn/bản")  
+          <span class="dashboard"> Trạm Y tế {{$name}} </span>
+        @else 
+          <span class="dashboard"> {{$name}} </span>
+        @endif
       </div>
       <!-- <div class="search-box">
         <input type="text" placeholder="Search...">

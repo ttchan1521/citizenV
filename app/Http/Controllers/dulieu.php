@@ -15,11 +15,12 @@ class dulieu extends Controller
             return redirect()->route('login');
         }
         else {
+            $name = Session::get('user')->name;
             $position = Session::get('user')->position;
             $down = $this->nameDown(Session::get('user')->position);
             $local = $this->loadLocal();
             $citizen = $this->loadCitizen();
-            return view('aSite.dulieu', ['user' => Session::get('user'),'position' => $position, 'down' => $down, 'locals' => $local, 'citizen' => $citizen]);
+            return view('aSite.dulieu', ['user' => Session::get('user'),'position' => $position, 'down' => $down, 'locals' => $local, 'citizen' => $citizen, 'name' => $name]);
         }
     }
     function loadCitizen() {

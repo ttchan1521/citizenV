@@ -13,8 +13,9 @@ class thongbao extends Controller
             return redirect()->route('login');
         }
         else {
+            $name = Session::get('user')->name;
             $down = $this->nameDown(Session::get('user')->position);
-            return view('aSite.thongbao', ['user' => Session::get('user'), 'down' => $down]);
+            return view('aSite.thongbao', ['user' => Session::get('user'),'name'=>$name, 'down' => $down]);
         }
     }
 
