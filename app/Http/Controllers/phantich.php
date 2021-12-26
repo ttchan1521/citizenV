@@ -19,6 +19,7 @@ class phantich extends Controller
             return \redirect()->route('admin.input_citizen');
         }
         else {
+            $name = Session::get('user')->name;
             $down = $this->nameDown(Session::get('user')->position);
             $data = $this->quanEachYear();
             $sinh = $this->sinhEachYear();

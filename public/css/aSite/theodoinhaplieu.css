@@ -105,6 +105,7 @@ canvas {
     .provinceChart form select {
       width: 250px;
       font-size: 16px;
+      outline: none;
     }
     .provinceChart form .btn button {
       height: 37px;

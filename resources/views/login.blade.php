@@ -13,6 +13,9 @@
   </head>
   <body>
     <div class="container">
+      <div id="error">
+        <p id="error_message"></p>
+      </div>
       <div class="signin-signup">
           <form action="#" class="sign-in-form" id="form">
           <input type="hidden" id="token" value="{{ @csrf_token() }}">

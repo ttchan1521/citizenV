@@ -1593,7 +1593,7 @@ class DatabaseSeeder extends Seeder
                     'name' => 'ddd',
                     'Password' => md5('12345'),
                     'boss' => '5601',
-                    'position' => 'n1'
+                    'position' => 'b1'
                     ]);
                     DB::table('admin')->insert([
                     'id' => '570101',

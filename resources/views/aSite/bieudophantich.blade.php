@@ -277,7 +277,7 @@
     <input type="hidden" value="{{ json_encode($level5) }}" id="level5">
     <input type="hidden" value="{{ json_encode($job) }}" id="job">
   </section>
-  <script src="{{ asset('js/aSite/js.js')}}"></script>
+  
   <script>
     
     

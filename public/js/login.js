@@ -1,3 +1,6 @@
+function openNotify() {
+    document.getElementById("error").style.display = 'block';
+}
 $("#form").submit(function(e) {
     e.preventDefault();
     $.post("/checkLogin", {
@@ -9,7 +12,10 @@ $("#form").submit(function(e) {
             window.location = response.url;
         }
         else {
-            
+
+            $('#error_message').text(response.error);
+            openNotify();
+            $('#error').fadeOut(8000); 
         }
 
     });

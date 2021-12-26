@@ -23,7 +23,8 @@
                 <h2>Quản lý truy cập</h2>
                 <p>Lịch khai báo</p>
             </div>
-
+            <div id="notificate">
+            </div>
             <div class="table-data">
             <div class="table background-box"> 
                     <p>Lịch khai báo</p>
@@ -50,6 +51,7 @@
                                 {{ $schedule->end_date." ".$schedule->end_time }}
                             </td>
                             <td>{{ $schedule->status }}</td>
+                            
                             <td class="tick">
                                 @if ($schedule->status == "Done")
                                     <a onclick="" style="color: #rgb(12, 21, 153)"><i class="fas fa-check tick-uncheck"></i></a>

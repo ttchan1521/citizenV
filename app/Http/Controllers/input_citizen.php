@@ -18,9 +18,10 @@ class input_citizen extends Controller
             return \redirect()->route('admin.phanquyen');
         }
         else {
+            $name = Session::get('user')->name;
             $down = $this->nameDown(Session::get('user')->position);
             $citizen = $this->getCitizen();
-            return view('aSite.input_citizen', ['user' => Session::get('user'), 'down' => $down, 'citizen' => $citizen]);
+            return view('aSite.input_citizen', ['user' => Session::get('user'),'name' => $name, 'down' => $down, 'citizen' => $citizen]);
         }
     }
 

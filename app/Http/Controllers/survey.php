@@ -16,8 +16,9 @@ class survey extends Controller
             return \redirect()->route('admin.phanquyen');
         }
         else {
+            $name = Session::get('user')->name;
             $down = $this->nameDown(Session::get('user')->position);
-            return view('aSite.survey', ['user' => Session::get('user'), 'down' => $down]);
+            return view('aSite.survey', ['user' => Session::get('user'),'name'=>$name, 'down' => $down]);
         }
     }
 

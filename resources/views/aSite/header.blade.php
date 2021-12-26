@@ -101,7 +101,7 @@
       @endif
       <li>
         <div class="profile-details active">
-          <div class="profile_name">Logout</div>
+          <div class="profile_name"> <a href="{{ url('/logout')}}">Logout</a> </div>
           <i class='bx bx-log-out' ></i>
         </div>
       </li>
@@ -135,3 +135,5 @@
         <label class="admin_name">Xin chào admin!</label>
       </div>
     </nav>
+    
+    <script src="{{ asset('js/aSite/sidebar.js')}}"></script>

@@ -21,6 +21,9 @@
 
         <div class="home-content">
             <main>
+                <div id="notificate">
+                <button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Thêm thành công!</p>
+                </div>
                 <div id="declare" class="container">
                     <h5>Khai báo dân số</h5>
                     <div id="dkthongtin">
@@ -72,8 +75,8 @@
                             <small></small>
                         </div>
                         <div class="ttkhaibao col-4">
-                            <label for="cccd">Số CMND/CCCD/HC </label>
-                            <input id="cccd" name="identity_number" type="number" placeholder="Số CMND/CCCD/HC">
+                            <label for="cccd">Số CMND/CCCD </label>
+                            <input id="cccd" name="identity_number" type="number" placeholder="Số CMND/CCCD">
                             <small></small>
                         </div>
                         <div class="ttkhaibao col-4">
@@ -126,7 +129,7 @@
                             <thead>
                                 <tr>
                                     <th class="td_first">Họ tên</th>
-                                    <th>Số CMT/CCCD/HC</th>
+                                    <th>Số CMT/CCCD</th>
                                     <th>Xóa</th>
                                 </tr>
                             </thead>
@@ -199,6 +202,5 @@
     </section>
     
     <script src="{{ asset('js/bSite/input_citizen.js')}}"></script>
-    <script src="{{ asset('js/aSite/js.js')}}"></script>
 </body>
 </html>

@@ -30,7 +30,7 @@
                 <div class="button row hidden" id="button_list">
                     <button id="permis_btn" onclick="permis_click()">Cấp quyền</button> 
                     <!-- <button>Hoàn thành</button> -->
-                    <button onclick="popup_del()">Xóa</button>
+                    <button onclick="popup_del(this)">Xóa</button>
                 </div>
                 <div class="add_province">
                     <button onclick="add_province()">Thêm {{ $down }}</button>
@@ -303,7 +303,7 @@
   <script>
       
   </script>
-  <script src="{{ asset('js/aSite/js.js')}}"></script>
+  <script src="{{ asset('js/aSite/phanquyen.js')}}"></script>
 </body>
 </html>
 

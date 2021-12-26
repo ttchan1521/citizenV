@@ -19,6 +19,7 @@ class theodoi extends Controller
             return \redirect()->route('admin.input_citizen');
         }
         else {
+            $name = Session::get('user')->name;
             $down = $this->nameDown(Session::get('user')->position);
             $data = $this->getPro();
             $local = $this->getChild();
@@ -26,7 +27,7 @@ class theodoi extends Controller
             $slow = $this->getTenSlow();
             $total = $this->getTotalCtzen();
             $done = $this->getDone();
-            return view('aSite.theodoinhaplieu', ['user' => Session::get('user'), 'down' => $down, 'time' => $data[1], 
+            return view('aSite.theodoinhaplieu', ['user' => Session::get('user'),'name'=>$name, 'down' => $down, 'time' => $data[1], 
                         'data' => $data[2], 'fast' => $fast, 'slow' => $slow, 'locals' => $local, 'total' => $total, 'done' => $done]);
         }
     }
