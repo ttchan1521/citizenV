@@ -28,6 +28,7 @@ Route::get('/login', function () {
 Route::redirect('/', '/login');
 
 Route::post('/checkLogin', [loginController::class, 'check']);
+Route::get('/logout', [loginController::class, 'logout']);
 
 Route::group(['prefix' => "/admin/{position}", 'as' => "admin."],function() {
     Route::get('/phanquyen', [phanquyen::class, 'index'])->name('phanquyen');
@@ -70,5 +71,6 @@ Route::group(['prefix' => "/admin/{position}", 'as' => "admin."],function() {
     Route::post('/declare', [input_citizen::class, 'declare'])->name('declare');
 
     Route::post('/updateChart', [theodoi::class, 'updateChart'])->name('updateChart');
+
 });
 

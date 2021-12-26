@@ -215,12 +215,15 @@ input[type="checkbox"] {
     padding: 10px;
   }
   .sidebar .profile-details .profile_name{
+    width: 100%;
+  }
+  .sidebar .profile-details .profile_name a {
     color: #fff;
     font-size: 18px;
     font-weight: 500;
     white-space: nowrap;
     width: 100%;
-    text-align: center;
+    margin-left: 45%;
   }
   .sidebar.close .profile-details i,
   .sidebar.close .profile-details .profile_name,

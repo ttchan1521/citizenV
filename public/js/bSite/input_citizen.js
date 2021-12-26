@@ -148,7 +148,8 @@ Validator({
         Validator.isName("#fullname"),
         Validator.isDate('#ngaysinh'),
         Validator.isRequired('#gioitinh'),
-        Validator.isRequired('#quequan')
+        Validator.isRequired('#quequan'),
+        Validator.isRequired('#job'),
     ]
 });
 
@@ -224,9 +225,7 @@ function close_test() {
 function openNotify(){
     document.getElementById("notificate").style.display = "block";
 }
-function del(self){
-    self.parentNode.style.display="none";
-  }
+
 function declareCtzen() {
     console.log("hi");
     let url = $("#declare_url").val();
@@ -270,3 +269,6 @@ function declareCtzen() {
         }
     });
 }
+// function del(self){
+//     self.parentNode.style.display="none";
+// }

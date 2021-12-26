@@ -23,4 +23,8 @@ class loginController extends Controller
             return \response()->json(['success' => false, 'error' => 'Tài khoản hoặc tên đăng nhập của bạn không chính xác']);
         }
     }
+    public function logout (Request $reqest) {
+        Session::forget('user');
+        return redirect()->route('login');
+    }
 }

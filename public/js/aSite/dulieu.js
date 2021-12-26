@@ -1,46 +1,46 @@
 
-var ctx = document.getElementById("chartData").getContext("2d");
+// var ctx = document.getElementById("chartData").getContext("2d");
 
-var data = {
-    labels: ["0-14 tuổi", "15-64 tuổi", "Trên 65 tuổi"],
-    datasets: [
-        {
-            label: "Nam",
-            backgroundColor: "#0d3073",
-            data: [3,9,4]
-        },
-        {
-            label: "Nữ",
-            backgroundColor: "#b90817",
-            data: [4,3,12]
-        }
-    ]
-};
+// var data = {
+//     labels: ["0-14 tuổi", "15-64 tuổi", "Trên 65 tuổi"],
+//     datasets: [
+//         {
+//             label: "Nam",
+//             backgroundColor: "#0d3073",
+//             data: [3,9,4]
+//         },
+//         {
+//             label: "Nữ",
+//             backgroundColor: "#b90817",
+//             data: [4,3,12]
+//         }
+//     ]
+// };
 
-var myBarChart = new Chart(ctx, {
-    type: 'bar',
-    data: data,
-    options: {
-      plugins: {
-        title: {
-          display: true,
-          text: 'Cơ cấu dân số theo độ tuổi và giới tính',
-          position:'top',
-        },
-        subtitle: {
-            display: true,
-            text: 'Đơn vị: Triệu người'
-        },
-        legend:{
-          display: true,
-          position:'bottom',
-          labels:{
-            fontColor:'#000'
-          }
-        }
-      }
-    },
-});
+// var myBarChart = new Chart(ctx, {
+//     type: 'bar',
+//     data: data,
+//     options: {
+//       plugins: {
+//         title: {
+//           display: true,
+//           text: 'Cơ cấu dân số theo độ tuổi và giới tính',
+//           position:'top',
+//         },
+//         subtitle: {
+//             display: true,
+//             text: 'Đơn vị: Triệu người'
+//         },
+//         legend:{
+//           display: true,
+//           position:'bottom',
+//           labels:{
+//             fontColor:'#000'
+//           }
+//         }
+//       }
+//     },
+// });
 
 
 function find_data() {

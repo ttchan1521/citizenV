@@ -23,7 +23,8 @@
                 <h2>Quản lý truy cập</h2>
                 <p>Lịch khai báo</p>
             </div>
-
+            <div id="notificate">
+            </div>
             <div class="table-data">
             <div class="table background-box"> 
                     <p>Lịch khai báo</p>
@@ -50,9 +51,10 @@
                                 {{ $schedule->end_date." ".$schedule->end_time }}
                             </td>
                             <td>{{ $schedule->status }}</td>
+                            
                             <td class="tick">
-                                <a onclick="tick(this)">
-                                <label><i class="fas fa-check tick-uncheck"></i></label>
+                                <input type="checkbox" onclick="tick(this)">
+                                <label ><i class="fas fa-check tick-uncheck"></i></label>
                             </td>
                         </tr>
                         @endforeach
