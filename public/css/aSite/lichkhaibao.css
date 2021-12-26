@@ -215,7 +215,7 @@ table td.tick > input[type="checkbox"]{
 	cursor: pointer;
   }
   .tick-uncheck {
-	color: #a6a8af!important;
+	color: #a6a8af;
   }
   .tick-background {
 	color: rgb(3, 6, 148)!important;

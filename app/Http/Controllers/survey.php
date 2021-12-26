@@ -12,6 +12,9 @@ class survey extends Controller
         if (!(Session::has('user'))) {
             return redirect()->route('login');
         }
+        if (Session::get('user')->position != "b1" ) {
+            return \redirect()->route('admin.phanquyen');
+        }
         else {
             $down = $this->nameDown(Session::get('user')->position);
             return view('aSite.survey', ['user' => Session::get('user'), 'down' => $down]);

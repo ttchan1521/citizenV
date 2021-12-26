@@ -14,6 +14,9 @@ class dulieu extends Controller
         if (!(Session::has('user'))) {
             return redirect()->route('login');
         }
+        if (Session::get('user')->position == "b2") {
+            return \redirect()->route('admin.input_citizen');
+        }
         else {
             $position = Session::get('user')->position;
             $down = $this->nameDown(Session::get('user')->position);

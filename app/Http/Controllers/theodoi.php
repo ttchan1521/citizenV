@@ -15,6 +15,9 @@ class theodoi extends Controller
         if (!(Session::has('user'))) {
             return redirect()->route('login');
         }
+        if (Session::get('user')->position == "b2") {
+            return \redirect()->route('admin.input_citizen');
+        }
         else {
             $down = $this->nameDown(Session::get('user')->position);
             $data = $this->getPro();

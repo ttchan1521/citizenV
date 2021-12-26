@@ -203,22 +203,24 @@ function addLocal(id, name) {
 
   let col6 = document.createElement('td');
   col6.innerHTML = '<a ><i class="fas fa-history"></i>';
-  col5.classList.add('center');
+  col6.classList.add('center');
 
   // let col7 = document.createElement('td');
   // col7.innerHTML = '<input type="checkbox" onclick="tick(this)"><label><i class="fas fa-check"></i></label>';
   // col7.classList.add('tick');
-  let col7 = document.createElement('td');
-  col7.innerHTML = '<small class="W-100">90.00%</small><div><div class="percent"></div></div>';
-  col7.classList.add('progress');
+  
 
   let col8 = document.createElement('td');
   col8.innerHTML = '<div class="switch"><input type="checkbox"><label><i></i></label></div>';
+
+  let col7 = document.createElement('td');
+  col7.innerHTML = '<input type="checkbox" onclick="tick(this)"><label><i class="fas fa-check"></i></label>';
+  col7.classList.add("tick");
   
   let col9 = document.createElement('td');
-  col9.innerHTML = '<a onclick="edit_click(this)"><i class="fas fa-edit"></i></a>';
-  col9.innerHTML = '<a onclick="popup_del()"><i class="fas fa-trash-alt"></i></a>';
+  col9.innerHTML = '<a onclick="edit_click(this)"><i class="fas fa-edit"></i></a><a onclick="popup_del(this)"><i class="fas fa-trash-alt"></i></a>';
   col5.classList.add('center');
+  col9.classList.add('center');
 
   row.appendChild(col1);
   row.appendChild(col2);
@@ -226,8 +228,9 @@ function addLocal(id, name) {
   row.appendChild(col4);
   row.appendChild(col5);
   row.appendChild(col6);
-  row.appendChild(col7);
+  
   row.appendChild(col8);
+  row.appendChild(col7);
   row.appendChild(col9);
   
 
@@ -270,7 +273,10 @@ function onoff(self) {
     '_token': $("#token6").val(),
     'id' : id
   }, function (response) {
-
+    if (!response.success) {
+      alert(response.error);
+      self.checked = false;
+    } 
   });
 }
 
@@ -282,131 +288,11 @@ function del(self){
   self.parentNode.style.display="none";
 }
 $(document).ready(function() {
-  $('#popup').submit(function(e) {
-    e.preventDefault();
+  
 
-    let id = $('#local_id').val();
-    let name = $('#local_name').val();
-    let url = $("#local_url").val();
+  
 
-    $.post(url, {
-      '_token': $("#token").val(),
-      'id': id,
-      'name': name,
-      'password': $('local_pass').val()
-    }, function (response) {
-        if (response.success) {
-          $('#notificate').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Thêm thành công!</p>");
-          openNotify();
-          $('#notificate').fadeOut(5000); 
-          closePopup();
-          addLocal(id, name);
-        }
-        else {
-          alert('Thêm không thành công');
-        }
-
-    });
-
-  });
-
-  $("#capquyen").submit(function(e) {
-    e.preventDefault();
-    let list = document.querySelectorAll("input.check");
-    let checks = [];
-    let local = [];
-    for (var i=0; i<list.length; i++) {
-      if (list[i].checked == true) {
-        local.push(list[i].parentNode.parentNode);
-        checks.push(list[i].parentNode.parentNode.querySelector(".row_id").innerHTML);
-      }
-    }
-
-    let start_time = $("#start_time").val();
-    let start_date = $("#start_date").val();
-    let end_time = $("#end_time").val();
-    let end_date = $("#end_date").val();
-
-    let url = $("#schedule_url").val();
-
-    $.post(url, {
-      '_token': $("#token2").val(),
-      'start_time': start_time,
-      'start_date' : start_date,
-      'end_time' : end_time,
-      'end_date': end_date,
-      'local' : checks
-
-    }, function(response) {
-      if (response.success) {
-        $('#notificate').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Thêm lịch khai báo thành công!</p>");
-        openNotify();
-        $('#notificate').fadeOut(5000); 
-        closePopup();
-        for (var i=0; i<local.length; i++) {
-
-          local[i].querySelector(".row_start").innerHTML = start_date + " " + start_time + ":00";
-          local[i].querySelector(".row_end").innerHTML = end_date + " " + end_time + ":00";
-          local[i].querySelector(".switch input").checked = true;
-          clear();
-          
-        }
-      } else {
-          if (response.msg_start_date != '') {
-              $('#error-start-date').text(response.msg_start_date);
-          } else {
-            $('#error-start-date').text('');
-          }
-          if (response.msg_end_date != '') {
-    
-            $('#error-end-date').text(response.msg_end_date);
-          } else {
-            $('#error-end-date').text('');
-        }
-      }
-    });
-
-
-  });
-
-  $("#edit").submit(function(e) {
-    e.preventDefault();
-
-    let id = $("#edit_id").val();
-    let name = $("#edit_name").val();
-    let start_date = $("#startDate-reset").val();
-    let start_time = $("#startTime-reset").val();
-    let end_date = $("#endDate-reset").val();
-    let end_time = $("#endTime-reset").val();
-
-    let password = $("#password-reset").val();
-    if (password == "") {
-      password = false;
-    }
-
-    let url = $("#update_url").val();
-
-    $.post(url, {
-      '_token': $("#token3").val(),
-      'id' : id,
-      'name': name,
-      'start_date' : start_date,
-      'start_time' : start_time,
-      'end_date' : end_date,
-      'end_time' : end_time,
-      'password' : password
-    }, function(response) {
-      if (response.success) {
-        $('#notificate').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Cập nhật thành công!</p>");
-        openNotify();
-        $('#notificate').fadeOut(5000); 
-        closePopup();
-        row.querySelector(".row_name").innerHTML = name;
-        row.querySelector(".row_start").innerHTML = start_date + " " + start_time;
-        row.querySelector(".row_end").innerHTML = end_date + " " + end_time;
-      }
-    })
-  });
+ 
 
   $("#delete").submit(function(e) {
     e.preventDefault();
@@ -460,6 +346,9 @@ function noticeChecked(){
 
 /// -----------------------------------------------------------
 //Xác minh dữ liệu nhập
+let user_id = document.getElementById("user_id").value;
+let user_position = document.getElementById("user_position").value;
+
 function Validator(options) {
   function validate(inputElement, rule) {
       var errorMessage = rule.test(inputElement.value);
@@ -472,12 +361,12 @@ function Validator(options) {
       }
       return !errorMessage;
   }
-  var formElement = document.querySelector(options.form);
+  
   var btn = document.querySelector("#submitForm");
 
 
   btn.onclick = function(e) {
-
+      e.preventDefault();
       var valid = true;
 
       options.rule.forEach( function(rule) {  
@@ -488,9 +377,36 @@ function Validator(options) {
           }
       });
       if (!valid) {
-        formElement.onsubmit = function(){
-          return false;
-        }
+        
+      }
+      else {
+        
+      
+          let id = $('#local_id').val();
+          let name = $('#local_name').val();
+          let url = $("#local_url").val();
+      
+          $.post(url, {
+            '_token': $("#token").val(),
+            'id': id,
+            'name': name,
+            'password': $('#local_pass').val()
+          }, function (response) {
+              
+              if (response.success) {
+                $('#notificate').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Thêm thành công!</p>");
+                openNotify();
+                $('#notificate').fadeOut(5000); 
+                closePopup();
+                addLocal(id, name);
+              }
+              else {
+                alert(response.error);
+              }
+      
+          });
+      
+        
       }
   };
 
@@ -526,7 +442,7 @@ Validator.isProvinceCode = function(selector) {
       test: function(value) {
           if (!value.trim()) {
               return "Vui lòng nhập vào trường này!";
-          } else if (value.length !=2 ){
+          } else if (!checkId(value)){
               return "Mã tỉnh/tp không hợp lệ!";
           }
           else {
@@ -534,6 +450,27 @@ Validator.isProvinceCode = function(selector) {
           }
       }
   };
+}
+
+function checkId(id) {
+  if (user_position == "a1" && id.length != 2) {
+    return false;
+  }
+  if (user_position == "a2" && id.length != 4) {
+    return false;
+  }
+  if (user_position == "a3" && id.length != 6) {
+    return false;
+  }
+
+  if (user_position == "b1" && id.length != 8) {
+    return false;
+  }
+  if (user_position != "a1" && id.indexOf(user_id) != 0) {
+    return false;
+  }
+  return true;
+
 }
 Validator.isProvinceName = function(selector) {
   return {
@@ -558,7 +495,7 @@ Validator.isProvinceName = function(selector) {
     }
   };
 }
-// password có 1 kí tự đặc biệt và 1 chữ viết hoa và nhỏ nhất 8 ký tự
+// password nhỏ nhất 5 ký tự
 Validator.isPassword = function(selector) {
   return {
       selector: selector,
@@ -566,35 +503,31 @@ Validator.isPassword = function(selector) {
           if (!value.trim()) {
             return "Vui lòng nhập vào trường này";
           } else if (value.length < 5) {
-            return "Mật khẩu phải dài hơn 8 ký tự";
-          } else if (!(value.match(/[A-Z]/g))) {
-            return "Mật khẩu phải chứa ký tự in hoa"
-          } else if (!value.match(/[^a-zA-Z\d]/g)){
-            return "Mật khẩu phải chứa ký tự đặc biệt";
+            return "Mật khẩu phải dài hơn 5 ký tự";
+          
           } else {
               return undefined;
           }
       }
   };
 }
+
 Validator.isPasswordReset = function(selector) {
   return {
       selector: selector,
       test: function(value) {
           if (!value.trim()) {
             return undefined;
-          } else if (value.length < 8) {
-            return "Mật khẩu phải dài hơn 8 ký tự";
-          } else if (!(value.match(/[A-Z]/g))) {
-            return "Mật khẩu phải chứa ký tự in hoa"
-          } else if (!value.match(/[^a-zA-Z\d]/g)){
-            return "Mật khẩu phải chứa ký tự đặc biệt";
+          } else if (value.length < 5) {
+            return "Mật khẩu phải dài hơn 5 ký tự";
+          
           } else {
               return undefined;
           }
       }
   };
 }
+
 function monthDiff(d1, d2) {
   var months;
   months = (d2.getFullYear() - d1.getFullYear()) * 12;
@@ -628,10 +561,34 @@ Validator.isEndDate = function(selector) {
           if (!value.trim()) {
               return "Vui lòng nhập vào trường này";
           } else  {
-              var date = document.getElementById("startDate-reset").value;
+              var date = document.getElementById("start_date").value;
               var startDate = new Date(date);
               var endDate = new Date(value);
               if (endDate < startDate) {
+                  return "Ngày nhập không hợp lệ so với ngày bắt đầu"
+              } else if (monthDiff(startDate, endDate) > 3) {
+                  return "Thời gian bắt đầu - kết thúc nên ngắn hơn 3 tháng!";
+              } else {
+                  return undefined;
+              }
+          }
+      }
+  }
+}
+
+Validator.isEndDateReset = function(selector) {
+  return {
+      selector: selector,
+      test: function(value) {
+        var date = document.getElementById("startDate-reset").value;
+          if ((date) && !value.trim()) {
+              return "Vui lòng nhập vào trường này";
+          } else  {
+              
+              var startDate = new Date(date);
+              var now = new Date();
+              var endDate = new Date(value);
+              if (endDate < startDate || endDate < now) {
                   return "Ngày nhập không hợp lệ so với ngày bắt đầu"
               } else if (monthDiff(startDate, endDate) > 3) {
                   return "Thời gian bắt đầu - kết thúc nên ngắn hơn 3 tháng!";
@@ -647,16 +604,219 @@ Validator({
   rule : [
       Validator.isProvinceCode("#local_id"),
       Validator.isProvinceName('#local_name'),
-      Validator.isPassword('#local_pass'),
-      Validator.isStartDate('#startDate'),
-      Validator.isEndDate('#endDate'),
-      Validator.isRequired('#startTime'),
-      Validator.isRequired('#endTime'),
+      Validator.isPassword('#local_pass')
+  ]
+});
 
-      Validator.isStartDate('#startDate-reset'),
-      Validator.isEndDate('#endDate-reset'),
-      Validator.isProvinceCode("#provinceCode-reset"),
-      Validator.isProvinceName('#provinceName-reset'),
+function Validator1(options) {
+  function validate(inputElement, rule) {
+      var errorMessage = rule.test(inputElement.value);
+      var errorElement = inputElement.parentElement.querySelector(options.errorSelector);
+      if (errorMessage) {
+          errorElement.innerHTML = errorMessage;
+      }
+      else {
+          errorElement.innerHTML = "";
+      }
+      return !errorMessage;
+  }
+  
+  var btn = document.querySelector("#submitForm1");
+
+
+  btn.onclick = function(e) {
+      e.preventDefault();
+      var valid = true;
+
+      options.rule.forEach( function(rule) {  
+
+          var inputElement = document.querySelector(rule.selector);
+          if (!validate(inputElement, rule)) {
+              valid = false;
+          }
+      });
+      if (!valid) {
+        
+      }
+      else {
+
+          let list = document.querySelectorAll("input.check");
+          let checks = [];
+          let local = [];
+          for (var i=0; i<list.length; i++) {
+            if (list[i].checked == true) {
+              local.push(list[i].parentNode.parentNode);
+              checks.push(list[i].parentNode.parentNode.querySelector(".row_id").innerHTML);
+            }
+          }
+      
+          let start_time = $("#start_time").val();
+          let start_date = $("#start_date").val();
+          let end_time = $("#end_time").val();
+          let end_date = $("#end_date").val();
+      
+          let url = $("#schedule_url").val();
+      
+          $.post(url, {
+            '_token': $("#token2").val(),
+            'start_time': start_time,
+            'start_date' : start_date,
+            'end_time' : end_time,
+            'end_date': end_date,
+            'local' : checks
+      
+          }, function(response) {
+            if (response.success) {
+              $('#notificate').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Thêm lịch khai báo thành công!</p>");
+              openNotify();
+              $('#notificate').fadeOut(5000); 
+              closePopup();
+              for (var i=0; i<local.length; i++) {
+      
+                local[i].querySelector(".row_start").innerHTML = start_date + " " + start_time + ":00";
+                local[i].querySelector(".row_end").innerHTML = end_date + " " + end_time + ":00";
+                local[i].querySelector(".switch .row_check").checked = true;
+                clear();
+                
+              }
+            } else {
+                if (response.msg_start_date != '') {
+                    $('#error-start-date').text(response.msg_start_date);
+                } else {
+                  $('#error-start-date').text('');
+                }
+                if (response.msg_end_date != '') {
+          
+                  $('#error-end-date').text(response.msg_end_date);
+                } else {
+                  $('#error-end-date').text('');
+              }
+            }
+          });
+      
+      
+       
+      }
+  };
+
+  options.rule.forEach(function(rule){
+      var inputElement = document.querySelector(rule.selector);
+      
+      if (inputElement) {
+          inputElement.onblur = function() {
+              validate(inputElement, rule);
+          }
+
+          inputElement.oninput = function() {
+              var errorElement = inputElement.parentElement.querySelector(options.errorSelector);
+              errorElement.innerText = "";
+              // inputElement.parentElement.classList.remove("");
+          }
+      }
+  })
+}
+
+Validator1({
+  errorSelector: 'small',
+  rule : [
+      Validator.isStartDate('#start_date'),
+      Validator.isEndDate('#end_date'),
+  ]
+});
+
+function Validator2(options) {
+  function validate(inputElement, rule) {
+      var errorMessage = rule.test(inputElement.value);
+      var errorElement = inputElement.parentElement.querySelector(options.errorSelector);
+      if (errorMessage) {
+          errorElement.innerHTML = errorMessage;
+      }
+      else {
+          errorElement.innerHTML = "";
+      }
+      return !errorMessage;
+  }
+  
+  var btn = document.querySelector("#update_btn");
+
+
+  btn.onclick = function(e) {
+      e.preventDefault();
+      var valid = true;
+
+      options.rule.forEach( function(rule) {  
+
+          var inputElement = document.querySelector(rule.selector);
+          if (!validate(inputElement, rule)) {
+              valid = false;
+          }
+      });
+      if (!valid) {
+        
+      }
+      else {
+      
+          let id = $("#edit_id").val();
+          let name = $("#edit_name").val();
+          let start_date = $("#startDate-reset").val();
+          let start_time = $("#startTime-reset").val();
+          let end_date = $("#endDate-reset").val();
+          let end_time = $("#endTime-reset").val();
+      
+          let password = $("#password-reset").val();
+          if (password == "") {
+            password = false;
+          }
+      
+          let url = $("#update_url").val();
+      
+          $.post(url, {
+            '_token': $("#token3").val(),
+            'id' : id,
+            'name': name,
+            'start_date' : start_date,
+            'start_time' : start_time,
+            'end_date' : end_date,
+            'end_time' : end_time,
+            'password' : password
+          }, function(response) {
+            if (response.success) {
+              $('#notificate').html("<button onclick='del(this)'><i class='fas fa-times-circle'></i></button><p class='message'>Cập nhật thành công!</p>");
+              openNotify();
+              $('#notificate').fadeOut(5000); 
+              closePopup();
+              row.querySelector(".row_name").innerHTML = name;
+              row.querySelector(".row_start").innerHTML = start_date + " " + start_time;
+              row.querySelector(".row_end").innerHTML = end_date + " " + end_time;
+            }
+          })
+        
+       
+      }
+  };
+
+  options.rule.forEach(function(rule){
+      var inputElement = document.querySelector(rule.selector);
+      
+      if (inputElement) {
+          inputElement.onblur = function() {
+              validate(inputElement, rule);
+          }
+
+          inputElement.oninput = function() {
+              var errorElement = inputElement.parentElement.querySelector(options.errorSelector);
+              errorElement.innerText = "";
+              // inputElement.parentElement.classList.remove("");
+          }
+      }
+  })
+}
+
+Validator2({
+  errorSelector: 'small',
+  rule : [
+      Validator.isProvinceName('#edit_name'),
+      Validator.isEndDateReset('#endDate-reset'),
       Validator.isPasswordReset('#password-reset')
   ]
 });

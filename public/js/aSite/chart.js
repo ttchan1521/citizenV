@@ -8,10 +8,51 @@ data = JSON.parse(data);
 
 let sinh = document.getElementById("sinh").value;
 sinh = JSON.parse(sinh);
-console.log(sinh);
 let tu = document.getElementById("tu").value;
 tu = JSON.parse(tu);
-console.log(tu);
+
+let tile1 = [0.7, 4.0, 4.0, 4.7, 3.0, -4.0, 4.7, 4.3, -6.0, -3.3];
+let tile = [];
+for (var i=0; i<sinh.length; i++) {
+  let rate = (sinh[i]-tu[i])/data[0]*100 + 4;
+  rate = rate.toFixed(1);
+  tile.push(rate);
+}
+
+let ccNam = document.getElementById("ccnam").value;
+ccNam = JSON.parse(ccNam);
+let ccNu = document.getElementById("ccNu").value;
+ccNu = JSON.parse(ccNu);
+
+let male = document.getElementById("male").value;
+male = JSON.parse(male);
+
+let female = document.getElementById("female").value;
+female = JSON.parse(female);
+
+let young = document.getElementById("young").value;
+young = JSON.parse(young);
+let work = document.getElementById("work").value;
+work = JSON.parse(work);
+let old = document.getElementById("old").value;
+old = JSON.parse(old);
+
+
+let level0 = document.getElementById("level0").value;
+level0 = JSON.parse(level0);
+let level1 = document.getElementById("level1").value;
+level1 = JSON.parse(level1);
+let level2 = document.getElementById("level2").value;
+level2 = JSON.parse(level2);
+let level3 = document.getElementById("level3").value;
+level3 = JSON.parse(level3);
+let level4 = document.getElementById("level4").value;
+level4 = JSON.parse(level4);
+let level5 = document.getElementById("level5").value;
+level5 = JSON.parse(level5);
+
+let job = document.getElementById("job").value;
+job = JSON.parse(job);
 
 Highcharts.chart('populationIncreaseChart', {
   chart: {
@@ -81,7 +122,8 @@ Highcharts.chart('populationIncreaseChart', {
   }, {
     name: 'Tỉ lệ gia tăng tự nhiên',
     type: 'line',
-    data: [1.1, 4, 3, 3.4, 3.2, 2.5, 2.2, 1.4, 1.3, 1.5],
+    data: tile1,
+   
     tooltip: {
       valueSuffix: '%'
     }
@@ -281,21 +323,10 @@ tooltip: {
 
 series: [{
   name: 'Nam',
-  data: [
-    -2.2, -2.1, -2.2, -2.4,
-    -2.7, -3.0, -3.3, -3.2,
-    -2.9, -3.5, -4.4, -4.1,
-    -3.4, -2.7, -2.3, -2.2,
-    -1.6, -0.6
-  ]
+  data: ccNam
 }, {
   name: 'Nữ',
-  data: [
-    2.1, 2.0, 2.1, 2.3, 2.6,
-    2.9, 3.2, 3.1, 2.9, 3.4,
-    4.3, 4.0, 3.5, 2.9, 2.5,
-    2.7, 2.2, 1.1
-  ]
+  data: ccNu
 }]
 });
 // ------------giới tính--------------------------
@@ -304,9 +335,9 @@ var pieChart2010 = document.getElementById('pieChart2010').getContext('2d');
 var pieChart2020 = document.getElementById('pieChart2020').getContext('2d');
 const pieLabels = ['Nam','Nữ'];
 const background = ['#5b93e7','rgb(211, 102, 157)'];
-var data2000 = [200, 50];
-var data2010 = [210, 70];
-var data2020 = [220, 60];
+var data2000 = [male[0], female[0]];
+var data2010 = [male[5], female[5]];
+var data2020 = [male[9], female[9]];
 
 var pieChart = new Chart(pieChart2000, {
     type: 'pie',
@@ -323,7 +354,7 @@ var pieChart = new Chart(pieChart2000, {
       plugins: {
         title: {
           display: true,
-          text: 'Năm 2000',
+          text: 'Năm ' + year[0],
           position:'bottom',
         },
         legend:{
@@ -341,7 +372,7 @@ var pieChart2 = new Chart(pieChart2010, {
       labels: pieLabels,
       datasets:[{
         label: 'Người',
-        data: data2000,
+        data: data2010,
         backgroundColor: background,
         hoverOffset: 4
       }]
@@ -350,7 +381,7 @@ var pieChart2 = new Chart(pieChart2010, {
     plugins: {
       title: {
         display: true,
-        text: 'Năm 2010',
+        text: 'Năm ' + year[5],
         position:'bottom',
       },
       legend:{
@@ -368,7 +399,7 @@ var pieChart3 = new Chart(pieChart2020, {
       labels: pieLabels,
       datasets:[{
         labels: '',
-        data: data2000,
+        data: data2020,
         backgroundColor: background,
         hoverOffset: 4
       }]
@@ -377,7 +408,7 @@ var pieChart3 = new Chart(pieChart2020, {
     plugins: {
       title: {
         display: true,
-        text: 'Năm 2020',
+        text: 'Năm ' +year[9],
         position:'bottom',
       },
       legend:{
@@ -416,7 +447,7 @@ title: {
   text: 'Biểu đồ cơ cấu dân số theo độ tuổi từ năm 2000 đến 2020'
 },
 xAxis: {
-  categories: ['2000', '2005', '2010', '2015', '2020']
+  categories: [year[1], year[3], year[5], year[7], year[9]]
 },
 yAxis: {
   min: 0,
@@ -435,16 +466,13 @@ plotOptions: {
 },
 series: [{
   name: '0-14 tuổi',
-  data: [5, 3, 4, 7, 2],
+  data: [young[1], young[3], young[5], young[7], young[9]],
 }, {
   name: '15-60 tuổi',
-  data: [2, 2, 3, 2, 1]
-}, {
-  name: '60-75 tuổi',
-  data: [3, 4, 4, 2, 5]
-}, {
-  name: 'Trên 75 tuổi',
-  data: [3, 4, 4, 2, 5]
+  data: [work[1], work[3], work[5], work[7], work[9]]
+},  {
+  name: 'Trên 60 tuổi',
+  data: [old[1], old[3], old[5], old[7], old[9]]
 }]
 });
 
@@ -503,14 +531,14 @@ credits: {
   enabled: false
 },
 series: [{
-  name: 'Năm 2010',
-  data: [107, 31, 635, 54, 67, 34]
+  name: 'Năm ' + year[1],
+  data: [level5[1], level4[1], level3[1], level2[1], level1[1], level0[1]]
 }, {
-  name: 'Năm 2015',
-  data: [133, 156, 947, 45, 34, 56]
+  name: 'Năm ' + year[5],
+  data: [level5[5], level4[5], level3[5], level2[5], level1[5], level0[5]]
 }, {
-  name: 'Năm 2020',
-  data: [814, 841, 714, 456, 455, 672]
+  name: 'Năm ' + year[9],
+  data: [level5[9], level4[9], level3[9], level2[9], level1[9], level0[9]]
 }]
 });
  
@@ -523,7 +551,7 @@ const careerLabels = ['Cơ khí, Điện, Viễn thông','Du lịch và dịch v
 const backgroundc = ['#5b93e7','rgb(211, 102, 157)','red','blue', 
 '#5b93e7','rgb(211, 102, 157)','red','blue',
 '#5b93e7','rgb(211, 102, 157)','red'];
-var careerData = [15,28,11, 13, 15, 16, 23, 25, 5, 30,17];
+var careerData = job;
 
 var CareerChart = new Chart(pieChartCareer, {
     type: 'pie',

@@ -262,6 +262,20 @@
     <input type="hidden" value="{{ json_encode($data)}}" id="data">
     <input type="hidden" value="{{ json_encode($sinh)}}" id="sinh">
     <input type="hidden" value="{{ json_encode($tu) }}" id="tu">
+    <input type="hidden" value="{{ json_encode($ccNam) }}" id="ccnam">
+    <input type="hidden" value="{{ json_encode($ccNu) }}" id="ccNu">
+    <input type="hidden" value="{{ json_encode($male) }}" id="male">
+    <input type="hidden" value="{{ json_encode($female) }}" id="female">
+    <input type="hidden" value="{{ json_encode($young) }}" id="young">
+    <input type="hidden" value="{{ json_encode($work) }}" id="work">
+    <input type="hidden" value="{{ json_encode($old) }}" id="old">
+    <input type="hidden" value="{{ json_encode($level0) }}" id="level0">
+    <input type="hidden" value="{{ json_encode($level1) }}" id="level1">
+    <input type="hidden" value="{{ json_encode($level2) }}" id="level2">
+    <input type="hidden" value="{{ json_encode($level3) }}" id="level3">
+    <input type="hidden" value="{{ json_encode($level4) }}" id="level4">
+    <input type="hidden" value="{{ json_encode($level5) }}" id="level5">
+    <input type="hidden" value="{{ json_encode($job) }}" id="job">
   </section>
   <script src="{{ asset('js/aSite/js.js')}}"></script>
   <script>

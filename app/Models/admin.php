@@ -77,6 +77,7 @@ class admin extends Model
             $temp->start_date = $sche->start_date;
             $temp->end_date = $sche->end_date;
             $temp->end_time = $sche->end_time; 
+            $temp->status = $sche->status;
         }
         
 
@@ -313,6 +314,28 @@ class admin extends Model
         return $year;
     }
 
+    function maleEachYear() {
+        $year = $this->getYear();
+        $data = array();
+        foreach($year[0] as $ye) {
+            $data[] = $this->getMale($ye);
+        }
+
+        $year[] = $data;
+        return $year;
+    }
+
+    function femaleEachYear() {
+        $year = $this->getYear();
+        $data = array();
+        foreach($year[0] as $ye) {
+            $data[] = $this->getFemale($ye);
+        }
+
+        $year[] = $data;
+        return $year;
+    }
+
     function getSinh($year) {
         $temps = $this->child;
 
@@ -356,7 +379,160 @@ class admin extends Model
         $year[] = $data;
         return $year;
     }
+
+    function tuoiGender() {
+        $arr = array();
+        for ($i=0; $i<100; $i=$i+5) {
+            $mem = [$i, $i+4];
+            $arr[] = $mem;
+        }
+
+        return $arr;
+    }
+
+    function coCau($start, $end, $gender) {
+        $temps = $this->child;
+
+        $total = 0;
+        foreach($temps as $temp) {
+            $total += $temp->coCau($start, $end, $gender);
+        }
+
+        return $total;
+    }
+
+    function getCocauNu() {
+        $age = $this->tuoiGender();
+        $arr = array();
+        foreach ($age as $ag) {
+            $arr[] = $this->coCau($ag[0], $ag[1], 1);
+        }
+
+        return $arr;
+    }
+
+    function getCocauNam() {
+        $age = $this->tuoiGender();
+        $arr = array();
+        foreach ($age as $ag) {
+            $arr[] = $this->coCau($ag[0], $ag[1], 2);
+        }
+
+        return $arr;
+    }
     
+    function getYoung($year) {
+        $temps = $this->child;
+
+        $total = 0;
+        foreach($temps as $temp) {
+            $total += $temp->getYoung($year);
+        }
+
+        return $total;
+
+    }
+
+    function getWork($year) {
+        $temps = $this->child;
+
+        $total = 0;
+        foreach($temps as $temp) {
+            $total += $temp->getWork($year);
+        }
+
+        return $total;
+    }
+
+    function getOld($year) {
+        $temps = $this->child;
+
+        $total = 0;
+        foreach($temps as $temp) {
+            $total += $temp->getOld($year);
+        }
+
+        return $total;
+    }
+
+    function youngEachYear() {
+        $year = $this->getYear();
+        $data = array();
+        foreach($year[0] as $ye) {
+            $data[] = $this->getYoung($ye);
+        }
+
+        $year[] = $data;
+        return $year;
+    }
+
+    function workEachYear() {
+        $year = $this->getYear();
+        $data = array();
+        foreach($year[0] as $ye) {
+            $data[] = $this->getWork($ye);
+        }
+
+        $year[] = $data;
+        return $year;
+    }
+
+    function oldEachYear() {
+        $year = $this->getYear();
+        $data = array();
+        foreach($year[0] as $ye) {
+            $data[] = $this->getOld($ye);
+        }
+
+        $year[] = $data;
+        return $year;
+    }
+
+    function getLevel($year, $level) {
+        $temps = $this->child;
+
+        $total = 0;
+        foreach($temps as $temp) {
+            $total += $temp->getLevel($year, $level);
+        }
+
+        return $total;
+    }
+
+    function levelEachYear() {
+        $year = $this->getYear();
+        $data = array();
+
+        for ($i=1; $i<=6; $i++) {
+            $mem = array();
+            foreach($year[0] as $ye) {
+                $mem[] = $this->getLevel($ye, $i);
+            }
+            $data[] = $mem;
+        }
+        return $data;
+    }
+
+    function getJob($job) {
+        $temps = $this->child;
+
+        $total = 0;
+        foreach($temps as $temp) {
+            $total += $temp->getJob($job);
+        }
+
+        return $total;
+    }
+
+    function eachJob() {
+        $data = array();
+
+        for ($i=1; $i<=11; $i++) {
+            $data[] = $this->getJob($i);
+        }
+        return $data;
+    }
+
     public static function open($smallId) {
         $result = DB::update('update schedule set status = "Open" where nhan_quyen = ? and status = "Close" ', [$smallId]);
 

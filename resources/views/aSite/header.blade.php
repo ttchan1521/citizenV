@@ -6,7 +6,9 @@
       <span class="logo_name">itizen</span>
     </div>
     <ul class="nav-links">
+      @if($user->position != "b2")
       <li>
+        
         <div class="iocn-link">
           <a href="#" style="height: 50px!important;">
             <i class='bx bx-collection' ></i>
@@ -17,7 +19,9 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Quản lý truy cập</a></li>
           <li><a href="{{ route('admin.phanquyen', ['position' => $user->position ]) }}">Danh sách {{ $down }}</a></li>
+          @if($user->position != "a1")
           <li><a href="{{ route('admin.lichkhaibao', ['position' => $user->position ]) }}">Lịch khai báo</a></li>
+          @endif
         </ul>
       </li>
       <li>
@@ -68,6 +72,8 @@
           <li><a class="link_name" href="{{ route('admin.thongbao', ['position' => $user->position ]) }}">Thông báo</a></li>
         </ul>
       </li>
+      @endif
+      @if ($user->position == "b1" || $user->position == "b2")
       <li>
         <div class="iocn-link">
           <a href="{{ route('admin.input_citizen', ['position' => $user->position ]) }}" style="height: 50px!important;">
@@ -79,6 +85,8 @@
           <li><a class="link_name" href="{{ route('admin.input_citizen', ['position' => $user->position ]) }}">Khai báo dân số</a></li>
         </ul>
       </li>
+      @endif
+      @if ($user->position == "b1")
       <li>
         <div class="iocn-link">
           <a href="{{ route('admin.survey', ['position' => $user->position ]) }}" style="height: 50px!important;">
@@ -90,6 +98,7 @@
           <li><a class="link_name" href="{{ route('admin.survey', ['position' => $user->position ]) }}">Phiếu điều tra</a></li>
         </ul>
       </li>
+      @endif
       <li>
         <div class="profile-details active">
           <div class="profile_name">Logout</div>
@@ -102,7 +111,7 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard"> Bộ Y tế</span>
+        <span class="dashboard">{{ $user->name }}</span>
       </div>
       <!-- <div class="search-box">
         <input type="text" placeholder="Search...">

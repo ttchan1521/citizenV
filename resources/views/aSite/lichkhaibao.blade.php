@@ -51,8 +51,11 @@
                             </td>
                             <td>{{ $schedule->status }}</td>
                             <td class="tick">
-                                <a onclick="tick(this)">
-                                <label><i class="fas fa-check tick-uncheck"></i></label>
+                                @if ($schedule->status == "Done")
+                                    <a onclick="" style="color: #rgb(12, 21, 153)"><i class="fas fa-check tick-uncheck"></i></a>
+                                @else
+                                    <a onclick="tick(this)" ><i class="fas fa-check tick-uncheck" style="color: #a6a8af"></i></a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
@@ -86,7 +89,7 @@
         </div>
     </div>
   </section>
-  <script src="{{ asset('js/aSite/js.js')}}"></script>
+  
   <script src="{{ asset('js/aSite/schedule.js')}}"></script>
   
   

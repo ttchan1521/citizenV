@@ -22,6 +22,9 @@ class phanquyen extends Controller
         if (!(Session::has('user'))) {
             return redirect()->route('login');
         }
+        if (Session::get('user')->position == "b2") {
+            return \redirect()->route('admin.input_citizen');
+        }
         else {
             $local = $this->load(Session::get('user')->id, Session::get('user')->name);
             $down = $this->nameDown(Session::get('user')->position);
@@ -45,6 +48,14 @@ class phanquyen extends Controller
     function onSchedule(Request $request) {
         $id = $request->get('id');
 
+        $admin = new admin(Session::get('user')->id, Session::get('user')->name);
+        if (!$admin->getChild($id)) {
+            return \response()->json(['success' => false, 'error' => 'Bạn không có quyền']);
+        }
+        $schedule = $admin->getSchedule();
+        if ($schedule->status != "Open") {
+            return \response()->json(['success' => false, 'error' => 'Bạn không có lịch khai báo nào']);
+        }
         $result = admin::open($id);
 
         if ($result) {
@@ -56,7 +67,9 @@ class phanquyen extends Controller
     function offSchedule(Request $request) {
         $id = $request->get('id');
         $admin = new admin(Session::get('user')->id, Session::get('user')->name);
-
+        if (!$admin->getChild($id)) {
+            return \response()->json(['success' => false, 'error' => 'Bạn không có quyền']);
+        }
         $admin->closeOne($id);
 
         return \response()->json(['success' => true]);
@@ -64,9 +77,10 @@ class phanquyen extends Controller
 
     function addLocal(Request $request) {
 
+
         $this->validate($request,[
-            'name' => 'bail|alpha|min:5|max:50',
-            'pass' => 'bail|min:8'
+            'name' => 'bail|required|min:5|max:50',
+            'password' => 'bail|required|min:5'
         ]);
         $localid = Session::get('user')->id;
         $id = $request->get('id');
@@ -91,12 +105,21 @@ class phanquyen extends Controller
                 'id' => 'bail|required|digits:8',
             ]);
         }
+        if (\strpos($id,Session::get('user')->id) != 0) {
+            return \response()->json(['success' => false, 'error' => 'Mã địa phương không hợp lệ']);
+        }
+
+        $admin = new admin(Session::get('user')->id, Session::get('user')->name);
+        if ($admin->getChild($id)) {
+            return \response()->json(['success' => false, 'error' => 'Mã địa phương đã được sử dụng']);
+        }
+
         $result = admin::addLocal($id, $name, $password, Session::get('user')->id, $position); 
         
         if ($result) {
             return \response()->json(['success' => true]);
         }
-        return \response()->json(['success' => false]);
+        return \response()->json(['success' => false, 'error' => 'Thêm không thành công']);
     }
 
     function loadHistory(Request $request) {
@@ -148,6 +171,27 @@ class phanquyen extends Controller
         $end_date = $request->get('end_date');
         $end_time = $request->get('end_time');
 
+        $admin = new admin(Session::get('user')->id, Session::get('user')->name);
+        if (!$admin->getChild($nhan_quyen)) {
+            return \response()->json(['success' => false, 'error' => 'Bạn không có quyền sửa đổi']);
+        }
+
+        if ($start_date) {
+            if (!$end_date) {
+                return \response()->json(['success' => false, 'error' => 'Bạn chưa nhập thời gian kết thúc']);
+            }
+            if (strtotime($end_date) < strtotime($start_date))  {
+                return \response()->json(['success' => false, 'msg_end_date' => 'Thời điểm kết thúc không hợp lệ!']);
+            }
+        }
+        
+        if ($password) {
+            if (\strlen($password) < 5) {
+                return \response()->json(['success' => false, 'error' => 'Mật khẩu không hợp lệ']);
+            }
+        }
+
+
         $result = schedule::updateLocal($nhan_quyen, $name, $pass, $start_date, $start_time, $end_date, $end_time);
 
         if ($result) {
@@ -158,6 +202,11 @@ class phanquyen extends Controller
 
     function deleteLocal(Request $request) {
         $id = $request->get('id');
+
+        $admin = new admin(Session::get('user')->id, Session::get('user')->name);
+        if (!$admin->getChild($id)) {
+            return \response()->json(['success' => false, 'error' => 'Bạn không có quyền xóa']);
+        }
 
         $result = admin::deleteLocal($id);
 

@@ -204,8 +204,8 @@ table .min-width {
   border-radius: 15px;
 }
 
-.tick-background{
-  color: rgb(3, 6, 148);
+#list .tick i{
+  color: #b0b6ca;
 }  
 
 @media screen and (max-width: 2000px) {
@@ -457,4 +457,8 @@ table .min-width {
   color: white;
   font-size: 20px;
   margin-left: 15px;
+}
+
+#his-content {
+  overflow: auto;
 }

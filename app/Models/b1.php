@@ -96,4 +96,53 @@ class b1 extends admin
             return $result[0]->tu;
         }
     }
+
+    function coCau($start, $end, $gender) {
+        $now = date("Y");
+        $result = DB::select('select count(*) as total from citizen where ? - extract(year from birthdate) >= ? and 
+                            ? - extract(year from birthdate) <= ? and hamlet = ? and gender = ?', [$now, $start, $now, $end, $this->id, $gender]);
+        return $result[0]->total;
+    }
+
+    function getYoung($year) {
+        $result = DB::select('select young from schedule where extract(year from start_date) = ? and nhan_quyen =?', [$year, $this->id]);
+
+        if ($result) {
+            return $result[0]->young;
+        }
+    }
+
+    function getWork($year) {
+        $result = DB::select('select work from schedule where extract(year from start_date) = ? and nhan_quyen =?', [$year, $this->id]);
+
+        if ($result) {
+            return $result[0]->work;
+        }
+    }
+
+    function getOld($year) {
+        $result = DB::select('select old from schedule where extract(year from start_date) = ? and nhan_quyen =?', [$year, $this->id]);
+
+        if ($result) {
+            return $result[0]->old;
+        }
+    }
+
+    function getLevel($year, $level) {
+        $result = DB::select('select quantity from level_detail 
+                            inner join schedule on level_detail.schedule = schedule.sche_id
+                            where level = ? and extract(year from start_date) = ? and nhan_quyen =?', [$level, $year, $this->id]);
+        if ($result) {
+            return $result[0]->quantity;
+        }
+    }
+
+    function getJob($job) {
+        $result = DB::select('select quantity from job_detail 
+                            inner join schedule on job_detail.schedule = schedule.sche_id
+                            where job = ? and extract(year from start_date) = "2020" and nhan_quyen =?', [$job, $this->id]);
+        if ($result) {
+            return $result[0]->quantity;
+        }
+    }
 }

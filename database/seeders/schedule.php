@@ -25,7 +25,10 @@ class schedule extends Seeder
             'end_time' => '00:00:00',
             'status' => 'Done',
             'sinh' => rand(0,1),
-            'tu' => rand(0,1)
+            'tu' => rand(0,1),
+            'young' => rand(1,2),
+            'work' => rand(2, 3),
+            'old' => rand(1,2)
         ]);
         
 
@@ -39,7 +42,10 @@ class schedule extends Seeder
                 'end_time' => '00:00:00',
                 'status' => 'Done',
                 'sinh' => rand(0,1),
-                'tu' => rand(0,1)
+                'tu' => rand(0,1),
+                'young' => rand(1,2),
+            'work' => rand(2, 3),
+            'old' => rand(1,2)
             ]);
         }
         
@@ -53,7 +59,10 @@ class schedule extends Seeder
                 'end_time' => '00:00:00',
                 'status' => 'Done',
                 'sinh' => rand(0,1),
-            'tu' => rand(0,1)
+            'tu' => rand(0,1),
+            'young' => rand(1,2),
+            'work' => rand(2, 3),
+            'old' => rand(1,2)
             ]);
         }
 
@@ -66,7 +75,10 @@ class schedule extends Seeder
                 'end_time' => '00:00:00',
                 'status' => 'Done',
                 'sinh' => rand(0,1),
-            'tu' => rand(0,1)
+            'tu' => rand(0,1),
+            'young' => rand(1,2),
+            'work' => rand(2, 3),
+            'old' => rand(1,2)
             ]);
         }
 
@@ -79,7 +91,10 @@ class schedule extends Seeder
                 'end_time' => '00:00:00',
                 'status' => 'Done',
                 'sinh' => rand(0,1),
-            'tu' => rand(0,1)
+            'tu' => rand(0,1),
+            'young' => rand(1,2),
+            'work' => rand(2, 3),
+            'old' => rand(1,2)
             ]);
         }
 
@@ -92,7 +107,10 @@ class schedule extends Seeder
                 'end_time' => '00:00:00',
                 'status' => 'Done',
                 'sinh' => rand(0,1),
-            'tu' => rand(0,1)
+            'tu' => rand(0,1),
+            'young' => rand(1,2),
+            'work' => rand(2, 3),
+            'old' => rand(1,2)
             ]);
         }
 
@@ -105,7 +123,10 @@ class schedule extends Seeder
                 'end_time' => '00:00:00',
                 'status' => 'Done',
                 'sinh' => rand(0,1),
-            'tu' => rand(0,1)
+            'tu' => rand(0,1),
+            'young' => rand(1,2),
+            'work' => rand(2, 3),
+            'old' => rand(1,2)
             ]);
         }
 
@@ -118,7 +139,10 @@ class schedule extends Seeder
                 'end_time' => '00:00:00',
                 'status' => 'Done',
                 'sinh' => rand(0,1),
-            'tu' => rand(0,1)
+            'tu' => rand(0,1),
+            'young' => rand(1,2),
+            'work' => rand(2, 3),
+            'old' => rand(1,2)
             ]);
         }
 
@@ -131,7 +155,10 @@ class schedule extends Seeder
                 'end_time' => '00:00:00',
                 'status' => 'Done',
                 'sinh' => rand(0,1),
-            'tu' => rand(0,1)
+            'tu' => rand(0,1),
+            'young' => rand(1,2),
+            'work' => rand(2, 3),
+            'old' => rand(1,2)
             ]);
         }
 
@@ -144,7 +171,10 @@ class schedule extends Seeder
                 'end_time' => '00:00:00',
                 'status' => 'Done',
                 'sinh' => rand(0,1),
-            'tu' => rand(0,1)
+            'tu' => rand(0,1),
+            'young' => rand(1,2),
+            'work' => rand(2, 3),
+            'old' => rand(1,2)
             ]);
         }
 
@@ -157,7 +187,10 @@ class schedule extends Seeder
                 'end_time' => '00:00:00',
                 'status' => 'Done',
                 'sinh' => rand(0,1),
-            'tu' => rand(0,1)
+            'tu' => rand(0,1),
+            'young' => rand(1,2),
+            'work' => rand(2, 3),
+            'old' => rand(1,2)
             ]);
         }
     }

@@ -63,7 +63,7 @@
                                     <th class="min-width">Thời gian bắt đầu</th>
                                     <th class="min-width">Thời gian kết thúc</th>
                                     <th class="center">Lịch sử</th>
-                                    <th>Tiến độ</th>
+                                
                                     <th class="center">Quyền <br> truy cập</th>
                                     <th></th>
                                 </tr>
@@ -71,7 +71,9 @@
                             <div>
                         
                                 <tbody id="list">
-
+                                <input type="hidden" id="token6" value="{{ @csrf_token() }}">
+                                    <input type="hidden" id="on_url" value="{{ route('admin.on', ['position' => $user->position ]) }}">
+                                    <input type="hidden" id="off_url" value="{{ route('admin.off', ['position' => $user->position ]) }}">
                                 @foreach ($local as $local)
                                 <tr>
                                     <td>
@@ -82,29 +84,28 @@
                                     <td class="min-width row_start">{{ $local->start_date.' '.$local->start_time }}</td>
                                     <td class="min-width row_end">{{ $local->end_date.' '.$local->end_time }}</td>
                                     <td class="center"><a onclick="showHistory(this)"><i class="fas fa-history"></i></td>
-                                    <td class="progress">
-                                        <small class="W-100">90.00%</small>
-                                        <div>
-                                            <div class="percent"></div>
-                                        </div>
-                                    </td>
+                                    
                                     <td>
                                     <div class="switch">
-                                    <input type="hidden" id="token6" value="{{ @csrf_token() }}">
-                                    <input type="hidden" id="on_url" value="{{ route('admin.on', ['position' => $user->position ]) }}">
-                                    <input type="hidden" id="off_url" value="{{ route('admin.off', ['position' => $user->position ]) }}">
+                                    
                                         @if ($local->status == "Open") 
-                                            <input type="checkbox" onclick="onoff(this)" checked>
+                                            <input type="checkbox" class="row_ckeck" onclick="onoff(this)" checked>
                                         @else
-                                            <input type="checkbox" onclick="onoff(this)">
+                                            <input type="checkbox" class="row_check" onclick="onoff(this)">
                                         @endif
                                         
                                         <label><i></i></label>
                                     </div>
                                 </td>
                                 <td class="tick">
-                                    <input type="checkbox" onclick="tick(this)">
-                                    <label><i class="fas fa-check"></i></label>
+                                    @if ($local->status == "Done")
+                                        <input type="checkbox" onclick="">
+                                        <label><i class="fas fa-check" style="color: rgb(12, 21, 153)"></i></label>
+                                    @else 
+                                        <input type="checkbox" onclick="" >
+                                        <label><i class="fas fa-check"></i></label>
+                                    @endif
+                                    
                                 </td>
               
                                     <td class="center">
@@ -198,7 +199,7 @@
                     </div>
                     <div class="btn">
                         <button class="cancel_btn" type="reset" onclick="closePopup()">Hủy bỏ</button>
-                        <button class="submit_btn" type="submit" id="submitForm">Cập nhật</button>
+                        <button class="submit_btn" type="submit" id="submitForm1">Cập nhật</button>
                     </div>
                 </div>
             </form>
@@ -289,13 +290,15 @@
                     <div class="bottom">
                         <div class="btn">    
                             <button class="cancel_btn" type="reset" onclick="closePopup()">Hủy bỏ</button>
-                            <button id="del_btn" class="submit_btn" type="submit">Cập nhật</button>
+                            <button id="update_btn" class="submit_btn" type="submit">Cập nhật</button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <input type="hidden" value="{{ $user->id }}" id="user_id">
+    <input type="hidden" value="{{ $user->position }}" id="user_position">
   </section>
   <script>
       

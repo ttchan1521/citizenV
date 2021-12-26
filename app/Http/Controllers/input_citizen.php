@@ -14,6 +14,9 @@ class input_citizen extends Controller
         if (!(Session::has('user'))) {
             return redirect()->route('login');
         }
+        if (Session::get('user')->position != "b1" && Session::get('user')->position != "b2") {
+            return \redirect()->route('admin.phanquyen');
+        }
         else {
             $down = $this->nameDown(Session::get('user')->position);
             $citizen = $this->getCitizen();
@@ -78,6 +81,44 @@ class input_citizen extends Controller
         $admin = $this->getModel();
 
         $result = false;
+
+        if(!$fullname || \strlen($fullname) < 5 || \strlen($fullname) > 50) {
+            return \response()->json(['success' => false, 'error' => 'Tên của bạn không hợp lệ']);
+        }
+        
+        if (!$birthdate) {
+            return \response()->json(['success' => false, 'error' => 'Vui lòng nhập vào trường này']);
+            $now = new \DateTime('NOW');
+            $birth = new \DateTime($birthdate);
+            if ($birth > $now) {
+                return \response()->json(['success' => false, 'error' => 'Ngày sinh không hợp lệ']);
+            }   
+        }
+
+        if (!$gender) {
+            return \response()->json(['success' => false, 'error' => 'Vui lòng nhập vào trường này']);
+            if ($gender != 1 && $gender != 2) {
+                return \response()->json(['success' => false, 'error' => 'Giới tính không hợp lệ']);
+            }
+        }
+
+        if (!$hometown || !$address || !$ton_giao) {
+            return \response()->json(['success' => false, 'error' => 'Vui lòng nhập vào trường này']);
+        }
+
+        if (!$education_level) {
+            return \response()->json(['success' => false, 'error' => 'Vui lòng nhập vào trường này']);
+            if ($education_level < 1 || $education_level > 6) {
+                return \response()->json(['success' => false, 'error' => 'Trình độ văn hóa không hợp lệ']);
+            }
+        }
+
+        if (!$job) {
+            return \response()->json(['success' => false, 'error' => 'Vui lòng nhập vào trường này']);
+            if ($job < 1 && $job > 11) {
+                return \response()->json(['success' => false, 'error' => 'Nghề nghiệp không hợp lệ']);
+            }
+        }
 
         if ($id == "false") {
             $result = $admin->addCitizen($fullname, $birthdate, $gender, $hometown, $address, $temporary_add, $identity_num, $ton_giao, $education_level, $job);

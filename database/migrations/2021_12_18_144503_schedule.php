@@ -25,6 +25,9 @@ class Schedule extends Migration
             $table->string('status');
             $table->integer('sinh')->default(0);
             $table->integer('tu')->default(0);
+            $table->integer('young')->nullable();
+            $table->ineger('work')->nullable();
+            $table->integer('old')->nullable();
         
         });
     }
