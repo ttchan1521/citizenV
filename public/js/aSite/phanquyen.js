@@ -418,11 +418,7 @@ Validator.isProvinceCode = function(selector) {
       test: function(value) {
           if (!value.trim()) {
               return "Vui lòng nhập vào trường này!";
-<<<<<<< HEAD:public/js/aSite/js.js
           } else if (!checkId(value)){
-=======
-          } else if (value.length % 2 !=0 ){
->>>>>>> 798e61e6454d816838a21314d72ec022a15de453:public/js/aSite/phanquyen.js
               return "Mã tỉnh/tp không hợp lệ!";
           }
           else {
