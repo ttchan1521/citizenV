@@ -26,6 +26,8 @@
             </div>
             <div id="notificate">
             </div>
+            <div id="error">
+            </div>
             <div class="tool">
                 <div class="button row hidden" id="button_list">
                     <button id="permis_btn" onclick="permis_click()">Cấp quyền</button> 
@@ -39,7 +41,7 @@
             
             <div class="province_list">
                 <div class="table">
-                    <p>Lịch khai báo và tiến độ điều tra của các tỉnh</p>
+                    <p>Danh sách tỉnh và lịch khai báo</p>
                     <form action="" class="search">
                         <div>
                             <input type="text" id="find_name"  placeholder="Nhập tên {{ $down }}">
@@ -65,6 +67,7 @@
                                     <th class="center">Lịch sử</th>
                                 
                                     <th class="center">Quyền <br> truy cập</th>
+                                    <th></th>
                                     <th></th>
                                 </tr>
                             </thead>

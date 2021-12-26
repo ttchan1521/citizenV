@@ -35,6 +35,17 @@ class phantich extends Controller
                 $cc += $nu;
             }
             
+            // if ($cc != 0) {
+            //     foreach($ccNam as $nam) {
+            //         $nam = $nam/$cc * 100;
+            //         $nam = \round($nam, 1);
+            //         $nam = -$nam;
+            //     }
+            //     foreach($ccNu as $nu ){
+            //         $nu = $nu/$cc * 100;
+            //         $nu = \round($nu, 1);
+            //     }
+            // }
             if ($cc != 0) {
                 foreach($ccNam as $i => $nam) {
                     $ccNam[$i] = $nam/$cc * 100;

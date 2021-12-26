@@ -50,7 +50,7 @@
             <p class="highcharts-description"></p>
           </figure>
 
-          <div class="chart_group row">
+           <div class="chart_group row">
             <div class="ppGrowthChart">
               <h3>Biểu đồ tình hình gia tăng dân số tự nhiên từ 2005-2020</h3>
               <span>Đơn vị: phần trăm (%)</span>
@@ -61,7 +61,7 @@
               <canvas id="barchartLow"></canvas>
             </div>
           </div>
-          <div class="chart_group row">
+          <!--<div class="chart_group row">
             <div class="ktxh_chart" style="flex: 3">
               <h3>Quy mô dân số theo 6 vùng kinh tế - xã hội năm 2020</h3>
               <span>Đơn vị: người</span>
@@ -71,7 +71,7 @@
               <h3>Quy mô dân số theo thành thị và nông thôn năm 2020</h3>
               <canvas id="pieChart" style="max-width: 228px; margin: auto; margin-top: 10px; margin-bottom: 10px;"></canvas>
             </div>
-          </div>
+          </div> -->
 
           <figure class="highcharts-figure">
             <div id="container"></div>
@@ -115,7 +115,7 @@
             <p class="highcharts-description"></p>
           </figure>
 
-          <div class="table">
+          <!-- <div class="table">
             <div class="title">
               Tỷ lệ dân số từ 15 tuổi trở lên theo trình độ chuyên môn kỹ thuật, <br>
               giới tính, thành thị, nông thôn và vùng kinh tế - xã hội
@@ -238,8 +238,8 @@
                 </tr>
               </tbody>
             </table>
-          </div>
-          <div class="line"></div>
+          </div> -->
+          <div class="line" style="margin-top: 50px;"></div>
           <div class="laborIndustry row">
             <div class="title" style="flex: 2">
               <h1>
